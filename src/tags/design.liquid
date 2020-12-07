@@ -1,0 +1,7 @@
+---
+layout: layouts/base.liquid
+title: Design Blog - Finiam
+---
+
+{% assign posts = collections.post | where: "data.category", "design" %}
+{% include components/post_list, posts: posts %}

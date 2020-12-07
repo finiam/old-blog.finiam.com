@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="{{" metadata.lang }} class="no-js">
+  <head>
+    <link rel="icon" href="/images/favicon.png" />
+    <link rel="apple-touch-icon" href="/images/favicon.png" />
+    <script type="module" src="/_dist_/assets/scripts/index.js"></script>
+    <link href="/_dist_/assets/styles/index.css" rel="stylesheet" />
+
+    <meta charset="utf-8" />
+    <title>{{ title | default: metadata.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ metadata.description }}" />
+    <meta name="keywords" content="{{ metadata.keywords }}" />
+
+    <meta content="{{ metadata.title }}" property="og:title" />
+    <meta content="{{ metadata.description }}" property="og:description" />
+    <meta content="{{ metadata.image }}" property="og:image" />
+
+    <meta content="{{ metadata.title }}" property="twitter:title" />
+    <meta content="{{ metadata.description }}" property="twitter:description" />
+    <meta content="{{ metadata.image }}" property="twitter:image" />
+
+    <meta content="{{ metadata.title }}" property="twitter:title" />
+    <meta content="{{ metadata.description }}" property="twitter:description" />
+    <meta content="{{ metadata.image }}" property="twitter:image" />
+
+    <meta property="og:type" content="website" />
+    <meta content="summary_large_image" name="twitter:card" />
+  </head>
+
+  <body class="h-full">
+    {% include components/navbar %}
+
+    <div class="px-column-spacing">
+      <main class="max-w-18-col py-104 mx-auto">
+        {{ content }}
+      </main>
+    </div>
+  </body>
+</html>

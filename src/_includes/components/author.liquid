@@ -1,0 +1,15 @@
+<div class="flex flex-row items-center">
+  {% if post.data.author.avatar %}
+    <img class="w-32 h-32 rounded-full mr-16" loading="lazy" src="{{ post.data.author.avatar }}" alt="{{ post.data.author.name }} avatar" />
+  {% else %}
+    <div class="w-32 h-32 rounded-full mr-16 bg-gray-light" aria-label="No photo present for this author"></div>
+  {% endif %}
+
+  <p class="text-gray">
+    {% if post.data.category %}
+      {{ post.data.author.name }} · {{ post.data.category | capitalize }} · {{ post.date | date: "%B %Y" }}
+    {% else %}
+      {{ post.data.author.name }} · {{ post.date | date: "%B %Y" }}
+    {% endif %}
+  </p>
+</div>

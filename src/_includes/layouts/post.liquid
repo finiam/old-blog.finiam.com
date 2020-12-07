@@ -1,0 +1,42 @@
+---
+layout: layouts/base.liquid
+---
+
+<article class="flex flex-col items-center mx-auto max-w-12-col">
+  <div class="prose prose-center text-lg font-serif">
+    <h1 class="text-2xl">
+      {{ title }}
+    </h1>
+
+    {{ content }}
+  </div>
+
+  <div class="flex flex-row w-full mt-80 justify-between">
+    <div>
+      <p class="mb-16">Written by</p>
+
+      <div class="flex flex-row items-center">
+        {% if author.avatar %}
+          <img class="w-48 h-48 rounded-full mr-16" src="{{ author.avatar }}" alt="{{ author.name }} avatar" />
+        {% else %}
+          <div class="w-48 h-48 rounded-full mr-16 bg-gray-light" aria-label="No photo present for this author"></div>
+        {% endif %}
+
+        <div class="flex flex-col">
+          <p>{{ author.name }}</p>
+          <p class="text-sm text-gray">{{ author.role }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Share</p>
+
+      <ul class="flex flex-row space-x-24 mt-16">
+        <li><a href="https://www.facebook.com/wearefiniam">Fa</a></li>
+        <li><a href="https://www.linkedin.com/company/finiam">In</a></li>
+        <li><a href="https://twitter.com/wearefiniam">Tw</a></li>
+      </ul>
+    </div>
+  </div>
+</article>

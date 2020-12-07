@@ -1,0 +1,61 @@
+<nav
+  class="px-column-spacing py-40 flex flex-col border-b border-gray-light"
+>
+  <div class="max-w-18-col w-full mx-auto">
+    <div class="flex flex-row items-center justify-between">
+      <div class="flex flex-row items-baseline" aria-hidden="true">
+        {% include vectors/short_logo.svg %}
+        <h1 class="ml-4 text-2xl">/blog</h1>
+      </div>
+
+      <h1 class="screen-hidden">Finiam's Blog</h1>
+
+      <ul class="flex flex-row space-x-24">
+        <li><a class="text-brand" href="#">Blog</a></li>
+        <li><a href="#">Say Hi</a></li>
+      </ul>
+    </div>
+
+    {% assign isTagsPage = page.url | startsWith: "/tags/" %}
+    {% if page.url == "/blog/" or isTagsPage %}
+    <ul class="flex flex-row space-x-24 mt-32 text-lg">
+      <li>
+        <a
+          class="{{ page.url | activeUrl: '/blog/', 'text-brand', 'text-gray' }}"
+          href="/blog/"
+        >
+          All Blogposts
+        </a>
+      </li>
+      <li>
+        <a
+          class="{{ page.url | activeUrl: '/tags/design/', 'text-brand', 'text-gray' }}"
+          href="/tags/design"
+        >
+          Design
+        </a>
+      </li>
+      <li>
+        <a
+          class="{{ page.url | activeUrl: '/tags/development/', 'text-brand', 'text-gray' }}"
+          href="/tags/development"
+        >
+          Development
+        </a>
+      </li>
+      <li>
+        <a
+          class="{{ page.url | activeUrl: '/tags/team/', 'text-brand', 'text-gray' }}"
+          href="/tags/team"
+        >
+          Team
+        </a>
+      </li>
+    </ul>
+    {% else %}
+    <div class="flex flex-row space-x-6 mt-32">
+      <a href="/blog"><span class="text-gray">← Blog</span> / {{ title }}</a>
+    </div>
+    {% endif %}
+  </div>
+</nav>

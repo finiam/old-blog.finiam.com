@@ -1,0 +1,55 @@
+{% assign sorted_posts = posts | sort: "title" | reverse %}
+
+{% if sorted_posts.length <= 0 %}
+
+{% else %}
+  <ul class="grid gap-x-6 gap-x-gutter gap-y-96 grid-cols-2">
+    {% assign first_post = sorted_posts | first %}
+
+    <li class="flex flex-col col-span-2">
+      {% if first_post.data.featured_image %}
+        <img class="h-352 w-full object-cover" loading="lazy" src="{{ first_post.data.featured_image }}" alt="{{ first_post.data.featured_image_alt }}" />
+      {% else %}
+        <div class="h-352 w-full bg-gray-light"></div>
+      {% endif %}
+
+      <div class="flex flex-col mt-24">
+        <div class="flex flex-row justify-between">
+          <div class="flex flex-col max-w-1/2 w-full mr-gutter">
+            <a
+              class="text-2xl mr-column-spacing font-serif mb-32"
+              href="{{ first_post.url | url }}"
+            >
+              {{ first_post.data.title }}
+            </a>
+
+            {% include components/author, post: first_post %}
+          </div>
+          <p class="block max-w-1/2 mt-16 prose text-lg font-serif">
+            {{ first_post.data.long_description | markdownify }} →
+          </p>
+        </div>
+      </div>
+    </li>
+
+    {%- for post in sorted_posts offset: 1 -%}
+    <li class="flex flex-col">
+      {% if post.data.featured_image %}
+        <img class="h-336 w-full object-cover" loading="lazy" src="{{ post.data.featured_image }}" alt="{{ post.data.featured_image_alt }}" />
+      {% else %}
+        <div class="h-336 w-full bg-gray-light"></div>
+      {% endif %}
+
+      <a class="text-2xl mt-32 font-serif" href="{{ post.url | url }}">
+        {{ post.data.title }}
+      </a>
+
+      <p class="font-serif my-40 prose text-lg">
+        {{ post.data.long_description | markdownify }} →
+      </p>
+
+      {% include components/author, post: post %}
+    </li>
+    {%- endfor -%}
+  </ul>
+{% endif %}
