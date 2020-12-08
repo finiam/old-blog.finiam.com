@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   color: black;
 
   text-rendering: optimizeLegibility;
@@ -53,8 +54,7 @@ html, body {
 @font-face {
   font-family: Recife-Text;
   src: url("./fonts/RecifeText-Regular.eot");
-  src: url("./fonts/RecifeText-Regular.eot?#iefix")
-      format("embedded-opentype"),
+  src: url("./fonts/RecifeText-Regular.eot?#iefix") format("embedded-opentype"),
     url("./fonts/RecifeText-Regular.woff2") format("woff2"),
     url("./fonts/RecifeText-Regular.woff") format("woff"),
     url("./fonts/RecifeText-Regular.otf") format("truetype");
