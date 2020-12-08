@@ -47,6 +47,12 @@ module.exports = {
   },
 
   theme: {
+    fontFamily: {
+      "title-rg": ["Sans-Regular"],
+      "title-md": ["Sans-Medium"],
+      "subtitle-rg": ["Sans-Regular-subtitles"],
+      "serif-rg": ["Recife-Text"],
+    },
     extend: {
       width: columns,
       maxWidth: columns,
@@ -78,6 +84,7 @@ module.exports = {
     colors: {
       brand: "#4D00E5",
       gray: {
+        dark: "#252525",
         DEFAULT: "#757575",
         light: "#DEDEDE",
       },
