@@ -1,30 +1,24 @@
 {
   "scripts": {
-    "dev": "NODE_ENV=development snowpack dev",
-    "build": "NODE_ENV=production snowpack build",
+    "dev": "rm -rf _output && NODE_ENV=development snowpack dev",
+    "build": "rm -rf _output && NODE_ENV=production snowpack build",
     "format": "prettier --write \"src/**/*.js\" *.js \"src/**/*.css\"",
     "lint": "prettier --check \"src/**/*.js\" *.js \"src/**/*.css\""
   },
-  "dependencies": {
-    "@11ty/eleventy-img": "^0.4.2",
-    "canvas-confetti": "^1.2.0",
-    "synchronous-promise": "^2.0.15"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@11ty/eleventy": "https://github.com/11ty/eleventy",
+    "@11ty/eleventy-img": "^0.4.2",
     "@snowpack/plugin-postcss": "^1.0.8",
     "@snowpack/plugin-run-script": "^2.2.1",
     "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.0.4",
     "cssnano": "^4.1.10",
-    "deasync": "^0.1.21",
-    "jsonfile": "^6.1.0",
     "markdown-it-implicit-figures": "^0.10.0",
     "postcss": "^8.1.14",
     "postcss-cli": "^8.3.0",
     "postcss-import": "^13.0.0",
     "prettier": "^2.0.5",
-    "sharp": "^0.26.3",
     "snowpack": "^2.18.0",
     "tailwindcss": "^2.0.1"
   }
