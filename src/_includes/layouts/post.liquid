@@ -16,11 +16,9 @@ layout: layouts/base.liquid
       <p class="mb-16">Written by</p>
 
       <div class="flex flex-row items-center">
-        {% if author.avatar %}
-          <img class="w-48 h-48 rounded-full mr-16" src="{{ author.avatar }}" alt="{{ author.name }} avatar" />
-        {% else %}
-          <div class="w-48 h-48 rounded-full mr-16 bg-gray-light" aria-label="No photo present for this author"></div>
-        {% endif %}
+        <div class="w-48 h-48 mr-16">
+          {% include components/author_avatar, author: author %}
+        </div>
 
         <div class="flex flex-col">
           <p>{{ author.name }}</p>
