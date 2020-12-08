@@ -1,7 +1,9 @@
 const lazyImagesPlugin = require("eleventy-plugin-lazyimages");
 const markdownIt = require("markdown-it");
 const mdImplicitFigures = require("markdown-it-implicit-figures");
-const markdownItRenderer = new markdownIt().use(mdImplicitFigures);
+const markdownItRenderer = new markdownIt({ html: true }).use(
+  mdImplicitFigures,
+);
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.setTemplateFormats([

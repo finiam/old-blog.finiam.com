@@ -55,8 +55,66 @@ module.exports = {
         DEFAULT: {
           css: {
             maxWidth: "none",
-            img: {
+            "*": {
+              maxWidth: columns["10-col"],
+            },
+            figure: {
               maxWidth: columns["12-col"],
+            },
+            blockquote: {
+              maxWidth: columns["12-col"],
+            },
+            pre: {
+              maxWidth: columns["12-col"],
+              padding: baseSpacing["32"],
+            },
+            h1: {
+              fontSize: responsivify(40, 54),
+              lineHeight: responsivify(52, 72),
+            },
+            h2: {
+              fontSize: responsivify(28, 40),
+              lineHeight: responsivify(40, 52),
+            },
+            h3: {
+              fontSize: responsivify(20, 28),
+              lineHeight: responsivify(28, 40),
+            },
+            h4: {
+              fontSize: responsivify(20, 28),
+              lineHeight: responsivify(28, 40),
+            },
+            h5: {
+              fontSize: responsivify(20, 28),
+              lineHeight: responsivify(28, 40),
+            },
+            h6: {
+              fontSize: responsivify(20, 28),
+              lineHeight: responsivify(28, 40),
+            },
+            p: {
+              fontSize: responsivify(16, 20),
+              lineHeight: responsivify(20, 32),
+            },
+            a: {
+              color: "#4D00E5",
+              "text-decoration": "none",
+              "&:hover": {
+                "text-decoration": "underline",
+              },
+            },
+            "code::before": null,
+            "code::after": null,
+            blockquote: { quotes: null },
+            "blockquote p:first-of-type::before": null,
+            "blockquote p:last-of-type::after": null,
+            "pre code::after": null,
+          },
+        },
+        center: {
+          css: {
+            "*": {
+              margin: "0 auto",
             },
           },
         },

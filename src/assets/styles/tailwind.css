@@ -15,21 +15,3 @@
     width: 1px;
   }
 }
-
-.prose * {
-  @apply max-w-10-col;
-}
-
-.prose figure,
-.prose blockquote,
-.prose pre {
-  @apply max-w-12-col;
-}
-
-.prose pre {
-  @apply p-32;
-}
-
-.prose-center * {
-  @apply mx-auto;
-}
