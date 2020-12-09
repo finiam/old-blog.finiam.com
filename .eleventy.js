@@ -1,4 +1,6 @@
 const lazyImagesPlugin = require("eleventy-plugin-lazyimages");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const eleventyHelmetPlugin = require('eleventy-plugin-helmet');
 const markdownIt = require("markdown-it");
 const mdImplicitFigures = require("markdown-it-implicit-figures");
 const markdownItRenderer = new markdownIt().use(mdImplicitFigures);
@@ -22,6 +24,10 @@ module.exports = function (eleventyConfig) {
     imgSelector: '[data-lazy="true"]',
     transformImgPath: (src) => `./src/static/${src}`,
   });
+
+  eleventyConfig.addPlugin(syntaxHighlight);
+
+  eleventyConfig.addPlugin(eleventyHelmetPlugin);
 
   eleventyConfig.addFilter("markdownify", (str) =>
     markdownItRenderer.renderInline(str),
