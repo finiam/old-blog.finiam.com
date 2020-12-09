@@ -163,7 +163,7 @@ To start building the website on Github Actions, just add the necessary environm
 
 Now, we need to define the workflow:
 `.github/workflows/deploy.yml`
-```yaml
+```yml
 name: Daily Netlify Deploy
 
 on:
