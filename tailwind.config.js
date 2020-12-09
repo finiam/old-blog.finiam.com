@@ -85,6 +85,7 @@ module.exports = {
           css: {
             maxWidth: "none",
             img: {
+              width: columns["12-col"],
               maxWidth: columns["12-col"],
             },
           },

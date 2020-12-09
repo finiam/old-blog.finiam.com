@@ -6,6 +6,7 @@
   @apply max-w-10-col;
 }
 
+.prose p > picture,
 .prose figure,
 .prose blockquote,
 .prose pre {

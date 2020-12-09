@@ -1,29 +1,14 @@
-const lazyImagesPlugin = require("eleventy-plugin-lazyimages");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const eleventyHelmetPlugin = require('eleventy-plugin-helmet');
 const markdownIt = require("markdown-it");
 const mdImplicitFigures = require("markdown-it-implicit-figures");
-const markdownItRenderer = new markdownIt().use(mdImplicitFigures);
+const markdownItRenderer = new markdownIt({ html: true }).use(
+  mdImplicitFigures,
+);
+const image = require("./utils/image");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.setTemplateFormats([
-    // Templates:
-    "html",
-    "liquid",
-    "md",
-    // Static Assets:
-    "jpeg",
-    "jpg",
-    "png",
-    "svg",
-    "woff",
-    "woff2",
-  ]);
-
-  eleventyConfig.addPlugin(lazyImagesPlugin, {
-    imgSelector: '[data-lazy="true"]',
-    transformImgPath: (src) => `./src/static/${src}`,
-  });
+  eleventyConfig.setTemplateFormats(["html", "liquid", "md"]);
 
   eleventyConfig.addPlugin(syntaxHighlight);
 
@@ -57,7 +42,13 @@ module.exports = function (eleventyConfig) {
     }),
   );
 
-  eleventyConfig.addPassthroughCopy({ "src/static": "." });
+  eleventyConfig.addShortcode("image", async (src, alt, klass = "") =>
+    image(src, alt, klass, false),
+  );
+
+  eleventyConfig.addShortcode("responsiveImage", async (src, alt, klass = "") =>
+    image(src, alt, klass, true),
+  );
 
   eleventyConfig.setLibrary("md", markdownItRenderer);
 
@@ -68,5 +59,7 @@ module.exports = function (eleventyConfig) {
       includes: "_includes",
       output: "_output",
     },
+    htmlTemplateEngine: "liquid",
+    markdownTemplateEngine: "liquid",
   };
 };

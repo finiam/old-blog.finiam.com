@@ -138,7 +138,7 @@ You can do this for all sorts of UI elements and it allows you to encapsulate UI
 
 Now, our previous example was pretty nice, but we lack JS to make the flash component *behave*. When I first started working with Rails (back in 2014) the defacto way was to just use jQuery to make stuff all interactive and nice. And we all know how that ends up with large codebases.
 
-![A dish of spaghetti with meatbals](/images/spaghetti.jpg)
+{% responsiveImage "/images/spaghetti.jpg" "A dish of spaghetti with meatbals" %}
 
 > Spaghetti code get it? Yes, it's a lame joke.
 

@@ -8,7 +8,7 @@
 
     <li class="flex flex-col col-span-2">
       {% if first_post.data.featured_image %}
-        <img class="h-352 w-full object-cover" loading="lazy" src="{{ first_post.data.featured_image }}" alt="{{ first_post.data.featured_image_alt }}" />
+        {% responsiveImage first_post.data.featured_image first_post.data.featured_image_alt "h-352 w-full object-cover" %}
       {% else %}
         <div class="h-352 w-full bg-gray-light"></div>
       {% endif %}
@@ -35,7 +35,7 @@
     {%- for post in sorted_posts offset: 1 -%}
     <li class="flex flex-col">
       {% if post.data.featured_image %}
-        <img class="h-336 w-full object-cover" loading="lazy" src="{{ post.data.featured_image }}" alt="{{ post.data.featured_image_alt }}" />
+        {% responsiveImage post.data.featured_image post.data.featured_image_alt "h-336 w-full object-cover" %}
       {% else %}
         <div class="h-336 w-full bg-gray-light"></div>
       {% endif %}
