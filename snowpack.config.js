@@ -1,6 +1,7 @@
 module.exports = {
   mount: {
     _output: "/",
+    static: "/",
     src: "/_dist_",
   },
   plugins: [
@@ -13,6 +14,7 @@ module.exports = {
   },
   experiments: {
     optimize: {
+      entrypoints: ["_dist_/assets/scripts/index.js"],
       bundle: true,
       minify: true,
       target: "es2017",
