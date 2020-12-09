@@ -47,6 +47,12 @@ module.exports = {
   },
 
   theme: {
+    fontFamily: {
+      edgy: ["StudioFeixenSans-Regular"],
+      "edgy-medium": ["StudioFeixenSans-Medium"],
+      sans: ["StudioFeixenSans-Regular-text"],
+      serif: ["RecifeText-Regular"],
+    },
     extend: {
       width: columns,
       maxWidth: columns,
@@ -78,6 +84,7 @@ module.exports = {
     colors: {
       brand: "#4D00E5",
       gray: {
+        dark: "#252525",
         DEFAULT: "#757575",
         light: "#DEDEDE",
       },
