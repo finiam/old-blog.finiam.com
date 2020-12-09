@@ -2,6 +2,8 @@
 layout: layouts/base.liquid
 ---
 
+<link href="/assets/styles/prism.css" rel="stylesheet" data-helmet="prism-theme-css">
+
 <article class="flex flex-col items-center mx-auto max-w-12-col">
   <div class="prose prose-center text-lg font-serif">
     <h1 class="text-2xl">
@@ -31,9 +33,10 @@ layout: layouts/base.liquid
       <p>Share</p>
 
       <ul class="flex flex-row space-x-24 mt-16">
-        <li><a href="https://www.facebook.com/wearefiniam">Fa</a></li>
-        <li><a href="https://www.linkedin.com/company/finiam">In</a></li>
-        <li><a href="https://twitter.com/wearefiniam">Tw</a></li>
+        {% assign post_url = metadata.host | append: page.url | url %}
+        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ post_url }}">Fb</a></li>
+        <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ post_url }}">In</a></li>
+        <li><a href="https://twitter.com/intent/tweet?url={{ post_url }}">Tw</a></li>
       </ul>
     </div>
   </div>

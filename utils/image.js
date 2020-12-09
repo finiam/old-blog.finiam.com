@@ -35,31 +35,33 @@ module.exports = async (src, alt, klass, responsive = false) => {
     {},
   );
 
+  // DO NOT IDENT THIS PLEASE OTHERWHISE IT WILL BREAK
+  // A LIMTATION FROM MARKDOWN-IT
   return `
-    <picture>
-      <source type="image/webp" data-srcset="${srcset["webp"]}">
-      <img
-        alt="${alt}"
-        src="${base64Placeholder}"
-        data-src="${lowestSrc.url}"
-        data-sizes="(min-width: 1024px) 1024px, 100vw"
-        data-srcset="${srcset["jpeg"]}"
-        class="lazy ${klass}">
-    </picture>
+<picture>
+<source type="image/webp" data-srcset="${srcset["webp"]}">
+<img
+alt="${alt}"
+src="${base64Placeholder}"
+data-src="${lowestSrc.url}"
+data-sizes="(min-width: 1024px) 1024px, 100vw"
+data-srcset="${srcset["jpeg"]}"
+class="lazy ${klass}">
+</picture>
 
-    <noscript>
-      <picture>
-        <source type="image/webp" srcset="${srcset["webp"]}">
-        <img
-          loading="lazy"
-          alt="${alt}"
-          src="${lowestSrc.url}"
-          sizes="(min-width: 1024px) 1024px, 100vw"
-          srcset="${srcset["jpeg"]}"
-          width="${lowestSrc.width}"
-          height="${lowestSrc.height}"
-          class="${klass}">
-      </picture>
-    </noscript>
+<noscript>
+<picture>
+<source type="image/webp" srcset="${srcset["webp"]}">
+<img
+loading="lazy"
+alt="${alt}"
+src="${lowestSrc.url}"
+sizes="(min-width: 1024px) 1024px, 100vw"
+srcset="${srcset["jpeg"]}"
+width="${lowestSrc.width}"
+height="${lowestSrc.height}"
+class="${klass}">
+</picture>
+</noscript>
   `;
 };
