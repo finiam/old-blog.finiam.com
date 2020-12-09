@@ -33,8 +33,8 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter(
     "activeUrl",
-    (desiredUrl, pageUrl, active, inactive) =>
-      desiredUrl === pageUrl ? active : inactive,
+    (desiredUrl, pageUrl, activeClass, inactiveClass) =>
+      desiredUrl === pageUrl ? activeClass : inactiveClass,
   );
 
   eleventyConfig.addFilter("getAuthor", (authorKey) =>
