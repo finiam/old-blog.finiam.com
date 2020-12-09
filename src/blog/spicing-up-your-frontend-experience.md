@@ -10,8 +10,6 @@ date: 2020-08-19
 keywords: ruby, rails, frontend
 ---
 
-_Originally posted on [Finiam's website](https://dev.to/finiam/spicing-up-your-rails-frontend-experience-546j)._
-
 Rails is great. You can still check DHH's [15-minute blog demo](https://www.youtube.com/watch?v=Gzj723LkRJY) and just appreciate the combination of features and ease of use of the framework. Even though there are even easier ways to make a blog nowadays (cough cough Gatsby), Rails is still a rock-solid choice for crafting digital products.
 
 ## Rails and the modern web
@@ -138,8 +136,7 @@ You can do this for all sorts of UI elements and it allows you to encapsulate UI
 
 Now, our previous example was pretty nice, but we lack JS to make the flash component *behave*. When I first started working with Rails (back in 2014) the defacto way was to just use jQuery to make stuff all interactive and nice. And we all know how that ends up with large codebases.
 
-{% responsiveImage "/images/spaghetti.jpg" "A dish of spaghetti with meatbals" %}
-
+{% responsiveImage "/images/spicing-up-spaghetti.jpg" "A dish of spaghetti with meatbals" %}
 > Spaghetti code get it? Yes, it's a lame joke.
 
 The folks at Basecamp, who pretty much invented Rails anyway, created this simple library (not a framework) to solve the mess of having a bunch of random Javascript with jQuery all over the place. Stimulus uses simple data attributes and small Javascript controllers to add rich interactions to Rails apps (also works without Rails).

@@ -1,3 +1,4 @@
+/* purgecss start ignore */
 /**
  * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
  * Based on https://github.com/chriskempson/tomorrow-theme
@@ -28,8 +29,6 @@ pre[class*="language-"] {
 
 /* Code blocks */
 pre[class*="language-"] {
-  padding: 1em;
-  margin: 0.5em 0;
   overflow: auto;
 }
 
@@ -118,3 +117,4 @@ pre[class*="language-"] {
 .token.inserted {
   color: green;
 }
+/* purgecss end ignore */
