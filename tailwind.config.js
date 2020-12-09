@@ -48,10 +48,10 @@ module.exports = {
 
   theme: {
     fontFamily: {
-      "title-rg": ["Sans-Regular"],
-      "title-md": ["Sans-Medium"],
-      "subtitle-rg": ["Sans-Regular-subtitles"],
-      "serif-rg": ["Recife-Text"],
+      edgy: ["StudioFeixenSans-Regular"],
+      "edgy-medium": ["StudioFeixenSans-Medium"],
+      sans: ["StudioFeixenSans-Regular-text"],
+      serif: ["RecifeText-Regular"],
     },
     extend: {
       width: columns,
