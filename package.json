@@ -1,7 +1,10 @@
 {
   "scripts": {
-    "dev": "rm -rf _output && NODE_ENV=development snowpack dev",
-    "build": "rm -rf _output && NODE_ENV=production snowpack build",
+    "predev": "npm run clean",
+    "dev": "NODE_ENV=development snowpack dev",
+    "prebuild": "npm run clean",
+    "build": "NODE_ENV=production snowpack build",
+    "clean": "rm -rf build _output",
     "format": "prettier --write \"src/**/*.js\" *.js \"src/**/*.css\"",
     "lint": "prettier --check \"src/**/*.js\" *.js \"src/**/*.css\""
   },

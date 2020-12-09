@@ -47,21 +47,12 @@ module.exports = {
   },
 
   theme: {
-    extend: {
-      width: columns,
-      maxWidth: columns,
-      minWidth: columns,
-      typography: {
-        DEFAULT: {
-          css: {
-            maxWidth: "none",
-            img: {
-              width: columns["12-col"],
-              maxWidth: columns["12-col"],
-            },
-          },
-        },
-      },
+    fontFamily: {
+      edgy: ["StudioFeixenSans-Regular"],
+      "edgy-medium": ["StudioFeixenSans-Medium"],
+      sans: ["StudioFeixenSans-Regular-text"],
+      serif: ["RecifeText-Regular"],
+      mono: "'PT Mono', monospace",
     },
     spacing: {
       ...baseSpacing,
@@ -79,9 +70,27 @@ module.exports = {
     colors: {
       brand: "#4D00E5",
       gray: {
+        dark: "#252525",
         DEFAULT: "#757575",
         light: "#DEDEDE",
       },
+    },
+
+    extend: {
+      width: columns,
+      maxWidth: columns,
+      minWidth: columns,
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            maxWidth: "none",
+            img: {
+              width: columns["12-col"],
+              maxWidth: columns["12-col"],
+            },
+          },
+        },
+      }),
     },
   },
   plugins: [require("@tailwindcss/typography")],

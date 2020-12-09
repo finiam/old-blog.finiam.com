@@ -8,7 +8,7 @@ module.exports = async (src, alt, klass, responsive = false) => {
 
   if (!src) return;
 
-  const path = `./src/static/${src}`;
+  const path = `./static/${src}`;
   let stats = await Image(path, {
     widths: responsive ? [25, 320, 640, 960, 1200, 1800, 2400] : [null],
     formats: ["jpeg", "webp"],

@@ -1,2 +1,6 @@
 @import "./tailwind.css";
-@import "./custom.css";
+@import "./fonts.css";
+
+body.no-js .lazy {
+  display: none !important;
+}
