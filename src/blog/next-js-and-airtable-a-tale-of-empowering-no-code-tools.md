@@ -45,7 +45,7 @@ Next.js will automatically pick up that value from your `.env` file.
 
 Now, let's see the content of our table.
 
-![Our airtable table](https://dev-to-uploads.s3.amazonaws.com/i/nj94jv1hbavb3e6kxy6v.jpg)
+{% responsiveImage "/images/next-js-and-airtable-1.jpg" "Our airtable table" %}
 
 The table labels are in Portuguese, translated to English they are: ID, Purpose, Date, Value. Basically, they represent a list of financial transactions, with their purpose (whether they were donations, material acquisition, etc), their date, and their value.
 

@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Mono&display=swap");
+
+html,
+body {
+  color: black;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1,
+    "dlig" 1, "swsh" 1;
+  -moz-font-feature-settings: "smcp=1, onum=1, frac=1, kern=1, liga=1, dlig=1, swsh=1";
+  -ms-font-feature-settings: "smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1,
+    "dlig" 1, "swsh" 1;
+  -o-font-feature-settings: "smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1,
+    "dlig" 1, "swsh" 1;
+  -webkit-font-feature-settings: "smcp" 1, "onum" 1, "frac" 1, "kern" 1,
+    "liga" 1, "dlig" 1, "swsh" 1;
+  font-feature-settings: "smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1,
+    "dlig" 1, "swsh" 1;
+  font-feature-settings: normal;
+}
+
+@font-face {
+  font-family: StudioFeixenSans-Regular;
+  src: url("/fonts/StudioFeixenSans-Regular.eot");
+  src: url("/fonts/StudioFeixenSans-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("/fonts/StudioFeixenSans-Regular.woff2") format("woff2"),
+    url("/fonts/StudioFeixenSans-Regular.woff") format("woff"),
+    url("/fonts/StudioFeixenSans-Regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: StudioFeixenSans-Medium;
+  src: url("/fonts/StudioFeixenSans-Medium.eot");
+  src: url("/fonts/StudioFeixenSans-Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("/fonts/StudioFeixenSans-Medium.woff2") format("woff2"),
+    url("/fonts/StudioFeixenSans-Medium.woff") format("woff"),
+    url("/fonts/StudioFeixenSans-Medium.otf") format("truetype");
+}
+
+@font-face {
+  font-family: StudioFeixenSans-Regular-text;
+  src: url("/fonts/StudioFeixenSans-Regular-text.eot");
+  src: url("/fonts/StudioFeixenSans-Regular-text.eot?#iefix")
+      format("embedded-opentype"),
+    url("/fonts/StudioFeixenSans-Regular-text.woff2") format("woff2"),
+    url("/fonts/StudioFeixenSans-Regular-text.woff") format("woff"),
+    url("/fonts/StudioFeixenSans-Regular-text.otf") format("truetype");
+  font-feature-settings: "ss01" 1;
+}
+
+@font-face {
+  font-family: RecifeText-Regular;
+  src: url("/fonts/RecifeText-Regular.eot");
+  src: url("/fonts/RecifeText-Regular.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/RecifeText-Regular.woff2") format("woff2"),
+    url("/fonts/RecifeText-Regular.woff") format("woff"),
+    url("/fonts/RecifeText-Regular.otf") format("truetype");
+  font-feature-settings: "ss01" 1;
+}

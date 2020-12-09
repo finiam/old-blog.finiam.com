@@ -1,26 +1,33 @@
 {
   "scripts": {
+    "predev": "npm run clean",
     "dev": "NODE_ENV=development snowpack dev",
+    "prebuild": "npm run clean",
     "build": "NODE_ENV=production snowpack build",
+    "clean": "rm -rf build _output",
     "format": "prettier --write \"src/**/*.js\" *.js \"src/**/*.css\"",
     "lint": "prettier --check \"src/**/*.js\" *.js \"src/**/*.css\""
   },
   "dependencies": {
-    "canvas-confetti": "^1.2.0"
+    "vanilla-lazyload": "^17.3.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "https://github.com/11ty/eleventy",
+    "@11ty/eleventy-img": "^0.4.2",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.4",
     "@snowpack/plugin-postcss": "^1.0.8",
     "@snowpack/plugin-run-script": "^2.2.1",
     "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.0.4",
     "cssnano": "^4.1.10",
-    "eleventy-plugin-lazyimages": "^2.1.0",
+    "eleventy-plugin-helmet": "^0.2.1",
+    "html-minifier": "^4.0.0",
     "markdown-it-implicit-figures": "^0.10.0",
     "postcss": "^8.1.14",
     "postcss-cli": "^8.3.0",
     "postcss-import": "^13.0.0",
     "prettier": "^2.0.5",
+    "sharp": "^0.26.3",
     "snowpack": "^2.18.0",
     "tailwindcss": "^2.0.1"
   }

@@ -27,9 +27,9 @@ Most of their work — probably all of it — is so iconic and unique that even 
 
 For those of you who don’t know, Peter Behrens is the pioneer in graphics systems (AEG), Paul Rand designed iconic logos like IBM and NeXT, Karel Martens is one of the first designers to explore the overlaying of colours.
 
-![Deutsche Werkbund Peter Behrens 1907 08 Gesamkultur](/images/crypto-brands-1.jpg)
+{% responsiveImage "/images/crypto-brands-1.jpg" "Deutsche Werkbund Peter Behrens 1907 08 Gesamkultur" %}
 
-![NeXT Logo Designed by Paul Rand for Steve Jobs](/images/crypto-brands-2.jpg)
+{% responsiveImage "/images/crypto-brands-2.jpg" "NeXT Logo Designed by Paul Rand for Steve Jobs" %}
 
 But for me, one of the most important elements in their work is the error-based experimentation; after all, designers are sharing an idea/vision with people and they need to feel connected and related to what they are seeing.
 

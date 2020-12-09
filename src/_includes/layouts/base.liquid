@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{" metadata.lang }} class="no-js">
   <head>
-    <link rel="icon" href="/images/favicon.png" />
-    <link rel="apple-touch-icon" href="/images/favicon.png" />
-    <script type="module" src="/_dist_/assets/scripts/index.js"></script>
-    <link href="/_dist_/assets/styles/index.css" rel="stylesheet" />
+    <link rel="icon" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <script type="module" src="/assets/scripts/index.js"></script>
+    <link href="/assets/styles/index.css" rel="stylesheet" />
 
     <meta charset="utf-8" />
     <title>{{ title | default: metadata.title }}</title>
@@ -26,6 +26,13 @@
 
     <meta property="og:type" content="website" />
     <meta content="summary_large_image" name="twitter:card" />
+
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        document.documentElement.classList.remove("no-js")
+        document.documentElement.classList.add("has-js")
+      })
+    </script>
   </head>
 
   <body class="h-full">
@@ -36,5 +43,7 @@
         {{ content }}
       </main>
     </div>
+
+    {% include components/footer %}
   </body>
 </html>

@@ -1,9 +1,7 @@
 <div class="flex flex-row items-center">
-  {% if post.data.author.avatar %}
-    <img class="w-32 h-32 rounded-full mr-16" loading="lazy" src="{{ post.data.author.avatar }}" alt="{{ post.data.author.name }} avatar" />
-  {% else %}
-    <div class="w-32 h-32 rounded-full mr-16 bg-gray-light" aria-label="No photo present for this author"></div>
-  {% endif %}
+  <div class="w-32 h-32 mr-16">
+    {% include components/author_avatar, author: post.data.author %}
+  </div>
 
   <p class="text-gray">
     {% if post.data.category %}

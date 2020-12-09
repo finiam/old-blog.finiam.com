@@ -1,7 +1,8 @@
 module.exports = {
   mount: {
     _output: "/",
-    src: "/_dist_",
+    static: "/",
+    "src/assets": "/assets",
   },
   plugins: [
     "@snowpack/plugin-postcss",
@@ -13,6 +14,7 @@ module.exports = {
   },
   experiments: {
     optimize: {
+      entrypoints: ["assets/scripts/index.js"],
       bundle: true,
       minify: true,
       target: "es2017",

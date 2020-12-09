@@ -5,13 +5,11 @@
     {% assign first_post = sorted_posts | first %}
 
     <li class="flex flex-col col-span-2">
-      <a href="{{ first_post.url | url }}">
-        {% if first_post.data.featured_image %}
-          <img class="h-352 w-full object-cover" loading="lazy" src="{{ first_post.data.featured_image }}" alt="{{ first_post.data.featured_image_alt }}" />
-        {% else %}
-          <div class="h-352 w-full bg-gray-light"></div>
-        {% endif %}
-      </a>
+      {% if first_post.data.featured_image %}
+        {% responsiveImage first_post.data.featured_image first_post.data.featured_image_alt "h-352 w-full object-cover" %}
+      {% else %}
+        <div class="h-352 w-full bg-gray-light"></div>
+      {% endif %}
 
       <div class="flex flex-col mt-24">
         <div class="flex flex-row justify-between">
@@ -34,16 +32,14 @@
 
     {%- for post in sorted_posts offset: 1 -%}
     <li class="flex flex-col">
-      <a href="{{ post.url | url }}">
-        {% if post.data.featured_image %}
-          <img class="h-336 w-full object-cover" loading="lazy" src="{{ post.data.featured_image }}" alt="{{ post.data.featured_image_alt }}" />
-        {% else %}
-          <div class="h-336 w-full bg-gray-light"></div>
-        {% endif %}
+      {% if post.data.featured_image %}
+        {% responsiveImage post.data.featured_image post.data.featured_image_alt "h-336 w-full object-cover" %}
+      {% else %}
+        <div class="h-336 w-full bg-gray-light"></div>
+      {% endif %}
 
-        <h2 class="text-2xl mt-32 font-serif">
-          {{ post.data.title }}
-        </h2>
+      <a class="text-2xl mt-32 font-serif" href="{{ post.url | url }}">
+        {{ post.data.title }}
       </a>
 
       <p class="font-serif my-40 prose text-lg">

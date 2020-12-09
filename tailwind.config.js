@@ -47,6 +47,35 @@ module.exports = {
   },
 
   theme: {
+    fontFamily: {
+      edgy: ["StudioFeixenSans-Regular"],
+      "edgy-medium": ["StudioFeixenSans-Medium"],
+      sans: ["StudioFeixenSans-Regular-text"],
+      serif: ["RecifeText-Regular"],
+      mono: "'PT Mono', monospace",
+    },
+    spacing: {
+      ...baseSpacing,
+      gutter: `${gutter}px`,
+      "column-spacing": columns["column-spacing"],
+    },
+    fontSize: {
+      sm: ["14px", "20px"],
+      base: [responsivify(14, 16), responsivify(18, 20)],
+      lg: [responsivify(16, 20), responsivify(20, 32)],
+      xl: [responsivify(20, 28), responsivify(28, 40)],
+      "2xl": [responsivify(28, 40), responsivify(40, 52)],
+      "3xl": [responsivify(40, 54), responsivify(52, 72)],
+    },
+    colors: {
+      brand: "#4D00E5",
+      gray: {
+        dark: "#252525",
+        DEFAULT: "#757575",
+        light: "#DEDEDE",
+      },
+    },
+
     extend: {
       width: columns,
       maxWidth: columns,
@@ -55,17 +84,27 @@ module.exports = {
         DEFAULT: {
           css: {
             maxWidth: "none",
-            "*": {
+            "& > *": {
               maxWidth: columns["10-col"],
+            },
+            img: {
+              maxWidth: columns["12-col"],
+              width: columns["12-col"],
             },
             figure: {
               maxWidth: columns["12-col"],
+              width: columns["12-col"],
             },
             blockquote: {
               maxWidth: columns["12-col"],
+              width: columns["12-col"],
+              quotes: null,
             },
+            "blockquote p:first-of-type::before": null,
+            "blockquote p:last-of-type::after": null,
             pre: {
               maxWidth: columns["12-col"],
+              width: columns["12-col"],
               padding: baseSpacing["32"],
             },
             h1: {
@@ -105,39 +144,16 @@ module.exports = {
             },
             "code::before": null,
             "code::after": null,
-            blockquote: { quotes: null },
-            "blockquote p:first-of-type::before": null,
-            "blockquote p:last-of-type::after": null,
             "pre code::after": null,
           },
         },
         center: {
           css: {
-            "*": {
+            "& > *": {
               margin: "0 auto",
             },
           },
         },
-      },
-    },
-    spacing: {
-      ...baseSpacing,
-      gutter: `${gutter}px`,
-      "column-spacing": columns["column-spacing"],
-    },
-    fontSize: {
-      sm: ["14px", "20px"],
-      base: [responsivify(14, 16), responsivify(18, 20)],
-      lg: [responsivify(16, 20), responsivify(20, 32)],
-      xl: [responsivify(20, 28), responsivify(28, 40)],
-      "2xl": [responsivify(28, 40), responsivify(40, 52)],
-      "3xl": [responsivify(40, 54), responsivify(52, 72)],
-    },
-    colors: {
-      brand: "#4D00E5",
-      gray: {
-        DEFAULT: "#757575",
-        light: "#DEDEDE",
       },
     },
   },

@@ -1,1 +1,3 @@
-console.log("Hi there!");
+import Lazyload from "vanilla-lazyload";
+
+new Lazyload();
