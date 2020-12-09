@@ -52,21 +52,7 @@ module.exports = {
       "edgy-medium": ["StudioFeixenSans-Medium"],
       sans: ["StudioFeixenSans-Regular-text"],
       serif: ["RecifeText-Regular"],
-    },
-    extend: {
-      width: columns,
-      maxWidth: columns,
-      minWidth: columns,
-      typography: {
-        DEFAULT: {
-          css: {
-            maxWidth: "none",
-            img: {
-              maxWidth: columns["12-col"],
-            },
-          },
-        },
-      },
+      mono: "'PT Mono', monospace",
     },
     spacing: {
       ...baseSpacing,
@@ -88,6 +74,22 @@ module.exports = {
         DEFAULT: "#757575",
         light: "#DEDEDE",
       },
+    },
+
+    extend: {
+      width: columns,
+      maxWidth: columns,
+      minWidth: columns,
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            maxWidth: "none",
+            img: {
+              maxWidth: columns["12-col"],
+            },
+          },
+        },
+      }),
     },
   },
   plugins: [require("@tailwindcss/typography")],
