@@ -1,14 +1,26 @@
 const Image = require("@11ty/eleventy-img");
+Image.concurrency = 1;
 const sharp = require("sharp");
 
+async function skipOptimization(src, alt, klass) {
+  return `
+<picture>
+<img
+alt="${alt}"
+src="${src}"
+class="${klass}">
+</picture>`;
+}
+
 module.exports = async (src, alt, klass, responsive = false) => {
-  if (!alt) {
-    throw new Error(`Missing \`alt\` from: ${src}`);
-  }
+  if (!alt) throw new Error(`Missing \`alt\` from: ${src}`);
 
   if (!src) return;
 
   const path = `./static/${src}`;
+
+  if (!process.env.EXPERIMENTAL_IMAGE_OPTIMIZATION) return skipOptimization(src, alt, klass);
+
   let stats = await Image(path, {
     widths: responsive ? [25, 320, 640, 960, 1200, 1800, 2400] : [null],
     formats: ["jpeg", "webp"],
