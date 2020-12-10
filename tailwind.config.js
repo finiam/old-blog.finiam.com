@@ -115,6 +115,7 @@ module.exports = {
               paddingLeft: null,
               marginTop: baseSpacing["64"],
               marginBottom: baseSpacing["64"],
+              fontStyle: null
             },
             "blockquote > p": {
               fontSize: responsivify(20, 28),
