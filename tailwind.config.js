@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 const baseSpacing = { 4: "4px" };
 for (let i = 0; i < 98; i += 2) {
   baseSpacing[i * 4] = `${i * 4}px`;
@@ -34,6 +36,29 @@ function responsivify(minSize, maxSize) {
   } *(100vw - ${minViewport}px)/${maxViewport})`;
 }
 
+const FONTS = {
+  ".font-edgy": {
+    fontFamily: "StudioFeixenSans-Regular",
+    fontFeatureSettings: `"smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1, "dlig" 1, "swsh" 1`,
+  },
+  ".font-edgy-medium": {
+    fontFamily: "StudioFeixenSans-Medium",
+    fontFeatureSettings: `"smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1, "dlig" 1, "swsh" 1`,
+  },
+  ".font-sans": {
+    fontFamily: "StudioFeixenSans-Regular-text",
+    fontFeatureSettings: `"ss01" 1`,
+  },
+  ".font-serif": {
+    fontFamily: "RecifeText-Regular",
+    fontFeatureSettings: `"ss01" 1`,
+  },
+  ".font-mono": {
+    fontFamily: "'PT Mono', monospace",
+    fontFeatureSettings: `"smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1, "dlig" 1, "swsh" 1`,
+  },
+};
+
 module.exports = {
   purge: {
     mode: "all",
@@ -48,11 +73,7 @@ module.exports = {
 
   theme: {
     fontFamily: {
-      edgy: ["StudioFeixenSans-Regular"],
-      "edgy-medium": ["StudioFeixenSans-Medium"],
       sans: ["StudioFeixenSans-Regular-text"],
-      serif: ["RecifeText-Regular"],
-      mono: "'PT Mono', monospace",
     },
     spacing: {
       ...baseSpacing,
@@ -130,32 +151,44 @@ module.exports = {
             h1: {
               fontSize: responsivify(40, 54),
               lineHeight: responsivify(52, 72),
-              fontFamily: "StudioFeixenSans-Regular",
+              color: "#252525",
+              fontWeight: null,
+              ...FONTS[".font-edgy"],
             },
             h2: {
               fontSize: responsivify(20, 28),
               lineHeight: responsivify(28, 40),
-              fontFamily: "StudioFeixenSans-Medium",
+              color: "#252525",
+              fontWeight: null,
+              ...FONTS[".font-edgy-medium"],
             },
             h3: {
               fontSize: responsivify(20, 28),
               lineHeight: responsivify(28, 40),
-              fontFamily: "StudioFeixenSans-Medium",
+              color: "#252525",
+              fontWeight: null,
+              ...FONTS[".font-edgy-medium"],
             },
             h4: {
               fontSize: responsivify(20, 28),
               lineHeight: responsivify(28, 40),
-              fontFamily: "StudioFeixenSans-Medium",
+              color: "#252525",
+              fontWeight: null,
+              ...FONTS[".font-edgy-medium"],
             },
             h5: {
               fontSize: responsivify(20, 28),
               lineHeight: responsivify(28, 40),
-              fontFamily: "StudioFeixenSans-Medium",
+              color: "#252525",
+              fontWeight: null,
+              ...FONTS[".font-edgy-medium"],
             },
             h6: {
               fontSize: responsivify(20, 28),
               lineHeight: responsivify(28, 40),
-              fontFamily: "StudioFeixenSans-Medium",
+              color: "#252525",
+              fontWeight: null,
+              ...FONTS[".font-edgy-medium"],
             },
             p: {
               fontSize: responsivify(16, 20),
@@ -186,5 +219,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")({ modifiers: [null] })],
+  plugins: [
+    require("@tailwindcss/typography")({ modifiers: [null] }),
+    plugin(function ({ addComponents }) {
+      addComponents(FONTS);
+    }),
+  ],
 };

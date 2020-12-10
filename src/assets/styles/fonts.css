@@ -3,14 +3,6 @@
 html {
   text-rendering: optimizeLegibility;
   font-smoothing: antialiased;
-  font-feature-settings: "ss01" 1;
-}
-
-.font-edgy,
-.font-edgy-medium,
-.font-mono {
-  font-feature-settings: "smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1,
-    "dlig" 1, "swsh" 1;
 }
 
 @font-face {
