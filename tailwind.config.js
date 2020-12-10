@@ -105,7 +105,7 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: "#252525",
+            color: theme("colors.black"),
             maxWidth: "none",
             "& > *": {
               maxWidth: columns["10-col"],
