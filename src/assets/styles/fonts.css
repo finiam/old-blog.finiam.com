@@ -19,6 +19,7 @@ body {
     "liga" 1, "dlig" 1, "swsh" 1;
   font-feature-settings: "smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1,
     "dlig" 1, "swsh" 1;
+
   font-feature-settings: normal;
 }
 
@@ -50,7 +51,6 @@ body {
     url("/fonts/StudioFeixenSans-Regular-text.woff2") format("woff2"),
     url("/fonts/StudioFeixenSans-Regular-text.woff") format("woff"),
     url("/fonts/StudioFeixenSans-Regular-text.otf") format("truetype");
-  font-feature-settings: "ss01" 1;
 }
 
 @font-face {
@@ -60,5 +60,4 @@ body {
     url("/fonts/RecifeText-Regular.woff2") format("woff2"),
     url("/fonts/RecifeText-Regular.woff") format("woff"),
     url("/fonts/RecifeText-Regular.otf") format("truetype");
-  font-feature-settings: "ss01" 1;
 }

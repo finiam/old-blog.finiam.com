@@ -2,20 +2,29 @@
 layout: layouts/base.liquid
 ---
 
-<link href="/assets/styles/prism.css" rel="stylesheet" data-helmet="prism-theme-css">
+<link
+  href="/assets/styles/prism.css"
+  rel="stylesheet"
+  data-helmet="prism-theme-css"
+/>
 
 <article class="flex flex-col items-center mx-auto max-w-12-col">
-  <div class="prose prose-center text-lg font-serif">
-    <h1 class="text-2xl">
+  <div class="max-w-10-col mx-auto mb-72">
+    <h1 class="text-3xl text-brand mb-40">
       {{ title }}
     </h1>
 
+    {% assign category = null %}
+    {% include components/author, author: author, date: date %}
+  </div>
+
+  <div class="prose prose-center text-lg font-serif">
     {{ content }}
   </div>
 
   <div class="flex flex-row w-full mt-80 justify-between">
     <div>
-      <p class="mb-16">Written by</p>
+      <p class="mb-16 font-edgy">Written by</p>
 
       <div class="flex flex-row items-center">
         <div class="w-48 h-48 mr-16">
@@ -34,9 +43,22 @@ layout: layouts/base.liquid
 
       <ul class="flex flex-row space-x-24 mt-16">
         {% assign post_url = metadata.host | append: page.url | url %}
-        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ post_url }}">Fb</a></li>
-        <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ post_url }}">In</a></li>
-        <li><a href="https://twitter.com/intent/tweet?url={{ post_url }}">Tw</a></li>
+        <li>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ post_url }}"
+            >Fb</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/shareArticle?mini=true&url={{
+              post_url
+            }}"
+            >In</a
+          >
+        </li>
+        <li>
+          <a href="https://twitter.com/intent/tweet?url={{ post_url }}">Tw</a>
+        </li>
       </ul>
     </div>
   </div>

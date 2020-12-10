@@ -74,6 +74,7 @@ module.exports = {
         DEFAULT: "#757575",
         light: "#DEDEDE",
       },
+      black: "#252525",
     },
 
     extend: {
@@ -115,7 +116,7 @@ module.exports = {
               paddingLeft: null,
               marginTop: baseSpacing["64"],
               marginBottom: baseSpacing["64"],
-              fontStyle: null
+              fontStyle: null,
             },
             "blockquote > p": {
               fontSize: responsivify(20, 28),
@@ -129,26 +130,32 @@ module.exports = {
             h1: {
               fontSize: responsivify(40, 54),
               lineHeight: responsivify(52, 72),
+              fontFamily: "StudioFeixenSans-Regular",
             },
             h2: {
-              fontSize: responsivify(28, 40),
-              lineHeight: responsivify(40, 52),
+              fontSize: responsivify(20, 28),
+              lineHeight: responsivify(28, 40),
+              fontFamily: "StudioFeixenSans-Medium",
             },
             h3: {
               fontSize: responsivify(20, 28),
               lineHeight: responsivify(28, 40),
+              fontFamily: "StudioFeixenSans-Medium",
             },
             h4: {
               fontSize: responsivify(20, 28),
               lineHeight: responsivify(28, 40),
+              fontFamily: "StudioFeixenSans-Medium",
             },
             h5: {
               fontSize: responsivify(20, 28),
               lineHeight: responsivify(28, 40),
+              fontFamily: "StudioFeixenSans-Medium",
             },
             h6: {
               fontSize: responsivify(20, 28),
               lineHeight: responsivify(28, 40),
+              fontFamily: "StudioFeixenSans-Medium",
             },
             p: {
               fontSize: responsivify(16, 20),
