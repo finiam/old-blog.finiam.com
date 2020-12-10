@@ -1,6 +1,12 @@
 const Image = require("@11ty/eleventy-img");
-Image.concurrency = 1;
+Image.concurrency = 4;
 const sharp = require("sharp");
+const hash = require("./hash");
+
+const CACHE = {};
+
+// DO NOT IDENT THIS PLEASE OTHERWHISE IT WILL BREAK
+// A LIMTATION FROM MARKDOWN-IT
 
 async function skipOptimization(src, alt, klass) {
   return `
@@ -17,16 +23,23 @@ module.exports = async (src, alt, klass, responsive = false) => {
 
   if (!src) return;
 
+  if (process.env.NODE_ENV !== "production") skipOptimization(src, alt, klass);
+
   const path = `./static/${src}`;
+  const imageHash = await hash(path);
+  let stats = CACHE[imageHash];
 
-  if (!process.env.EXPERIMENTAL_IMAGE_OPTIMIZATION) return skipOptimization(src, alt, klass);
+  if (!stats) {
+    stats = await Image(path, {
+      widths: responsive ? [25, 320, 640, 960, 1200, 1800, 2400] : [null],
+      formats: ["jpeg", "webp"],
+      urlPath: "/images",
+      outputDir: "./_output/images",
+    });
 
-  let stats = await Image(path, {
-    widths: responsive ? [25, 320, 640, 960, 1200, 1800, 2400] : [null],
-    formats: ["jpeg", "webp"],
-    urlPath: "/images",
-    outputDir: "./_output/images",
-  });
+    CACHE[hash] = stats;
+  }
+
   let lowestSrc = stats["jpeg"][0];
   const placeholder = await sharp(lowestSrc.outputPath)
     .resize({ fit: sharp.fit.inside })
@@ -47,8 +60,6 @@ module.exports = async (src, alt, klass, responsive = false) => {
     {},
   );
 
-  // DO NOT IDENT THIS PLEASE OTHERWHISE IT WILL BREAK
-  // A LIMTATION FROM MARKDOWN-IT
   return `
 <picture>
 <source type="image/webp" data-srcset="${srcset["webp"]}">
