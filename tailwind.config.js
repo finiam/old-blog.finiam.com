@@ -83,6 +83,7 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
+            color: "#252525",
             maxWidth: "none",
             "& > *": {
               maxWidth: columns["10-col"],
@@ -90,18 +91,35 @@ module.exports = {
             img: {
               maxWidth: columns["12-col"],
               width: columns["12-col"],
+              marginTop: baseSpacing["64"],
+              marginBottom: baseSpacing["64"],
             },
             figure: {
               maxWidth: columns["12-col"],
               width: columns["12-col"],
+              marginTop: baseSpacing["64"],
+              marginBottom: baseSpacing["64"],
+            },
+            iframe: {
+              maxWidth: columns["12-col"],
+              width: columns["12-col"],
+              marginTop: baseSpacing["64"],
+              marginBottom: baseSpacing["64"],
             },
             blockquote: {
               maxWidth: columns["12-col"],
               width: columns["12-col"],
-              quotes: null,
+              quotes: '"\\201C""\\201D""\\2018""\\2019"',
+              borderLeftWidth: null,
+              borderLeftColor: null,
+              paddingLeft: null,
+              marginTop: baseSpacing["64"],
+              marginBottom: baseSpacing["64"],
             },
-            "blockquote p:first-of-type::before": null,
-            "blockquote p:last-of-type::after": null,
+            "blockquote > p": {
+              fontSize: responsivify(20, 28),
+              lineHeight: responsivify(28, 40),
+            },
             pre: {
               maxWidth: columns["12-col"],
               width: columns["12-col"],
@@ -145,6 +163,9 @@ module.exports = {
             "code::before": null,
             "code::after": null,
             "pre code::after": null,
+            "ul > li::before": {
+              backgroundColor: "#252525",
+            },
           },
         },
         center: {
@@ -157,5 +178,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography")({ modifiers: [null] })],
 };

@@ -23,9 +23,10 @@
 
             {% include components/author, post: first_post %}
           </div>
-          <p class="block max-w-1/2 mt-16 prose text-lg font-serif">
+
+          <a class="block max-w-1/2 mt-16 prose text-lg font-serif" href="{{ post.url | url }}" >
             {{ first_post.data.long_description | markdownify }} →
-          </p>
+          </a>
         </div>
       </div>
     </li>
@@ -42,9 +43,9 @@
         {{ post.data.title }}
       </a>
 
-      <p class="font-serif my-40 prose text-lg">
+      <a class="font-serif my-40 prose text-lg" href="{{ post.url | url }}">
         {{ post.data.long_description | markdownify }} →
-      </p>
+      </a>
 
       {% include components/author, post: post %}
     </li>
