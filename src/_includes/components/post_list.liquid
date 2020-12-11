@@ -7,14 +7,14 @@
     <li class="flex flex-col col-span-2">
       <div class="h-336 w-full bg-gray-light">
         {% if first_post.data.featured_image %}
-          {% responsiveImage post.data.featured_image post.data.featured_image_alt "h-336 w-full object-cover" %}
+          {% responsiveImage first_post.data.featured_image first_post.data.featured_image_alt "h-336 w-full object-cover object-center" %}
         {% endif %}
       </div>
 
       <div class="grid grid-cols-2 mt-24 lg:grid-cols-1 md:px-gutter">
         <div class="flex flex-col justify-between lg:mb-40">
           <a
-            class="block text-2xl mr-column-spacing font-edgy"
+            class="block text-2xl md:text-xl mr-column-spacing md:mr-0 font-edgy"
             href="{{ first_post.url | url }}"
           >
             {{ first_post.data.title }}
@@ -28,11 +28,11 @@
           </div>
         </div>
 
-        <a class="mt-16 prose text-lg font-serif md:hidden" href="{{ first_post.url | url }}">
+        <a class="mt-16 prose text-lg font-serif" href="{{ first_post.url | url }}">
           {{ first_post.data.long_description | markdownify }} →
         </a>
 
-        <div class="hidden lg:block lg:mt-40 md:mt-0">
+        <div class="hidden lg:block lg:mt-40 md:mt-32">
           {% include components/author,
             author: first_post.data.author,
             category: first_post.category,
@@ -50,22 +50,20 @@
       </div>
 
       <div class="md:px-gutter">
-        <a class="block text-2xl mt-32 mb-40 md:mb-32 font-edgy" href="{{ post.url | url }}">
+        <a class="block text-2xl md:text-xl mt-32 font-edgy" href="{{ post.url | url }}">
           {{ post.data.title }}
         </a>
 
-        <a class="block font-serif prose text-lg md:hidden" href="{{ post.url | url }}">
+        <a class="block my-40 md:my-32 font-serif prose text-lg" href="{{ post.url | url }}">
           {{ post.data.long_description | markdownify }} →
         </a>
 
-        <div class="mt-40 md:mt-32">
-          {%
-            include components/author,
-              author: post.data.author,
-              category: post.category,
-              date: post.date
-          %}
-        </div>
+        {%
+          include components/author,
+            author: post.data.author,
+            category: post.category,
+            date: post.date
+        %}
       </div>
     </li>
     {%- endfor -%}

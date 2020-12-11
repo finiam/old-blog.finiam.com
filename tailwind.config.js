@@ -243,6 +243,9 @@ module.exports = {
               marginTop: theme("spacing.24"),
               marginBottom: theme("spacing.24")
             },
+            pre: {
+              borderRadius: 0
+            }
           },
         },
       }),

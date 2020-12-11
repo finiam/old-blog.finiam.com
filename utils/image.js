@@ -8,7 +8,7 @@ const CACHE = {};
 // DO NOT IDENT THIS PLEASE OTHERWHISE IT WILL BREAK
 // A LIMTATION FROM MARKDOWN-IT
 
-async function skipOptimization(src, alt, klass) {
+function skipOptimization(src, alt, klass) {
   return `
 <picture>
 <img
@@ -23,7 +23,7 @@ module.exports = async (src, alt, klass, responsive = false) => {
 
   if (!src) return;
 
-  if (process.env.NODE_ENV !== "production") return skipOptimization(src, alt, klass);
+  if (process.env.EXPERIMENTAL_IMAGE_OTIM) return skipOptimization(src, alt, klass);
 
   const path = `./static/${src}`;
   const imageHash = await hash(path);
