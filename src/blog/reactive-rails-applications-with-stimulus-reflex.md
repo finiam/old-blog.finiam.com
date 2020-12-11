@@ -7,6 +7,8 @@ category: development
 description: A quick look into making reactive applications using Rails, a tiny bit of Javascript, and StimulusReflex.
 long_description: A while ago I made a blog post about the modern web with just Rails (and a few other things). Today I'm going to explore another way of doing awesome things with Rails, in the spirit of the modern, reactive, and real-time, web. Let's explore StimulusReflex, an extension to the amazing library made by Basecamp, to make server-side reactive applications.
 date: 2020-09-30
+featured_image: /images/reactive-rails-feature.jpeg
+featured_image_alt: A rails code sample
 keywords: ruby, rails, stimulus, reflex, web development, frontend, fullstack
 ---
 

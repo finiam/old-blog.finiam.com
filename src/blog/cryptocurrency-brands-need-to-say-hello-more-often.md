@@ -7,6 +7,9 @@ category: design
 date: 2020-11-18
 description: Why are cryptocurrency brands in general so far behind in the technology industry?
 long_description: When I read this I realised he’s absolutely right. Why are cryptocurrency brands in general so far behind in the technology industry? I am a graphic designer who slowly migrated to the technological industry, more recently to the financial sector (finiam)
+featured_image: /images/crypto-brands-feature.png
+featured_image_alt: Our cryptobrands website
+keywords: cryptocurrency, fintech, design
 ---
 
 A few months ago I was scrolling on my social media and found this tweet by [Tobias van Schneider](https://vanschneider.com/):
