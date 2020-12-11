@@ -5,14 +5,14 @@
     <div class="flex flex-row items-center justify-between">
       <div class="flex flex-row items-baseline" aria-hidden="true">
         {% include vectors/short_logo.svg %}
-        <h1 class="ml-4 text-2xl">/blog</h1>
+        <h1 class="ml-8 text-2xl font-serif">/&nbsp;blog</h1>
       </div>
 
       <h1 class="sr-only">Finiam's Blog</h1>
 
-      <ul class="flex flex-row space-x-24">
+      <ul class="flex flex-row space-x-24 font-edgy">
         <li><a class="text-brand" href="#">Blog</a></li>
-        <li><a href="#">Say Hi</a></li>
+        <li><a href="mailto:contact@finiam.com">Say Hi</a></li>
       </ul>
     </div>
 
@@ -53,7 +53,7 @@
       </li>
     </ul>
     {% else %}
-    <div class="flex flex-row space-x-6 mt-32">
+    <div class="flex flex-row space-x-6 mt-32 text-lg">
       <a href="/blog"><span class="text-gray">← Blog</span> / {{ title }}</a>
     </div>
     {% endif %}

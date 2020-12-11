@@ -1,25 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Mono&display=swap");
 
-html,
-body {
-  color: black;
-
+html {
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -moz-font-feature-settings: "smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1,
-    "dlig" 1, "swsh" 1;
-  -moz-font-feature-settings: "smcp=1, onum=1, frac=1, kern=1, liga=1, dlig=1, swsh=1";
-  -ms-font-feature-settings: "smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1,
-    "dlig" 1, "swsh" 1;
-  -o-font-feature-settings: "smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1,
-    "dlig" 1, "swsh" 1;
-  -webkit-font-feature-settings: "smcp" 1, "onum" 1, "frac" 1, "kern" 1,
-    "liga" 1, "dlig" 1, "swsh" 1;
-  font-feature-settings: "smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1,
-    "dlig" 1, "swsh" 1;
-  font-feature-settings: normal;
 }
 
 @font-face {
@@ -50,7 +33,6 @@ body {
     url("/fonts/StudioFeixenSans-Regular-text.woff2") format("woff2"),
     url("/fonts/StudioFeixenSans-Regular-text.woff") format("woff"),
     url("/fonts/StudioFeixenSans-Regular-text.otf") format("truetype");
-  font-feature-settings: "ss01" 1;
 }
 
 @font-face {
@@ -60,5 +42,4 @@ body {
     url("/fonts/RecifeText-Regular.woff2") format("woff2"),
     url("/fonts/RecifeText-Regular.woff") format("woff"),
     url("/fonts/RecifeText-Regular.otf") format("truetype");
-  font-feature-settings: "ss01" 1;
 }

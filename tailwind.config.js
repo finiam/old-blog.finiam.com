@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 const baseSpacing = { 4: "4px" };
 for (let i = 0; i < 98; i += 2) {
   baseSpacing[i * 4] = `${i * 4}px`;
@@ -34,6 +36,29 @@ function responsivify(minSize, maxSize) {
   } *(100vw - ${minViewport}px)/${maxViewport})`;
 }
 
+const FONTS = {
+  ".font-edgy": {
+    fontFamily: "StudioFeixenSans-Regular",
+    fontFeatureSettings: `"smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1, "dlig" 1, "swsh" 1`,
+  },
+  ".font-edgy-medium": {
+    fontFamily: "StudioFeixenSans-Medium",
+    fontFeatureSettings: `"smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1, "dlig" 1, "swsh" 1`,
+  },
+  ".font-sans": {
+    fontFamily: "StudioFeixenSans-Regular-text",
+    fontFeatureSettings: `"ss01" 1`,
+  },
+  ".font-serif": {
+    fontFamily: "RecifeText-Regular",
+    fontFeatureSettings: `"ss01" 1`,
+  },
+  ".font-mono": {
+    fontFamily: "'PT Mono', monospace",
+    fontFeatureSettings: `"smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1, "dlig" 1, "swsh" 1`,
+  },
+};
+
 module.exports = {
   purge: {
     mode: "all",
@@ -48,11 +73,7 @@ module.exports = {
 
   theme: {
     fontFamily: {
-      edgy: ["StudioFeixenSans-Regular"],
-      "edgy-medium": ["StudioFeixenSans-Medium"],
       sans: ["StudioFeixenSans-Regular-text"],
-      serif: ["RecifeText-Regular"],
-      mono: "'PT Mono', monospace",
     },
     spacing: {
       ...baseSpacing,
@@ -74,15 +95,17 @@ module.exports = {
         DEFAULT: "#757575",
         light: "#DEDEDE",
       },
+      black: "#252525",
     },
 
     extend: {
       width: columns,
       maxWidth: columns,
       minWidth: columns,
-      typography: {
+      typography: (theme) => ({
         DEFAULT: {
           css: {
+            color: theme("colors.black"),
             maxWidth: "none",
             "& > *": {
               maxWidth: columns["10-col"],
@@ -90,50 +113,88 @@ module.exports = {
             img: {
               maxWidth: columns["12-col"],
               width: columns["12-col"],
+              marginTop: baseSpacing["64"],
+              marginBottom: baseSpacing["64"],
             },
             figure: {
               maxWidth: columns["12-col"],
               width: columns["12-col"],
+              marginTop: baseSpacing["64"],
+              marginBottom: baseSpacing["64"],
+            },
+            iframe: {
+              maxWidth: columns["12-col"],
+              width: columns["12-col"],
+              marginTop: baseSpacing["64"],
+              marginBottom: baseSpacing["64"],
             },
             blockquote: {
               maxWidth: columns["12-col"],
               width: columns["12-col"],
-              quotes: null,
+              quotes: '"\\201C""\\201D""\\2018""\\2019"',
+              borderLeftWidth: null,
+              borderLeftColor: null,
+              paddingLeft: null,
+              marginTop: baseSpacing["64"],
+              marginBottom: baseSpacing["64"],
+              fontStyle: null,
             },
-            "blockquote p:first-of-type::before": null,
-            "blockquote p:last-of-type::after": null,
+            "blockquote > p": {
+              fontSize: theme("fontSize.xl")[0],
+              lineHeight: theme("fontSize.xl")[1],
+            },
             pre: {
               maxWidth: columns["12-col"],
               width: columns["12-col"],
               padding: baseSpacing["32"],
             },
             h1: {
-              fontSize: responsivify(40, 54),
-              lineHeight: responsivify(52, 72),
+              fontSize: theme("fontSize.3xl")[0],
+              lineHeight: theme("fontSize.3xl")[1],
+              color: theme("colors.black"),
+              fontWeight: null,
+              ...FONTS[".font-edgy"],
             },
             h2: {
-              fontSize: responsivify(28, 40),
-              lineHeight: responsivify(40, 52),
+              fontSize: theme("fontSize.2xl")[0],
+              lineHeight: theme("fontSize.2xl")[1],
+              color: theme("colors.black"),
+              fontWeight: null,
+              ...FONTS[".font-edgy-medium"],
             },
             h3: {
-              fontSize: responsivify(20, 28),
-              lineHeight: responsivify(28, 40),
+              fontSize: theme("fontSize.2xl")[0],
+              lineHeight: theme("fontSize.2xl")[1],
+              color: theme("colors.black"),
+              fontWeight: null,
+              ...FONTS[".font-edgy-medium"],
             },
             h4: {
-              fontSize: responsivify(20, 28),
-              lineHeight: responsivify(28, 40),
+              fontSize: theme("fontSize.2xl")[0],
+              lineHeight: theme("fontSize.2xl")[1],
+              color: theme("colors.black"),
+              fontWeight: null,
+              ...FONTS[".font-edgy-medium"],
             },
             h5: {
-              fontSize: responsivify(20, 28),
-              lineHeight: responsivify(28, 40),
+              fontSize: theme("fontSize.2xl")[0],
+              lineHeight: theme("fontSize.2xl")[1],
+              color: theme("colors.black"),
+              fontSize: theme("fontSize.2xl")[0],
+              lineHeight: theme("fontSize.2xl")[1],
+              fontWeight: null,
+              ...FONTS[".font-edgy-medium"],
             },
             h6: {
-              fontSize: responsivify(20, 28),
-              lineHeight: responsivify(28, 40),
+              fontSize: theme("fontSize.2xl")[0],
+              lineHeight: theme("fontSize.2xl")[1],
+              color: theme("colors.black"),
+              fontWeight: null,
+              ...FONTS[".font-edgy-medium"],
             },
             p: {
-              fontSize: responsivify(16, 20),
-              lineHeight: responsivify(20, 32),
+              fontSize: theme("fontSize.lg")[0],
+              lineHeight: theme("fontSize.lg")[1],
             },
             a: {
               color: "#4D00E5",
@@ -145,6 +206,9 @@ module.exports = {
             "code::before": null,
             "code::after": null,
             "pre code::after": null,
+            "ul > li::before": {
+              backgroundColor: theme("colors.black"),
+            },
           },
         },
         center: {
@@ -154,8 +218,13 @@ module.exports = {
             },
           },
         },
-      },
+      }),
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/typography")({ modifiers: [null] }),
+    plugin(function ({ addComponents }) {
+      addComponents(FONTS);
+    }),
+  ],
 };

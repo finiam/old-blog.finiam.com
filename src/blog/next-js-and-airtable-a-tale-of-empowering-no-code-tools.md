@@ -6,7 +6,7 @@ author: francisco
 category: development
 date: 2020-12-07
 description: How to take no-code tools to the next level, with just a little bit of code.
-long_description: Back in June, we received a request to help build a website for an academic non-profit organization (our friends at [AAUM](https://www.aaum.pt/)), in Braga, Portugal. They needed a website to help spread awareness of the **MinhoCovid19** movement, a group of people trying to supply organizations in need (nursery homes, hospitals, etc) with protective materials built by volunteers.
+long_description: Back in June, we received a request to help build a website for an academic non-profit organization (our friends at AAUM), in Braga, Portugal. They needed a website to help spread awareness of the **MinhoCovid19** movement, a group of people trying to supply organizations in need (nursery homes, hospitals, etc) with protective materials built by volunteers.
 keywords: javascript, webdev, nextjs, airtable
 ---
 

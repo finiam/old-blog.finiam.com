@@ -15,17 +15,23 @@
         <div class="flex flex-row justify-between">
           <div class="flex flex-col max-w-1/2 w-full mr-gutter">
             <a
-              class="text-2xl mr-column-spacing font-serif mb-32"
+              class="text-2xl mr-column-spacing font-edgy mb-32"
               href="{{ first_post.url | url }}"
             >
               {{ first_post.data.title }}
             </a>
 
-            {% include components/author, post: first_post %}
+            {%
+              include components/author,
+                author: first_post.data.author,
+                category: first_post.category,
+                date: first_post.date
+            %}
           </div>
-          <p class="block max-w-1/2 mt-16 prose text-lg font-serif">
+
+          <a class="block max-w-1/2 mt-16 prose text-lg font-serif" href="{{ first_post.url | url }}">
             {{ first_post.data.long_description | markdownify }} →
-          </p>
+          </a>
         </div>
       </div>
     </li>
@@ -38,15 +44,20 @@
         <div class="h-336 w-full bg-gray-light"></div>
       {% endif %}
 
-      <a class="text-2xl mt-32 font-serif" href="{{ post.url | url }}">
+      <a class="text-2xl mt-32 font-edgy" href="{{ post.url | url }}">
         {{ post.data.title }}
       </a>
 
-      <p class="font-serif my-40 prose text-lg">
+      <a class="font-serif my-40 prose text-lg" href="{{ post.url | url }}">
         {{ post.data.long_description | markdownify }} →
-      </p>
+      </a>
 
-      {% include components/author, post: post %}
+      {%
+        include components/author,
+          author: post.data.author,
+          category: post.category,
+          date: post.date
+      %}
     </li>
     {%- endfor -%}
   </ul>
