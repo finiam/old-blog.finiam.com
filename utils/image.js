@@ -1,5 +1,5 @@
 const Image = require("@11ty/eleventy-img");
-Image.concurrency = 4;
+Image.concurrency = 1;
 const sharp = require("sharp");
 const hash = require("./hash");
 
@@ -24,7 +24,7 @@ module.exports = async (src, alt, klass, responsive = false) => {
 
     if (!src) return;
 
-    if (process.env.EXPERIMENTAL_IMAGE_OTIM)
+    if (!process.env.EXPERIMENTAL_IMAGE_OTIM)
       return skipOptimization(src, alt, klass);
 
     const path = `./static/${src}`;
