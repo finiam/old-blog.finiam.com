@@ -23,7 +23,7 @@ module.exports = async (src, alt, klass, responsive = false) => {
 
   if (!src) return;
 
-  if (process.env.NODE_ENV !== "production") skipOptimization(src, alt, klass);
+  if (process.env.NODE_ENV !== "production") return skipOptimization(src, alt, klass);
 
   const path = `./static/${src}`;
   const imageHash = await hash(path);

@@ -1,63 +1,72 @@
 {% assign sorted_posts = posts | sort: "title" | reverse %}
 
 {% if sorted_posts.length > 0 %}
-  <ul class="grid gap-x-6 gap-x-gutter gap-y-96 grid-cols-2">
+  <ul class="grid gap-x-gutter gap-y-96 grid-cols-2 px-56 md:px-0 md:gap-y-72">
     {% assign first_post = sorted_posts | first %}
 
     <li class="flex flex-col col-span-2">
-      {% if first_post.data.featured_image %}
-        {% responsiveImage first_post.data.featured_image first_post.data.featured_image_alt "h-352 w-full object-cover" %}
-      {% else %}
-        <div class="h-352 w-full bg-gray-light"></div>
-      {% endif %}
+      <div class="h-336 w-full bg-gray-light">
+        {% if first_post.data.featured_image %}
+          {% responsiveImage post.data.featured_image post.data.featured_image_alt "h-336 w-full object-cover" %}
+        {% endif %}
+      </div>
 
-      <div class="flex flex-col mt-24">
-        <div class="flex flex-row justify-between">
-          <div class="flex flex-col max-w-1/2 w-full mr-gutter">
-            <a
-              class="text-2xl mr-column-spacing font-edgy mb-32"
-              href="{{ first_post.url | url }}"
-            >
-              {{ first_post.data.title }}
-            </a>
-
-            {%
-              include components/author,
-                author: first_post.data.author,
-                category: first_post.category,
-                date: first_post.date
-            %}
-          </div>
-
-          <a class="block max-w-1/2 mt-16 prose text-lg font-serif" href="{{ first_post.url | url }}">
-            {{ first_post.data.long_description | markdownify }} →
+      <div class="grid grid-cols-2 mt-24 lg:grid-cols-1 md:px-gutter">
+        <div class="flex flex-col justify-between lg:mb-40">
+          <a
+            class="block text-2xl mr-column-spacing font-edgy"
+            href="{{ first_post.url | url }}"
+          >
+            {{ first_post.data.title }}
           </a>
+
+          <div class="lg:hidden mt-40">
+            {% include components/author,
+              author: first_post.data.author,
+              category: first_post.category,
+              date: first_post.date %}
+          </div>
+        </div>
+
+        <a class="mt-16 prose text-lg font-serif md:hidden" href="{{ first_post.url | url }}">
+          {{ first_post.data.long_description | markdownify }} →
+        </a>
+
+        <div class="hidden lg:block lg:mt-40 md:mt-0">
+          {% include components/author,
+            author: first_post.data.author,
+            category: first_post.category,
+            date: first_post.date %}
         </div>
       </div>
     </li>
 
     {%- for post in sorted_posts offset: 1 -%}
-    <li class="flex flex-col">
-      {% if post.data.featured_image %}
-        {% responsiveImage post.data.featured_image post.data.featured_image_alt "h-336 w-full object-cover" %}
-      {% else %}
-        <div class="h-336 w-full bg-gray-light"></div>
-      {% endif %}
+    <li class="flex flex-col lg:col-span-2">
+      <div class="h-336 w-full bg-gray-light">
+        {% if post.data.featured_image %}
+          {% responsiveImage post.data.featured_image post.data.featured_image_alt "h-336 w-full object-cover" %}
+        {% endif %}
+      </div>
 
-      <a class="text-2xl mt-32 font-edgy" href="{{ post.url | url }}">
-        {{ post.data.title }}
-      </a>
+      <div class="md:px-gutter">
+        <a class="block text-2xl mt-32 mb-40 md:mb-32 font-edgy" href="{{ post.url | url }}">
+          {{ post.data.title }}
+        </a>
 
-      <a class="font-serif my-40 prose text-lg" href="{{ post.url | url }}">
-        {{ post.data.long_description | markdownify }} →
-      </a>
+        <a class="block font-serif prose text-lg md:hidden" href="{{ post.url | url }}">
+          {{ post.data.long_description | markdownify }} →
+        </a>
 
-      {%
-        include components/author,
-          author: post.data.author,
-          category: post.category,
-          date: post.date
-      %}
+        <div class="mt-40 md:mt-32">
+          {%
+            include components/author,
+              author: post.data.author,
+              category: post.category,
+              date: post.date
+          %}
+        </div>
+      </div>
     </li>
     {%- endfor -%}
   </ul>
