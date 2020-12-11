@@ -4,9 +4,7 @@ module.exports = {
   plugins: [
     isProd &&
       require("postcss-import")({
-        resolve: (id, basedir, importOptions) => {
-          return "src/assets/styles/" + id;
-        },
+
       }),
     isProd && require("autoprefixer"),
     require("tailwindcss"),

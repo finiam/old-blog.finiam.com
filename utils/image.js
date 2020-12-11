@@ -1,5 +1,5 @@
 const Image = require("@11ty/eleventy-img");
-Image.concurrency = 4;
+Image.concurrency = 1;
 const sharp = require("sharp");
 const hash = require("./hash");
 
