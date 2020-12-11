@@ -7,6 +7,8 @@ category: development
 date: 2020-07-23
 description: A collection of tips on how to reduce the size of your web apps.
 long_description: The ancient narrative of "Javascript bloat" is ever-present in the tech world. Web developers love Javascript, backend developers hate it and end-users usually don't give a damn about it as long as websites open fast, work as they should, and do not spy on them. Still, web pages have way too much Javascript, especially SPAs, that could be avoided with just a few tips. Let's see how.
+featured_image: /images/lets-slim-down-feature.jpeg
+featured_image_alt: A plate of pasta
 keywords: javascript, performance, finiam
 ---
 

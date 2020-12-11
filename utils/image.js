@@ -1,5 +1,5 @@
 const Image = require("@11ty/eleventy-img");
-Image.concurrency = 4;
+Image.concurrency = 1;
 const sharp = require("sharp");
 const hash = require("./hash");
 
@@ -8,10 +8,11 @@ const CACHE = {};
 // DO NOT IDENT THIS PLEASE OTHERWHISE IT WILL BREAK
 // A LIMTATION FROM MARKDOWN-IT
 
-async function skipOptimization(src, alt, klass) {
+function skipOptimization(src, alt, klass) {
   return `
 <picture>
 <img
+loading="lazy"
 alt="${alt}"
 src="${src}"
 class="${klass}">
@@ -19,48 +20,50 @@ class="${klass}">
 }
 
 module.exports = async (src, alt, klass, responsive = false) => {
-  if (!alt) throw new Error(`Missing \`alt\` from: ${src}`);
+  try {
+    if (!alt) throw new Error(`Missing \`alt\` from: ${src}`);
 
-  if (!src) return;
+    if (!src) return;
 
-  if (process.env.NODE_ENV !== "production") return skipOptimization(src, alt, klass);
+    if (!process.env.EXPERIMENTAL_IMAGE_OTIM)
+      return skipOptimization(src, alt, klass);
 
-  const path = `./static/${src}`;
-  const imageHash = await hash(path);
-  let stats = CACHE[imageHash];
+    const path = `./static/${src}`;
+    const imageHash = await hash(path);
+    let stats = CACHE[imageHash];
 
-  if (!stats) {
-    stats = await Image(path, {
-      widths: responsive ? [25, 320, 640, 960, 1200, 1800, 2400] : [null],
-      formats: ["jpeg", "webp"],
-      urlPath: "/images",
-      outputDir: "./_output/images",
-    });
+    if (!stats) {
+      stats = await Image(path, {
+        widths: responsive ? [25, 320, 640, 960, 1200, 1800, 2400] : [null],
+        formats: ["jpeg", "webp"],
+        urlPath: "/images",
+        outputDir: "./_output/images",
+      });
 
-    CACHE[hash] = stats;
-  }
+      CACHE[hash] = stats;
+    }
 
-  let lowestSrc = stats["jpeg"][0];
-  const placeholder = await sharp(lowestSrc.outputPath)
-    .resize({ fit: sharp.fit.inside })
-    .blur()
-    .toBuffer();
-  const base64Placeholder = `data:image/png;base64,${placeholder.toString(
-    "base64",
-  )}`;
+    let lowestSrc = stats["jpeg"][0];
+    const placeholder = await sharp(lowestSrc.outputPath)
+      .resize({ fit: sharp.fit.inside })
+      .blur()
+      .toBuffer();
+    const base64Placeholder = `data:image/png;base64,${placeholder.toString(
+      "base64",
+    )}`;
 
-  const srcset = Object.keys(stats).reduce(
-    (acc, format) => ({
-      ...acc,
-      [format]: stats[format].reduce(
-        (_acc, curr) => `${_acc} ${curr.srcset} ,`,
-        "",
-      ),
-    }),
-    {},
-  );
+    const srcset = Object.keys(stats).reduce(
+      (acc, format) => ({
+        ...acc,
+        [format]: stats[format].reduce(
+          (_acc, curr) => `${_acc} ${curr.srcset} ,`,
+          "",
+        ),
+      }),
+      {},
+    );
 
-  return `
+    return `
 <picture>
 <source type="image/webp" data-srcset="${srcset["webp"]}">
 <img
@@ -87,4 +90,9 @@ class="${klass}">
 </picture>
 </noscript>
   `;
+  } catch (error) {
+    console.error(`Error on ${src}`);
+
+    throw error;
+  }
 };
