@@ -12,6 +12,7 @@ function skipOptimization(src, alt, klass) {
   return `
 <picture>
 <img
+loading="lazy"
 alt="${alt}"
 src="${src}"
 class="${klass}">
