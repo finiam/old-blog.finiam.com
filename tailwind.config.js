@@ -82,11 +82,11 @@ module.exports = {
     },
     fontSize: {
       sm: ["14px", "20px"],
-      base: [responsivify(14, 16), responsivify(18, 20)],
-      lg: [responsivify(16, 20), responsivify(20, 32)],
-      xl: [responsivify(20, 28), responsivify(28, 40)],
-      "2xl": [responsivify(28, 40), responsivify(40, 52)],
-      "3xl": [responsivify(40, 54), responsivify(52, 72)],
+      base: ["16px", "20px"],
+      lg: ["20px", "32px"],
+      xl: ["28px", "40px"],
+      "2xl": ["40px", "52px"],
+      "3xl": ["54px", "72px"],
     },
     colors: {
       brand: "#4D00E5",
@@ -96,6 +96,14 @@ module.exports = {
         light: "#DEDEDE",
       },
       black: "#252525",
+    },
+
+    screens: {
+      "2xl": { max: "1535px" },
+      xl: { max: "1279px" },
+      lg: { max: "1023px" },
+      md: { max: "767px" },
+      sm: { max: "639px" },
     },
 
     extend: {
@@ -139,6 +147,9 @@ module.exports = {
               marginBottom: baseSpacing["64"],
               fontStyle: null,
             },
+            "picture + blockquote": {
+              marginTop: "-42px",
+            },
             "blockquote > p": {
               fontSize: theme("fontSize.xl")[0],
               lineHeight: theme("fontSize.xl")[1],
@@ -156,38 +167,36 @@ module.exports = {
               ...FONTS[".font-edgy"],
             },
             h2: {
-              fontSize: theme("fontSize.2xl")[0],
-              lineHeight: theme("fontSize.2xl")[1],
+              fontSize: theme("fontSize.xl")[0],
+              lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
               fontWeight: null,
               ...FONTS[".font-edgy-medium"],
             },
             h3: {
-              fontSize: theme("fontSize.2xl")[0],
-              lineHeight: theme("fontSize.2xl")[1],
+              fontSize: theme("fontSize.xl")[0],
+              lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
               fontWeight: null,
               ...FONTS[".font-edgy-medium"],
             },
             h4: {
-              fontSize: theme("fontSize.2xl")[0],
-              lineHeight: theme("fontSize.2xl")[1],
+              fontSize: theme("fontSize.xl")[0],
+              lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
               fontWeight: null,
               ...FONTS[".font-edgy-medium"],
             },
             h5: {
-              fontSize: theme("fontSize.2xl")[0],
-              lineHeight: theme("fontSize.2xl")[1],
+              fontSize: theme("fontSize.xl")[0],
+              lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
-              fontSize: theme("fontSize.2xl")[0],
-              lineHeight: theme("fontSize.2xl")[1],
               fontWeight: null,
               ...FONTS[".font-edgy-medium"],
             },
             h6: {
-              fontSize: theme("fontSize.2xl")[0],
-              lineHeight: theme("fontSize.2xl")[1],
+              fontSize: theme("fontSize.xl")[0],
+              lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
               fontWeight: null,
               ...FONTS[".font-edgy-medium"],
@@ -215,6 +224,24 @@ module.exports = {
           css: {
             "& > *": {
               margin: "0 auto",
+            },
+          },
+        },
+        full: {
+          css: {
+            "& > *": {
+              width: "100% !important",
+              maxWidth: "100% !important",
+              paddingLeft: theme("spacing.gutter"),
+              paddingRight: theme("spacing.gutter"),
+            },
+            img: {
+              width: "100%",
+              maxWidth: "100%",
+              paddingLeft: "0",
+              paddingRight: "0",
+              marginTop: theme("spacing.24"),
+              marginBottom: theme("spacing.24")
             },
           },
         },
