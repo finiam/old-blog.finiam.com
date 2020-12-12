@@ -1,8 +1,8 @@
 <nav
   class="py-40 flex flex-col border-b border-gray-light"
 >
-  <div class="max-w-18-col w-full mx-auto px-56 md:px-gutter">
-    <div class="flex flex-row items-center justify-between">
+  <div class="max-w-18-col w-full mx-auto px-56 md:px-0">
+    <div class="flex flex-row items-center justify-between md:px-gutter">
       <div class="flex flex-row items-baseline" aria-hidden="true">
         {% include vectors/short_logo.svg %}
         <h1 class="ml-8 text-2xl font-serif">/&nbsp;blog</h1>
@@ -18,7 +18,7 @@
 
     {% assign isTagsPage = page.url | startsWith: "/tags/" %}
     {% if page.url == "/blog/" or isTagsPage %}
-    <ul class="flex flex-row space-x-24 mt-32 text-lg font-edgy">
+    <ul class="flex flex-row space-x-24 mt-32 text-lg font-edgy md:max-w-full md:overflow-x-auto md:whitespace-nowrap md:pl-gutter">
       <li>
         <a
           class="{{ page.url | activeUrl: '/blog/', 'text-brand', 'text-gray' }}"
@@ -53,7 +53,7 @@
       </li>
     </ul>
     {% else %}
-    <div class="flex flex-row space-x-6 mt-32 text-lg">
+    <div class="flex flex-row space-x-6 mt-32 text-lg md:px-gutter">
       <a href="/blog"><span class="text-gray">← Blog</span> / {{ title }}</a>
     </div>
     {% endif %}
