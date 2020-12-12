@@ -14,7 +14,7 @@ module.exports = {
   },
   experiments: {
     optimize: {
-      entrypoints: ["assets/scripts/index.js"],
+      entrypoints: ["assets/scripts/index.js", "assets/scripts/lazyload.js"],
       bundle: true,
       minify: true,
       target: "es2017",
