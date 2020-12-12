@@ -18,7 +18,7 @@
 
     {% assign isTagsPage = page.url | startsWith: "/tags/" %}
     {% if page.url == "/blog/" or isTagsPage %}
-    <ul class="flex flex-row space-x-24 mt-32 text-lg md:max-w-full md:overflow-x-auto md:whitespace-nowrap md:pl-gutter">
+    <ul class="flex flex-row space-x-24 mt-32 text-lg font-edgy md:max-w-full md:overflow-x-auto md:whitespace-nowrap md:pl-gutter">
       <li>
         <a
           class="{{ page.url | activeUrl: '/blog/', 'text-brand', 'text-gray' }}"

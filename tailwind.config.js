@@ -38,19 +38,15 @@ function responsivify(minSize, maxSize) {
 
 const FONTS = {
   ".font-edgy": {
-    fontFamily: "StudioFeixenSans-Regular",
-    fontFeatureSettings: `"smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1, "dlig" 1, "swsh" 1`,
-  },
-  ".font-edgy-medium": {
-    fontFamily: "StudioFeixenSans-Medium",
+    fontFamily: "StudioFeixenSans-Edgy",
     fontFeatureSettings: `"smcp" 1, "onum" 1, "frac" 1, "kern" 1, "liga" 1, "dlig" 1, "swsh" 1`,
   },
   ".font-sans": {
-    fontFamily: "StudioFeixenSans-Regular-text",
+    fontFamily: "StudioFeixenSans",
     fontFeatureSettings: `"ss01" 1`,
   },
   ".font-serif": {
-    fontFamily: "RecifeText-Regular",
+    fontFamily: "RecifeText",
     fontFeatureSettings: `"ss01" 1`,
   },
   ".font-mono": {
@@ -73,7 +69,8 @@ module.exports = {
 
   theme: {
     fontFamily: {
-      sans: ["StudioFeixenSans-Regular-text"],
+      sans: FONTS[".font-sans"].fontFamily,
+      mono: FONTS[".font-mono"].fontFamily
     },
     spacing: {
       ...baseSpacing,
@@ -163,43 +160,45 @@ module.exports = {
               fontSize: theme("fontSize.3xl")[0],
               lineHeight: theme("fontSize.3xl")[1],
               color: theme("colors.black"),
-              fontWeight: null,
+              fontWeight: "500",
               ...FONTS[".font-edgy"],
             },
             h2: {
               fontSize: theme("fontSize.xl")[0],
               lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
-              fontWeight: null,
-              ...FONTS[".font-edgy-medium"],
+              fontWeight: "500",
+              ...FONTS[".font-edgy"],
             },
             h3: {
               fontSize: theme("fontSize.xl")[0],
               lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
-              fontWeight: null,
-              ...FONTS[".font-edgy-medium"],
+              fontWeight: "500",
+              ...FONTS[".font-edgy"],
             },
             h4: {
               fontSize: theme("fontSize.xl")[0],
               lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
-              fontWeight: null,
-              ...FONTS[".font-edgy-medium"],
+              fontWeight: "500",
+              ...FONTS[".font-edgy"],
             },
             h5: {
               fontSize: theme("fontSize.xl")[0],
               lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
-              fontWeight: null,
-              ...FONTS[".font-edgy-medium"],
+              fontSize: theme("fontSize.2xl")[0],
+              lineHeight: theme("fontSize.2xl")[1],
+              fontWeight: "500",
+              ...FONTS[".font-edgy"],
             },
             h6: {
               fontSize: theme("fontSize.xl")[0],
               lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
-              fontWeight: null,
-              ...FONTS[".font-edgy-medium"],
+              fontWeight: "500",
+              ...FONTS[".font-edgy"],
             },
             p: {
               fontSize: theme("fontSize.lg")[0],
