@@ -5,7 +5,7 @@
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production snowpack build",
     "postbuild": "yarn optimize-fonts",
-    "optimize-fonts": "subfont build --in-place --no-fallbacks  --inline-fonts --inline-css --font-display block --recursive",
+    "optimize-fonts": "subfont build --in-place --no-fallbacks  --inline-fonts --inline-css --font-display block --recursive --subset-per-page",
     "clean": "rm -rf build _output",
     "format": "prettier --write \"src/**/*.js\" *.js \"src/**/*.css\"",
     "lint": "prettier --check \"src/**/*.js\" *.js \"src/**/*.css\""
