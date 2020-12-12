@@ -4,7 +4,7 @@ const path = require("path");
 const hash = require("./hash");
 
 const CACHE = {};
-const IMAGES_ROOT = "./static/"
+const IMAGES_ROOT = "./static/";
 const OUTPUT_PATH = "./_output/images/";
 const URL_PATH = "/images/";
 
@@ -108,7 +108,7 @@ module.exports = async (src, alt, klass, responsive = false) => {
 
     return `
 <picture>
-<source type="image/webp" data-srcset="${imageStats.webp.srcset}" sizes="100vw">
+<source type="image/webp" data-srcset="${imageStats.webp.srcset}" data-sizes="${imageStats.webp.sizes}">
 <img
 alt="${alt}"
 src="${imageStats.placeholder}"
@@ -120,12 +120,13 @@ class="lazy ${klass}">
 
 <noscript>
 <picture>
-<source type="image/webp" srcset="${imageStats.webp.url}" sizes="100vw">
+<source type="image/webp" srcset="${imageStats.webp.url}" sizes="${imageStats.webp.sizes}">
 <img
 loading="lazy"
 alt="${alt}"
 src="${imageStats.jpeg.url}"
-sizes="(min-width: 1024px) 1024px, 100vw"
+srcset="${imageStats.jpeg.sizes}"
+sizes="${imageStats.jpeg.sizes}"
 class="${klass}">
 </picture>
 </noscript>
