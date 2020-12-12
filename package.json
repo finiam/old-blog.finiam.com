@@ -4,6 +4,8 @@
     "dev": "NODE_ENV=development snowpack dev",
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production snowpack build",
+    "postbuild": "yarn optimize-fonts",
+    "optimize-fonts": "subfont build --in-place --no-fallbacks  --inline-fonts --inline-css --font-display block --recursive",
     "clean": "rm -rf build _output",
     "format": "prettier --write \"src/**/*.js\" *.js \"src/**/*.css\"",
     "lint": "prettier --check \"src/**/*.js\" *.js \"src/**/*.css\""
@@ -30,6 +32,7 @@
     "prettier": "^2.0.5",
     "sharp": "^0.26.3",
     "snowpack": "^2.18.2",
+    "subfont": "^5.2.3",
     "tailwindcss": "^2.0.2"
   }
 }
