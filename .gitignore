@@ -3,5 +3,5 @@ build/
 web_modules/
 node_modules/
 _output/
+_cache/
 .DS_Store
-.lazyimages.json

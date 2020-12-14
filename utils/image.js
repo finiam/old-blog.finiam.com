@@ -1,9 +1,12 @@
-const Image = require("@11ty/eleventy-img");
-Image.concurrency = 1;
 const sharp = require("sharp");
+const fs = require("fs");
+const path = require("path");
 const hash = require("./hash");
 
 const CACHE = {};
+const IMAGES_ROOT = "./static/";
+const OUTPUT_PATH = "./_output/images/";
+const URL_PATH = "/images/";
 
 // DO NOT IDENT THIS PLEASE OTHERWHISE IT WILL BREAK
 // A LIMTATION FROM MARKDOWN-IT
@@ -19,73 +22,111 @@ class="${klass}">
 </picture>`;
 }
 
+async function saveSharpImage(sharpImage, fileName) {
+  if (fs.existsSync(fileName)) return;
+
+  await sharpImage.toFile(fileName);
+}
+
+async function generateImage(sharpImage, fileName, width = null) {
+  sharpImage.resize({
+    width: width ? width : defaultImgWidth,
+  });
+
+  if (!fs.existsSync(OUTPUT_PATH))
+    fs.mkdirSync(OUTPUT_PATH, { recursive: true });
+
+  await Promise.all([
+    saveSharpImage(sharpImage, path.join(OUTPUT_PATH, `${fileName}.webp`)),
+    saveSharpImage(sharpImage, path.join(OUTPUT_PATH, `${fileName}.jpeg`)),
+  ]);
+}
+
+async function generateImages(inputPath, imageHash, responsive) {
+  const sharpImage = await sharp(inputPath);
+  const imageWidth = (await sharpImage.metadata()).width;
+  const defaultImgWidth = imageWidth > 1280 ? 1280 : imageWidth;
+  const widths = responsive ? [320, 480, 800, 1024, 1280] : [defaultImgWidth];
+
+  await Promise.all(
+    widths.map((width) =>
+      generateImage(sharpImage, `${imageHash}-${width}`, width),
+    ),
+  );
+
+  const placeholder = await sharp(inputPath)
+    .resize({ width: 64 })
+    .blur()
+    .toBuffer();
+
+  return {
+    jpeg: {
+      url: path.join(URL_PATH, `${imageHash}.jpeg`),
+      srcset: widths
+        .map(
+          (width) =>
+            `${path.join(URL_PATH, `${imageHash}-${width}.jpeg`)} ${width}w`,
+        )
+        .join(", "),
+      sizes: widths
+        .map((width) => `(max-width: ${width}px) ${width - 20}px`)
+        .join(", "),
+    },
+    webp: {
+      url: path.join(URL_PATH, `${imageHash}.webp`),
+      srcset: widths
+        .map(
+          (width) =>
+            `${path.join(URL_PATH, `${imageHash}-${width}.webp`)} ${width}w`,
+        )
+        .join(", "),
+      sizes: widths
+        .map((width) => `(max-width: ${width}px) ${width}px`)
+        .join(", "),
+    },
+    placeholder: `data:image/png;base64,${placeholder.toString("base64")}`,
+  };
+}
+
 module.exports = async (src, alt, klass, responsive = false) => {
   try {
     if (!alt) throw new Error(`Missing \`alt\` from: ${src}`);
 
     if (!src) return;
 
-    if (!process.env.EXPERIMENTAL_IMAGE_OTIM)
+    if (process.env.NODE_ENV !== "production")
       return skipOptimization(src, alt, klass);
 
-    const path = `./static/${src}`;
-    const imageHash = await hash(path);
-    let stats = CACHE[imageHash];
+    const inputPath = path.join(IMAGES_ROOT, src);
+    const imageHash = (await hash(inputPath)).slice(0, 20);
+    let imageStats = CACHE[imageHash];
 
-    if (!stats) {
-      stats = await Image(path, {
-        widths: responsive ? [25, 320, 640, 960, 1200, 1800, 2400] : [null],
-        formats: ["jpeg", "webp"],
-        urlPath: "/images",
-        outputDir: "./_output/images",
-      });
-
-      CACHE[hash] = stats;
+    if (!imageStats) {
+      imageStats = await generateImages(inputPath, imageHash, responsive);
+      CACHE[hash] = imageStats;
     }
-
-    let lowestSrc = stats["jpeg"][0];
-    const placeholder = await sharp(lowestSrc.outputPath)
-      .resize({ fit: sharp.fit.inside })
-      .blur()
-      .toBuffer();
-    const base64Placeholder = `data:image/png;base64,${placeholder.toString(
-      "base64",
-    )}`;
-
-    const srcset = Object.keys(stats).reduce(
-      (acc, format) => ({
-        ...acc,
-        [format]: stats[format].reduce(
-          (_acc, curr) => `${_acc} ${curr.srcset} ,`,
-          "",
-        ),
-      }),
-      {},
-    );
 
     return `
 <picture>
-<source type="image/webp" data-srcset="${srcset["webp"]}">
+<source type="image/webp" data-srcset="${imageStats.webp.srcset}" data-sizes="${imageStats.webp.sizes}">
 <img
 alt="${alt}"
-src="${base64Placeholder}"
-data-src="${lowestSrc.url}"
-data-sizes="(min-width: 1024px) 1024px, 100vw"
-data-srcset="${srcset["jpeg"]}"
+src="${imageStats.placeholder}"
+data-src="${imageStats.jpeg.url}"
+data-srcset="${imageStats.jpeg.srcset}"
+data-sizes="${imageStats.jpeg.sizes}"
 class="lazy ${klass}">
 </picture>
 
 <noscript>
 <picture>
-<source type="image/webp" srcset="${srcset["webp"]}">
+<source type="image/webp" srcset="${imageStats.webp.url}" sizes="${imageStats.webp.sizes}">
 <img
 loading="lazy"
 alt="${alt}"
-src="${lowestSrc.url}"
-sizes="(min-width: 1024px) 1024px, 100vw"
-srcset="${srcset["jpeg"]}"
-width="${lowestSrc.width}"
-height="${lowestSrc.height}"
+src="${imageStats.jpeg.url}"
+srcset="${imageStats.jpeg.sizes}"
+sizes="${imageStats.jpeg.sizes}"
 class="${klass}">
 </picture>
 </noscript>

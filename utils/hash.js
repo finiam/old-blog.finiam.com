@@ -6,5 +6,5 @@ module.exports = async (filePath) => {
   const readFile = util.promisify(fs.readFile)
   const fileContent = await readFile(filePath);
 
-  return hasha(fileContent);
+  return hasha.async(fileContent);
 };
