@@ -10,7 +10,7 @@ layout: layouts/base.liquid
 
 <article class="flex flex-col items-center mx-auto max-w-12-col md:max-w-none">
   <div class="max-w-10-col mx-auto mb-72 lg:max-w-none lg:px-gutter">
-    <h1 class="text-2xl text-brand mb-40">
+    <h1 class="text-2xl text-brand mb-32">
       {{ title }}
     </h1>
 
@@ -41,23 +41,23 @@ layout: layouts/base.liquid
     <div>
       <p>Share</p>
 
-      <ul class="flex flex-row space-x-24 mt-16">
+      <ul class="flex flex-row space-x-24 mt-16 items-center">
         {% assign post_url = metadata.host | append: page.url | url %}
-        <li>
-          <a href="https://www.facebook.com/sharer/sharer.php?u={{ post_url }}"
-            >Fb</a
-          >
+        <li class="hover:opacity-60">
+          <a href="https://twitter.com/intent/tweet?url={{ post_url }}">{% include vectors/social_media/twitter.svg %}</a>
         </li>
-        <li>
+        <li class="hover:opacity-60">
           <a
             href="https://www.linkedin.com/shareArticle?mini=true&url={{
               post_url
             }}"
-            >In</a
+            >{% include vectors/social_media/linkedin.svg %}</a
           >
         </li>
-        <li>
-          <a href="https://twitter.com/intent/tweet?url={{ post_url }}">Tw</a>
+        <li class="hover:opacity-60">
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ post_url }}"
+            >{% include vectors/social_media/facebook.svg %}</a
+          >
         </li>
       </ul>
     </div>

@@ -70,7 +70,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: FONTS[".font-sans"].fontFamily,
-      mono: FONTS[".font-mono"].fontFamily
+      mono: FONTS[".font-mono"].fontFamily,
     },
     spacing: {
       ...baseSpacing,
@@ -155,33 +155,35 @@ module.exports = {
               maxWidth: columns["12-col"],
               width: columns["12-col"],
               padding: baseSpacing["32"],
+              marginTop: baseSpacing["64"],
+              marginBottom: baseSpacing["64"],
             },
             h1: {
               fontSize: theme("fontSize.3xl")[0],
               lineHeight: theme("fontSize.3xl")[1],
               color: theme("colors.black"),
-              fontWeight: "500",
+              fontWeight: "bold",
               ...FONTS[".font-edgy"],
             },
             h2: {
               fontSize: theme("fontSize.xl")[0],
               lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
-              fontWeight: "500",
+              fontWeight: "bold",
               ...FONTS[".font-edgy"],
             },
             h3: {
               fontSize: theme("fontSize.xl")[0],
               lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
-              fontWeight: "500",
+              fontWeight: "bold",
               ...FONTS[".font-edgy"],
             },
             h4: {
               fontSize: theme("fontSize.xl")[0],
               lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
-              fontWeight: "500",
+              fontWeight: "bold",
               ...FONTS[".font-edgy"],
             },
             h5: {
@@ -190,14 +192,14 @@ module.exports = {
               color: theme("colors.black"),
               fontSize: theme("fontSize.2xl")[0],
               lineHeight: theme("fontSize.2xl")[1],
-              fontWeight: "500",
+              fontWeight: "bold",
               ...FONTS[".font-edgy"],
             },
             h6: {
               fontSize: theme("fontSize.xl")[0],
               lineHeight: theme("fontSize.xl")[1],
               color: theme("colors.black"),
-              fontWeight: "500",
+              fontWeight: "bold",
               ...FONTS[".font-edgy"],
             },
             p: {
@@ -240,11 +242,11 @@ module.exports = {
               paddingLeft: "0",
               paddingRight: "0",
               marginTop: theme("spacing.24"),
-              marginBottom: theme("spacing.24")
+              marginBottom: theme("spacing.24"),
             },
             pre: {
-              borderRadius: 0
-            }
+              borderRadius: 0,
+            },
           },
         },
       }),
