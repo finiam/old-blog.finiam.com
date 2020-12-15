@@ -22,7 +22,7 @@ html {
 @font-face {
   font-family: StudioFeixenSans-Edgy;
   src: url("/fonts/Edgy-StudioFeixenSansMd.otf");
-  font-weight: 500;
+  font-weight: bold;
 }
 
 @font-face {
@@ -33,7 +33,7 @@ html {
 @font-face {
   font-family: StudioFeixenSans;
   src: url("/fonts/StudioFeixenSans-Medium.otf");
-  font-weight: 500;
+  font-weight: bold;
 }
 
 @font-face {
