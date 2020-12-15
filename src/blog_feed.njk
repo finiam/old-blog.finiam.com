@@ -1,0 +1,36 @@
+---
+permalink: blog.xml
+metadata:
+  title: Francisco's Blog
+  url: https://blog.finiam.com
+  author:
+    name: Francisco Sousa
+  feed:
+    subtitle: My absolutely amazing blog
+    url: https://blog.finiam.com
+---
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ metadata.title }}</title>
+  <subtitle>{{ metadata.feed.subtitle }}</subtitle>
+  <link href="{{ metadata.feed.url }}" rel="self" />
+  <link href="{{ metadata.url }}" />
+  <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
+  <id>{{ metadata.url }}</id>
+  <author>
+    <name>{{ metadata.author.name }}</name>
+    <email>{{ social.email.value }}</email>
+  </author>
+  {%- for post in collections.posts | reverse %}
+    {% set absolutePostUrl = post.url | url | absoluteUrl(metadata.url) %}
+    <entry>
+      <title>{{ post.data.title }}</title>
+      <link href="{{ absolutePostUrl }}" />
+      <updated>{{ post.date | rssDate }}</updated>
+      <id>{{ absolutePostUrl }}</id>
+      <content type="html">
+        {{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}
+      </content>
+    </entry>
+  {%- endfor %}
+</feed>
