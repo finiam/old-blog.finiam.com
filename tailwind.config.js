@@ -70,7 +70,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: FONTS[".font-sans"].fontFamily,
-      mono: FONTS[".font-mono"].fontFamily
+      mono: FONTS[".font-mono"].fontFamily,
     },
     spacing: {
       ...baseSpacing,
@@ -242,11 +242,11 @@ module.exports = {
               paddingLeft: "0",
               paddingRight: "0",
               marginTop: theme("spacing.24"),
-              marginBottom: theme("spacing.24")
+              marginBottom: theme("spacing.24"),
             },
             pre: {
-              borderRadius: 0
-            }
+              borderRadius: 0,
+            },
           },
         },
       }),
