@@ -16,7 +16,7 @@
       <div class="grid grid-cols-2 mt-24 lg:grid-cols-1 md:px-gutter">
         <div class="flex flex-col lg:mb-40">
           <a
-            class="block text-2xl md:text-xl mr-column-spacing md:mr-0 font-edgy font-bold"
+            class="block text-xl md:text-xl mr-column-spacing md:mr-0 font-edgy font-bold"
             href="{{ first_post.url | url }}"
           >
             {{ first_post.data.title }}
@@ -30,7 +30,7 @@
           </div>
         </div>
 
-        <a class="md:mt-0 mt-16 prose text-lg font-serif" href="{{ first_post.url | url }}">
+        <a class="md:mt-0 mt-8 prose text-lg font-serif" href="{{ first_post.url | url }}">
           {{ first_post.data.long_description | markdownify }} →
         </a>
 
@@ -54,7 +54,7 @@
       </div>
 
       <div class="md:px-gutter">
-        <a class="block text-2xl md:text-xl mt-32 font-edgy font-bold" href="{{ post.url | url }}">
+        <a class="block text-xl md:text-xl mt-32 font-edgy font-bold" href="{{ post.url | url }}">
           {{ post.data.title }}
         </a>
 
