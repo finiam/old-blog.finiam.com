@@ -1,28 +1,20 @@
 ---
 permalink: blog.xml
-metadata:
-  title: Francisco's Blog
-  url: https://blog.finiam.com
-  author:
-    name: Francisco Sousa
-  feed:
-    subtitle: My absolutely amazing blog
-    url: https://blog.finiam.com
+title: Blog - Finiam
 ---
 
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>{{ metadata.title }}</title>
-  <subtitle>{{ metadata.feed.subtitle }}</subtitle>
-  <link href="{{ metadata.feed.url }}" rel="self" />
-  <link href="{{ metadata.url }}" />
+  <title>{{ title }}</title>
+  <link href="{{ 'blog.xml' | url | absoluteUrl(metadata.host) }}" rel="self" />
+  <link href="{{ url }}" />
   <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
-  <id>{{ metadata.url }}</id>
+  <id>{{ metadata.host }}</id>
   <author>
-    <name>{{ metadata.author.name }}</name>
-    <email>{{ social.email.value }}</email>
+    <name>Finiam</name>
+    <email>{{ metadata.social.email }}</email>
   </author>
   {%- for post in collections.posts | reverse %}
-    {% set absolutePostUrl = post.url | url | absoluteUrl(metadata.url) %}
+    {% set absolutePostUrl = post.url | url | absoluteUrl(metadata.host) %}
     <entry>
       <title>{{ post.data.title }}</title>
       <link href="{{ absolutePostUrl }}" />

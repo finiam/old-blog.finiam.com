@@ -1,3 +1,6 @@
 {
-  "host": "https://finiam.com"
+  "host": "https://blog.finiam.com",
+  "social": {
+    "email": "contact@finiam.com"
+  }
 }
