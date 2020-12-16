@@ -1,5 +1,6 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const eleventyHelmetPlugin = require('eleventy-plugin-helmet');
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+const eleventyHelmetPlugin = require("eleventy-plugin-helmet");
 const markdownIt = require("markdown-it");
 const mdImplicitFigures = require("markdown-it-implicit-figures");
 const markdownItRenderer = new markdownIt({ html: true }).use(
@@ -8,11 +9,13 @@ const markdownItRenderer = new markdownIt({ html: true }).use(
 const image = require("./utils/image");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.setTemplateFormats(["html", "liquid", "md"]);
+  eleventyConfig.setTemplateFormats(["html", "liquid", "njk", "md"]);
 
   eleventyConfig.addPlugin(syntaxHighlight);
 
   eleventyConfig.addPlugin(eleventyHelmetPlugin);
+
+  eleventyConfig.addPlugin(pluginRss);
 
   eleventyConfig.addFilter("markdownify", (str) =>
     markdownItRenderer.renderInline(str),
