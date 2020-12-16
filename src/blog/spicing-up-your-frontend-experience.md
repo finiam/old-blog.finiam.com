@@ -2,14 +2,15 @@
 layout: layouts/post.liquid
 tags: post
 title: Spicing up your Rails frontend experience
+date: 2020-08-19
 category: development
 author: francisco
-description: Let's take the frontend Rails experience to the next level. Instant page transitions, components, and Stimulus!
 long_description: Rails is great. You can still check DHH's 15-minute blog demo and just appreciate the combination of features and ease of use of the framework. Even though there are even easier ways to make a blog nowadays (cough cough Gatsby), Rails is still a rock-solid choice for crafting digital products.
-featured_image: /images/spicing-up-feature.jpeg
-featured_image_alt: An assortment of various spices
-date: 2020-08-19
-keywords: ruby, rails, frontend
+metadata:
+  image: /images/spicing-up-feature.jpeg
+  image_alt: An assortment of various spices
+  description: Let's take the frontend Rails experience to the next level. Instant page transitions, components, and Stimulus!
+  keywords: ruby, rails, frontend
 ---
 
 Rails is great. You can still check DHH's [15-minute blog demo](https://www.youtube.com/watch?v=Gzj723LkRJY) and just appreciate the combination of features and ease of use of the framework. Even though there are even easier ways to make a blog nowadays (cough cough Gatsby), Rails is still a rock-solid choice for crafting digital products.
