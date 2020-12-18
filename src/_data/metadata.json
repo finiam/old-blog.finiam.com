@@ -1,5 +1,9 @@
 {
   "host": "https://blog.finiam.com",
+  "title": "Blog - Finiam",
+  "lang": "en",
+  "description": "Finiam's blog",
+  "keywords": "blog, finiam, fintech, design, development, startup, team, agency, digital, software, development",
   "social": {
     "email": "contact@finiam.com"
   }
