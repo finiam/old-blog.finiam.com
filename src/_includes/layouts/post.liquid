@@ -8,15 +8,16 @@ layout: layouts/base.liquid
   data-helmet="prism-theme-css"
 />
 
-<article class="flex flex-col items-center mx-auto max-w-12-col md:max-w-none">
-  <div class="max-w-10-col mx-auto mb-72 lg:max-w-none lg:px-gutter">
-    <h1 class="text-2xl text-brand mb-40 font-edgy">
-      {{ title }}
-    </h1>
+<div class="max-w-10-col mx-auto mb-72 lg:max-w-none lg:px-gutter">
+  <h1 class="text-2xl text-brand mb-40 font-edgy">
+    {{ title }}
+  </h1>
 
-    {% assign category = null %}
-    {% include components/author, author: author, date: date %}
-  </div>
+  {% assign category = null %}
+  {% include components/author, author: author, date: date %}
+</div>
+
+<article class="flex flex-col items-center mx-auto max-w-12-col md:max-w-none">
 
   <div class="prose prose-center lg:max-w-full lg:prose-full text-lg font-serif md:break-words">
     {{ content }}
