@@ -2,7 +2,7 @@
 layout: layouts/post.liquid
 tags: post
 title: "Next.js and Airtable: a tale of empowering no-code tools"
-author: francisco
+author: francisco-sousa
 category: development
 date: 2020-12-07
 long_description: Back in June, we received a request to help build a website for an academic non-profit organization (our friends at AAUM), in Braga, Portugal. They needed a website to help spread awareness of the **MinhoCovid19** movement, a group of people trying to supply organizations in need (nursery homes, hospitals, etc) with protective materials built by volunteers.
