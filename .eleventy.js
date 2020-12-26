@@ -3,6 +3,7 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const eleventyHelmetPlugin = require("eleventy-plugin-helmet");
 const markdownIt = require("markdown-it");
 const mdImplicitFigures = require("markdown-it-implicit-figures");
+const htmlmin = require("html-minifier");
 const markdownItRenderer = new markdownIt({ html: true }).use(
   mdImplicitFigures,
 );
@@ -52,6 +53,19 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("responsiveImage", async (src, alt, klass = "") =>
     image(src, alt, klass, true),
   );
+
+  eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
+    if (outputPath.endsWith(".html")) {
+      let minified = htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true,
+      });
+      return minified;
+    }
+
+    return content;
+  });
 
   eleventyConfig.setLibrary("md", markdownItRenderer);
 
