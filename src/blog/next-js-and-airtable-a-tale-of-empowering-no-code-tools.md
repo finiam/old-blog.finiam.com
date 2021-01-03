@@ -172,6 +172,7 @@ To start building the website on Github Actions, just add the necessary environm
 Now, we need to define the workflow:
 `.github/workflows/deploy.yml`
 ```yml
+{% raw %}
 name: Daily Netlify Deploy
 
 on:
@@ -187,20 +188,21 @@ jobs:
 
       - uses: actions/setup-node@v1
         with:
-          node-version: $"{{ matrix.node-version }}"
+          node-version: ${{ matrix.node-version }}
 
       - name: Build website
         run: yarn && yarn build
         env:
-            AIRTABLE_API_KEY: $"{{ secrets.AIRTABLE_API_KEY }}"
+            AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
 
       - name: Upload to netlify
         uses: netlify/actions/cli@master
         with:
             args: deploy --prod
         env:
-            NETLIFY_SITE_ID: $"{{ secrets.NETLIFY_SITE_ID }}"
-            NETLIFY_AUTH_TOKEN: $"{{ secrets.NETLIFY_AUTH_TOKEN }}"
+            NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+            NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+{% endraw %}
 ```
 
 We are using the `schedule` option to trigger this workflow every day at midnight. Then our steps are very simple, we just run our `build` script, and use the `netlify-cli` action to deploy the website with the `prod` flag, which will actually overwrite the existing regular Netlify build with the new one.
