@@ -30,9 +30,9 @@
     "postcss-cli": "^8.3.0",
     "postcss-import": "^13.0.0",
     "prettier": "^2.0.5",
-    "sharp": "^0.26.3",
+    "sharp": "^0.27.0",
     "snowpack": "^2.18.2",
-    "subfont": "^5.2.3",
+    "subfont": "^5.2.5",
     "tailwindcss": "^2.0.2"
   }
 }
