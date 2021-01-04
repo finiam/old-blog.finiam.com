@@ -5,7 +5,12 @@ title: "Next.js and Airtable: a tale of empowering no-code tools"
 author: francisco
 category: development
 date: 2020-12-07
-long_description: Back in June, we received a request to help build a website for an academic non-profit organization (our friends at AAUM), in Braga, Portugal. They needed a website to help spread awareness of the **MinhoCovid19** movement, a group of people trying to supply organizations in need (nursery homes, hospitals, etc) with protective materials built by volunteers.
+long_description: Back in June, we received a request to help build a website
+  for an academic non-profit organization (our friends at AAUM), in Braga,
+  Portugal. They needed a website to help spread awareness of the
+  **MinhoCovid19** movement, a group of people trying to supply organizations in
+  need (nursery homes, hospitals, etc) with protective materials built by
+  volunteers.
 metadata:
   image: /images/next-js-and-airtable-feature.jpeg
   image_alt: A table from Airtable
@@ -167,6 +172,7 @@ To start building the website on Github Actions, just add the necessary environm
 Now, we need to define the workflow:
 `.github/workflows/deploy.yml`
 ```yml
+{% raw %}
 name: Daily Netlify Deploy
 
 on:
@@ -196,6 +202,7 @@ jobs:
         env:
             NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
             NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+{% endraw %}
 ```
 
 We are using the `schedule` option to trigger this workflow every day at midnight. Then our steps are very simple, we just run our `build` script, and use the `netlify-cli` action to deploy the website with the `prod` flag, which will actually overwrite the existing regular Netlify build with the new one.
