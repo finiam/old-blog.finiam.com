@@ -14,7 +14,13 @@ module.exports = {
   },
   experiments: {
     optimize: {
-      entrypoints: ["assets/scripts/index.js", "assets/scripts/lazyload.js"],
+      // We need to manually import these otherwise the optimize step
+      // will pick up CSS and we DON'T WANT THAT
+      entrypoints: [
+        "assets/scripts/index.js",
+        "assets/scripts/lazyload.js",
+        "assets/scripts/instantpage.js",
+      ],
       bundle: true,
       minify: true,
       target: "es2017",
