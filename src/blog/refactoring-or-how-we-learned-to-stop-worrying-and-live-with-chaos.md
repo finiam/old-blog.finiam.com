@@ -2,7 +2,7 @@
 layout: layouts/post.liquid
 tags: post
 title: "Refactoring or: How We Learned to Stop Worrying and Live with Chaos"
-author: davide
+author: davide-silva
 category: development
 date: 2020-12-01
 long_description: "I will be completely transparent and start by saying that this blogpost itself has been rewritten a couple of times since its original idea. Given the topic we are going to discuss, it seems fitting that that happened. In the beginning of 2019, we took over a Rails project. On the surface, it looked like a typical Rails app with an integration to a payment service. The fun began when we started to take a closer look at the codebase."

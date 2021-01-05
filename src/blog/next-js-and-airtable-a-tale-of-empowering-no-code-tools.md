@@ -2,7 +2,7 @@
 layout: layouts/post.liquid
 tags: post
 title: "Next.js and Airtable: a tale of empowering no-code tools"
-author: francisco
+author: francisco-sousa
 category: development
 date: 2020-12-07
 long_description: Back in June, we received a request to help build a website

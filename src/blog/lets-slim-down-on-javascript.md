@@ -2,7 +2,7 @@
 layout: layouts/post.liquid
 tags: post
 title: Let’s slim down on Javascript
-author: francisco
+author: francisco-sousa
 category: development
 date: 2020-07-23
 long_description: The ancient narrative of "Javascript bloat" is ever-present in the tech world. Web developers love Javascript, backend developers hate it and end-users usually don't give a damn about it as long as websites open fast, work as they should, and do not spy on them. Still, web pages have way too much Javascript, especially SPAs, that could be avoided with just a few tips. Let's see how.

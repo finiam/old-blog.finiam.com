@@ -2,7 +2,7 @@
 layout: layouts/post.liquid
 tags: post
 title: Cryptocurrency brands need to say Hello more often
-author: rafael
+author: rafael-ferreira
 category: design
 date: 2020-11-18
 long_description: When I read this I realised he’s absolutely right. Why are cryptocurrency brands in general so far behind in the technology industry? I am a graphic designer who slowly migrated to the technological industry, more recently to the financial sector (finiam)
