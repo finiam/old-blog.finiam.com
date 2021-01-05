@@ -1,3 +1,13 @@
 [build]
   command = "pip install fonttools brotli zopfli && yarn build"
   publish = "build"
+
+[[headers]]
+  for = "/subfont/*"
+  [headers.values]
+    Cache-Control = "max-age=31536000"
+
+[[headers]]
+  for = "/optimized_images/*"
+  [headers.values]
+    Cache-Control = "max-age=31536000"
