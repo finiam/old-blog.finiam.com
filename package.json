@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@11ty/eleventy-plugin-rss": "^1.0.9",
+    "instant.page": "^5.1.0",
     "vanilla-lazyload": "^17.3.0"
   },
   "devDependencies": {
