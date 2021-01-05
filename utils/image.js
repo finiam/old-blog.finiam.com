@@ -37,7 +37,7 @@ async function generateImage(sharpImage, fileName, width = null) {
     fs.mkdirSync(OUTPUT_PATH, { recursive: true });
 
   await Promise.all([
-    saveSharpImage(sharpImage, path.join(OUTPUT_PATH, `${fileName}.webp`)),
+    saveSharpImage(sharpImage, path.join(OUTPUT_PATH, `${fileName}.avif`)),
     saveSharpImage(sharpImage, path.join(OUTPUT_PATH, `${fileName}.jpeg`)),
   ]);
 }
@@ -72,12 +72,12 @@ async function generateImages(inputPath, imageHash, responsive) {
         .map((width) => `(max-width: ${width}px) ${width - 20}px`)
         .join(", "),
     },
-    webp: {
-      url: path.join(URL_PATH, `${imageHash}.webp`),
+    avif: {
+      url: path.join(URL_PATH, `${imageHash}.avif`),
       srcset: widths
         .map(
           (width) =>
-            `${path.join(URL_PATH, `${imageHash}-${width}.webp`)} ${width}w`,
+            `${path.join(URL_PATH, `${imageHash}-${width}.avif`)} ${width}w`,
         )
         .join(", "),
       sizes: widths
@@ -108,7 +108,7 @@ module.exports = async (src, alt, klass, responsive = false) => {
 
     return `
 <picture>
-<source type="image/webp" data-srcset="${imageStats.webp.srcset}" data-sizes="${imageStats.webp.sizes}">
+<source type="image/avif" data-srcset="${imageStats.avif.srcset}" data-sizes="${imageStats.avif.sizes}">
 <img
 alt="${alt}"
 src="${imageStats.placeholder}"
@@ -120,12 +120,12 @@ class="lazy ${klass}">
 
 <noscript>
 <picture>
-<source type="image/webp" srcset="${imageStats.webp.url}" sizes="${imageStats.webp.sizes}">
+<source type="image/avif" srcset="${imageStats.avif.srcset}" sizes="${imageStats.avif.sizes}">
 <img
 loading="lazy"
 alt="${alt}"
 src="${imageStats.jpeg.url}"
-srcset="${imageStats.jpeg.sizes}"
+srcset="${imageStats.jpeg.srcset}"
 sizes="${imageStats.jpeg.sizes}"
 class="${klass}">
 </picture>
