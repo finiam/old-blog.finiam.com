@@ -1,3 +1,1 @@
-window.addEventListener("DOMContentLoaded", () => {
-  import("instant.page");
-});
+import "instant.page";
