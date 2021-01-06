@@ -29,7 +29,7 @@ It's a bit of unnecessary indirection but at least we have a complete separation
 
 All this is difficult enough to actually follow when looking at the code, let alone just reading some vague description. Here's a diagram to help visualize it.
 
-![Diagram](/images/refactoring-live-with-chaos-diagram.png)
+{% responsiveImage "/images/refactoring-live-with-chaos-diagram.png" "Diagram" %}
 
 This is a simplified version of the actual structure. The diagram doesn't show the models used in each class and we had this for each request in the API. Sometimes, trying to find where a particular method was defined, was like trying to find a needle in an haystack.
 
