@@ -5,8 +5,8 @@ const hash = require("./hash");
 
 const CACHE = {};
 const IMAGES_ROOT = "./static/";
-const OUTPUT_PATH = "./_output/images/";
-const URL_PATH = "/images/";
+const OUTPUT_PATH = "./_output/optimized_images/";
+const URL_PATH = "/optimized_images/";
 
 // DO NOT IDENT THIS PLEASE OTHERWHISE IT WILL BREAK
 // A LIMTATION FROM MARKDOWN-IT
