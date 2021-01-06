@@ -1,24 +1,17 @@
 ---
 layout: layouts/post.liquid
 tags: post
-title: Hello World
+title: Hello, World!
 author: jose-gomes
 category: team
 date: 2021-01-06T12:23:51.596Z
 long_description: Finiam hit the road running and time truly flew by. As we end
   2020, we look back at happened in the first year of the company and the last
   couple of months and noticed that somewhere along the road we forgot to
-  introduce ourselves. With this we intend to correct that discourtesy but
-  first, bear with me for a little while longer while we make a trip to the
-  memory lane before we get down to business.
+  introduce ourselves.
 metadata:
   keywords: fintech, team, founders
-  description: Finiam hit the road running and time truly flew by. As we end 2020,
-    we look back at happened in the first year of the company and the last
-    couple of months and noticed that somewhere along the road we forgot to
-    introduce ourselves. With this we intend to correct that discourtesy but
-    first, bear with me for a little while longer while we make a trip to the
-    memory lane before we get down to business.
+  description: "Finiam says hello, world! :wave:"
   image: /images/pexels-johannes-plenio-1126384.jpg
   image_alt: Sunrise
 ---
