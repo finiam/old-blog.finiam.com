@@ -25,7 +25,7 @@ This initial merger by two previous teams and with the guidance of Subvisual all
 
 I think that’s enough looking at the past so let us move forward and I’ll try to explain why we decided to do this and how we do it.
 
-<https://a16z.com/2020/01/21/every-company-will-be-a-fintech-company/>
+<iframe width="852" height="479" src="https://www.youtube.com/embed/DjUMfhT0o64" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 We believe there is a solid trend of founders and incumbents wanting to thread the needle of starting new software businesses and launch new products and solutions, specially in the Fintech market. This trend only accelerated with the pandemic that hit us in this year. At their heart these initiatives, call it a startup or an innovation challenge by the incumbents, represent a big bet for the directly responsible individuals behind them. At **finiam** we can help you by hedging your risk with an experienced team, eager to learn your specific context and assist you in winning your bet. Our core skillset is around design, web development and product management. We can take you from market research, prototyping and user testing to building your product and setting up the appropriate infrastructure for it to run. Or we can aid you in offloading non-essential necessities like financial services or payment integrations so that your team can focus in what’s important for your success. We always feel proud when we end our work preparing an hand off to your team or even aiding you in recruiting new team members to do so. We want our work to continue to have meaningful impact on your business long after we are gone from the picture.
 
