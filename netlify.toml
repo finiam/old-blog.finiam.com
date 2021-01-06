@@ -1,5 +1,5 @@
 [build]
-  command = "pip install fonttools brotli zopfli && yarn build"
+  command = "yarn build"
   publish = "build"
 
 [[headers]]
@@ -11,3 +11,8 @@
   for = "/optimized_images/*"
   [headers.values]
     Cache-Control = "max-age=31536000"
+
+[[plugins]]
+  package = "netlify-plugin-cache"
+  [plugins.inputs]
+    paths = ["_output"]
