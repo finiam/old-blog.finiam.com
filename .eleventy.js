@@ -8,7 +8,6 @@ const markdownItRenderer = new markdownIt({ html: true }).use(
   mdImplicitFigures,
 );
 const image = require("./utils/image");
-const Image = require("@11ty/eleventy-img");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.setTemplateFormats(["html", "liquid", "njk", "md"]);
@@ -51,26 +50,8 @@ module.exports = function (eleventyConfig) {
     image(src, alt, klass, false),
   );
 
-  eleventyConfig.addShortcode(
-    "responsiveImage",
-    async (src, alt, klass = "") => {
-      const metadata = await Image(`./static/${src}`, {
-        widths: [300, 600],
-        formats: ["avif", "jpeg"],
-        outputDir: "_output/optimized_images",
-        urlPath: "/optimized_images",
-        widths: [320, 480, 800, 1024, 1280],
-      });
-
-      const imageAttributes = {
-        alt,
-        class: klass,
-        loading: "lazy",
-        decoding: "async",
-      };
-
-      return Image.generateHTML(metadata, imageAttributes);
-    },
+  eleventyConfig.addShortcode("responsiveImage", async (src, alt, klass = "") =>
+    image(src, alt, klass, true),
   );
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
