@@ -38,6 +38,7 @@ async function generateImage(sharpImage, fileName, width = null) {
 
   await Promise.all([
     saveSharpImage(sharpImage, path.join(OUTPUT_PATH, `${fileName}.avif`)),
+    saveSharpImage(sharpImage, path.join(OUTPUT_PATH, `${fileName}.webp`)),
     saveSharpImage(sharpImage, path.join(OUTPUT_PATH, `${fileName}.jpeg`)),
   ]);
 }
