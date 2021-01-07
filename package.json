@@ -7,8 +7,8 @@
     "postbuild": "yarn optimize-fonts",
     "clean": "rm -rf build _output _cache",
     "optimize-fonts": "subfont build --in-place --harfbuzz --no-fallbacks --font-display block --recursive",
-    "format": "prettier --write \"src/**/*.js\" *.js \"src/**/*.css\"",
-    "lint": "prettier --check \"src/**/*.js\" *.js \"src/**/*.css\""
+    "format": "prettier --write \"assets/**/*.js\" *.js \"assets/**/*.css\"",
+    "lint": "prettier --check \"assets/**/*.js\" *.js \"assets/**/*.css\""
   },
   "dependencies": {
     "@11ty/eleventy-plugin-rss": "^1.0.9",

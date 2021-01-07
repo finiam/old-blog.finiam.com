@@ -60,10 +60,10 @@ module.exports = {
     mode: "all",
     content: [
       "./src/**/*.js",
-      "./src/**/*.njk",
-      "./src/**/*.liquid",
       "./src/**/*.ts",
       "./src/**/*.css",
+      "./site/**/*.njk",
+      "./site/**/*.liquid",
     ],
   },
 
