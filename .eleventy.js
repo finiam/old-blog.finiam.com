@@ -33,13 +33,13 @@ module.exports = function (eleventyConfig) {
   );
 
   eleventyConfig.addFilter("getAuthor", (authorKey) =>
-    require(`./src/_data/authors/${authorKey}.json`),
+    require(`./site/_data/authors/${authorKey}.json`),
   );
 
   eleventyConfig.addCollection("posts", (collectionApi) =>
-    collectionApi.getFilteredByGlob(["src/blog/*.md"]).map((post) => {
+    collectionApi.getFilteredByGlob(["site/blog/*.md"]).map((post) => {
       if (post.data.author) {
-        post.data.author = require(`./src/_data/authors/${post.data.author}.json`);
+        post.data.author = require(`./site/_data/authors/${post.data.author}.json`);
       }
 
       return post;
@@ -71,7 +71,7 @@ module.exports = function (eleventyConfig) {
 
   return {
     dir: {
-      input: "src/",
+      input: "site/",
       data: "_data",
       includes: "_includes",
       output: "_output",

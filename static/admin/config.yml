@@ -8,7 +8,7 @@ public_folder: "/images"
 collections:
   - name: "blog"
     label: "Posts"
-    folder: "src/blog"
+    folder: "site/blog"
     extension: "md"
     create: true
     slug: "{{title}}"
@@ -34,7 +34,7 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
   - name: "authors"
     label: "Authors"
-    folder: "src/_data/authors"
+    folder: "site/_data/authors"
     extension: "json"
     create: true
     slug: "{{name}}"

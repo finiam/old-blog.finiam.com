@@ -5,7 +5,7 @@ module.exports = {
     isProd &&
       require("postcss-import")({
         resolve: (id, basedir, importOptions) => {
-          return "src/assets/styles/" + id;
+          return "assets/styles/" + id;
         },
       }),
     isProd && require("autoprefixer"),
