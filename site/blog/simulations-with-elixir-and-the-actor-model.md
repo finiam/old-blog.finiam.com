@@ -37,7 +37,7 @@ Let's say that in our imaginary carpentry we have the following working stations
 
 In this workshop, not all orders have the same processing. A chair may not need a painting or protective coating, but a kitchen table might. Or it can be a supplier for that Swedish company that doesn't assemble their products ***cough cough***. Also, a given workstation can receive orders from various different stations. Imagine a directed graph like the one below:
 
-{% responsiveImage "/images/elixir-simulations-2.png" "Representation of how we can look at a workstation as an Actor" %}
+{% responsiveImage "/images/elixir-simulations-2.jpg" "Representation of how we can look at a workstation as an Actor" %}
 
 If we were about to score a big deal with a major client, but we don't know if we can handle the request in time, given that we have already so many orders in the shop, how can we decide on that? Simulation Time! 
 
@@ -47,7 +47,7 @@ Assuming that we know how much time each process takes, and the types of process
 
 Looking at workstations as if they were picking an order from the pile/queue, "doing their thing" and sending it to the next step, we can think of them as completely individual and independent actors from each other, inside the simulation engine. They simply pick an order from the queue and put it in the next one after the work is done. If nothing is waiting in line, the workstation stops until a new one appears. It can also be the starting or finishing point of an order.
 
-{% responsiveImage "/images/elixir-simulations-1.png" "Representation of how we can look at a workstation as an Actor" %}
+{% responsiveImage "/images/elixir-simulations-1.jpg" "Representation of how we can look at a workstation as an Actor" %}
 
 ## Quick intro to Elixir and Actors
 
