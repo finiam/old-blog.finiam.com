@@ -19,8 +19,6 @@ metadata:
   image: /images/pexels-cleyder-duque-3637834.jpg
   image_alt: man working in a wood workshop
 ---
-# Simulations with Elixir and the Actor Model
-
 Is there anyone else about to read this, as fascinated as I am by simulations? A simulation of a game, weather, aerodynamic behavior, or any other action, has intrinsically the same goal - take a peek into the future and see how things will perform in real life. 
 
 These simulations all require an extent of calculations and variables to take into account, but also a model that will elegantly run through them.
