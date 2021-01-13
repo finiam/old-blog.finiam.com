@@ -23,7 +23,7 @@ Is there anyone else about to read this, as fascinated as I am by simulations? A
 
 These simulations all require an extent of calculations and variables to take into account, but also a model that will elegantly run through them.
 
-*"Aren't you describing Machine Learning? Isn't it also predicting the future with complicated maths and a model that no one really understands?*", you ask. Yeah, I guess that ML fits into this description, but that's not the kind of predictions that I will be writing here.
+"Aren't you describing Machine Learning? Isn't it also predicting the future with complicated maths and a model that no one really understands?", you ask. Yeah, I guess that ML fits into this description, but that's not the kind of predictions that I will be writing here.
 
 As an Engineer, I like to think that I build things. Some digital, some physical. Some work, some don't. So, for this problem, I'll use a carpentry workshop as my example (because, you know, carpenters build things that mostly work).
 
@@ -35,7 +35,7 @@ Let's say that in our imaginary carpentry we have the following working stations
 * Varnish and protective coating
 * Assembly
 
-In this workshop, not all orders have the same processing. A chair may not need a painting or protective coating, but a kitchen table might. Or it can be a supplier for that Swedish company that doesn't assemble their products ***cough cough***. Also, a given workstation can receive orders from various different stations. Imagine a directed graph like the one below:
+In this workshop, not all orders have the same processing. A chair may not need a painting or protective coating, but a kitchen table might. Or it can be a supplier for that Swedish company that doesn't assemble their products **cough cough**. Also, a given workstation can receive orders from various different stations. Imagine a directed graph like the one below:
 
 {% responsiveImage "/images/elixir-simulations-2.jpg" "Representation of how we can look at a workstation as an Actor" %}
 
@@ -60,7 +60,7 @@ Continuing with the same thought, we identify some Actor Model programming chara
 
 Actors may modify their private state, but can only affect each other indirectly through messaging. An actor is also a lightweight entity, unlike Operating System processes or threads.
 
-One of the selling points of *Elixir* is its support for concurrency. The concurrency model relies on Actors. So, implementing the initial idea, where each workstation is an actor part of the simulation, should not be a problem.
+One of the selling points of **Elixir** is its support for concurrency. The concurrency model relies on Actors. So, implementing the initial idea, where each workstation is an actor part of the simulation, should not be a problem.
 
 ## Different types of simulations
 
@@ -76,7 +76,7 @@ In our carpentry workshop, events can be treated as discrete. So in our simulati
 
 Guess the boring talk is over and it's now time to put the ideas into work. 
 
-Here, I'll use [GenServers](https://hexdocs.pm/elixir/GenServer.html), as workstations. With the *Erlang* and *GenServer* characteristics, a process has a FIFO "mailbox", ensuring the ordering of the messages received by each workstation. If **process A** sends messages ***x*** and ***y***, by this order, to **process B**, we know that it'll receive them by the same order. 
+Here, I'll use [GenServers](https://hexdocs.pm/elixir/GenServer.html), as workstations. With the **Erlang** and **GenServer** characteristics, a process has a FIFO "mailbox", ensuring the ordering of the messages received by each workstation. If **process A** sends messages **x** and **y**, by this order, to **process B**, we know that it'll receive them by the same order. 
 
 ```elixir
 # Process A
@@ -88,7 +88,7 @@ receive() # => x
 receive() # => y
 ```
 
-Though, if we have a **process C** that also sends a message ***w*** to **B** in the meantime, we don't have guarantees in what order it'll be received. Only that ***x*** will be first then ***y***.
+Though, if we have a **process C** that also sends a message **w** to **B** in the meantime, we don't have guarantees in what order it'll be received. Only that **x** will be first then **y**.
 
 ```elixir
 # Process A
@@ -104,7 +104,7 @@ receive() # => w || x || y
 receive() # => w || y
 ```
 
-Everyone that has already dealt with concurrency problems like this one, with several actors swapping messages, can smell a problem here... **We need to have some kind of synchronization between processes**. Order of messages from different actors/workstations matters in our simulation. That's why I'm introducing the **Simulation Manager**. We must ensure that the Manager only fast forwards the clock when it has all the updated values from the actors affected by some event in the past, keeping "timed events" from overlapping.
+Everyone that has already dealt with concurrency problems like this one, with several actors swapping messages, can smell a problem here... **We need to have some kind of synchronization between processes**. Order of messages from different actors/workstations matters in our simulation. That's why I'm introducing the **Simulation Manager**. We must ensure that the Manager only fast-forwards the clock when it has all the updated values from the actors affected by some event in the past, keeping "timed events" from overlapping.
 
 This process will ensure synchronization and message order. The existence of a centralized actor simplifies this problem and potentially increases efficiency due to less metadata and extra messages in a peer-to-peer case.
 
@@ -137,9 +137,9 @@ defp start_place_actor(place) do
 end
 ```
 
-In the code above, we have the Simulation Manager starting all the other actors and storing their *pids* to identify each one in the rest of the distributed algorithm. Note that there were other alternatives to this in *Elixir*, but this one is probably the easiest.
+In the code above, we have the Simulation Manager starting all the other actors and storing their **pids** to identify each one in the rest of the distributed algorithm. Note that there were other alternatives to this in **Elixir**, but this one is probably the easiest.
 
-*Events* represent messages received from each place and *awaiting* are actors that the **Manager** should wait for before advancing the simulation time.
+**Events** represent messages received from each place and **awaiting** are actors that the **Manager** should wait for before advancing the simulation time.
 
 **2.** Each of these actors will collect the list of orders in their queue, and sort them by the delivery date. Announcing to the manager when the next event will occur. The next event is calculated by the processing time of the first package in the queue;
 
@@ -236,6 +236,6 @@ After gluing every missing part of this simulation, our workshop is now ready to
 
 ## Wrapping up
 
-We demonstrated some of the advantages of using *Elixir* for distributed algorithms/problems. However, use this kind of distributed approach with caution, as it can introduce all sorts of bugs. And believe me, you won't like debugging distributed stuff...  
+We demonstrated some of the advantages of using **Elixir** for distributed algorithms/problems. However, use this kind of distributed approach with caution, as it can introduce all sorts of bugs. And believe me, you won't like debugging distributed stuff...  
 
 Hope I got you a little bit more interested in simulations in general and taking advantage of the actor model to solve exquisite problems.
