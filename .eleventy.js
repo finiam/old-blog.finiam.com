@@ -12,6 +12,8 @@ const image = require("./utils/image");
 module.exports = function (eleventyConfig) {
   eleventyConfig.setTemplateFormats(["html", "liquid", "njk", "md"]);
 
+  eleventyConfig.setDataDeepMerge(true);
+
   eleventyConfig.addPlugin(syntaxHighlight);
 
   eleventyConfig.addPlugin(eleventyHelmetPlugin);
