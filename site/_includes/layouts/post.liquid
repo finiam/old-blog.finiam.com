@@ -14,16 +14,20 @@ layout: layouts/base.liquid
   </h1>
 
   {% assign category = null %}
+
   {% include components/author, author: author, date: date %}
 </div>
 
 <article class="flex flex-col items-center mx-auto max-w-12-col md:max-w-none">
-
-  <div class="prose prose-center lg:max-w-full lg:prose-full text-lg font-serif md:break-words">
+  <div
+    class="prose prose-center lg:max-w-full lg:prose-full text-lg font-serif md:break-words"
+  >
     {{ content }}
   </div>
 
-  <div class="flex flex-row md:flex-col w-full mt-80 justify-between lg:px-gutter">
+  <div
+    class="flex flex-row md:flex-col w-full mt-80 justify-between lg:px-gutter"
+  >
     <div>
       <p class="mb-16 font-edgy">Written by</p>
 
@@ -45,20 +49,23 @@ layout: layouts/base.liquid
       <ul class="flex flex-row space-x-24 mt-16 items-center">
         {% assign post_url = metadata.host | append: page.url | url %}
         <li class="hover:opacity-60">
-          <a href="https://twitter.com/intent/tweet?url={{ post_url }}">{% include vectors/social_media/twitter.svg %}</a>
+          <a href="https://twitter.com/intent/tweet?url={{ post_url }}">
+            {% include vectors/social_media/twitter.svg %}
+          </a>
         </li>
         <li class="hover:opacity-60">
           <a
             href="https://www.linkedin.com/shareArticle?mini=true&url={{
               post_url
             }}"
-            >{% include vectors/social_media/linkedin.svg %}</a
           >
+            {% include vectors/social_media/linkedin.svg %}
+          </a>
         </li>
         <li class="hover:opacity-60">
-          <a href="https://www.facebook.com/sharer/sharer.php?u={{ post_url }}"
-            >{% include vectors/social_media/facebook.svg %}</a
-          >
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ post_url }}">
+            {% include vectors/social_media/facebook.svg %}
+          </a>
         </li>
       </ul>
     </div>

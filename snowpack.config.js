@@ -2,7 +2,7 @@ module.exports = {
   mount: {
     _output: "/",
     static: "/",
-    "assets": "/assets",
+    assets: "/assets",
   },
   plugins: [
     "@snowpack/plugin-postcss",
@@ -12,18 +12,9 @@ module.exports = {
     open: "none",
     hmrDelay: 500,
   },
-  experiments: {
-    optimize: {
-      // We need to manually import these otherwise the optimize step
-      // will pick up CSS and we DON'T WANT THAT
-      entrypoints: [
-        "assets/scripts/index.js",
-        "assets/scripts/lazyload.js",
-        "assets/scripts/instantpage.js",
-      ],
-      bundle: true,
-      minify: true,
-      target: "es2017",
-    },
+  optimize: {
+    bundle: true,
+    minify: true,
+    target: "es2017",
   },
 };
