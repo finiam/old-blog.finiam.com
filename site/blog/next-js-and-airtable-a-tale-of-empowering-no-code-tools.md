@@ -17,7 +17,6 @@ metadata:
   description: How to take no-code tools to the next level, with just a little bit of code.
   keywords: javascript, webdev, nextjs, airtable
 ---
-
 Back in June, we received a request to help build a website for an academic non-profit organization (our friends at [AAUM](https://www.aaum.pt/)), in Braga, Portugal. They needed a website to help spread awareness of the **MinhoCovid19** movement, a group of people trying to supply organizations in need (nursery homes, hospitals, etc) with protective materials built by volunteers.
 
 Their operation was relatively simple, in theory at least. They connected donators of either money or materials, to the organizations in need, handling all of the logistics. The volunteers were using [Airtable](https://airtable.com/) to manage inventories, deliveries, and also the transparency reports regarding financial movements, which is required to be public by Portuguese laws.
@@ -33,6 +32,7 @@ So, we decided to build the website with Next.js, as most of the developers that
 Disclaimer: not all of the Airtable data could be used on the Website. Currently, the transparency report is being imported from the Airtable, the rest is managed on the CMS side. We are working with the volunteering team to migrate every single data piece to Airtable (except the copy of the website, which will be kept on Forestry).
 
 With Next.js it's pretty easy to integrate with Airtable. First, install Airtable:
+
 ```bash
 yarn add airtable
 
@@ -62,6 +62,7 @@ Airtable automatically generates an HTTP API for each table. You can play with i
 Now, we want to get all of these values on our Next.js app. In our case, we slightly changed the generated code to do what we needed. This is how we did it:
 
 `src/lib/getTransparencyReport.js`
+
 ```javascript
 const Airtable = require("airtable");
 
@@ -111,6 +112,7 @@ export default function getTransparencyReport() {
 We extract the fields from the table, sorted by date, and return an array of objects with these keys `[date, purpose, value]`. Then, we use Next.js data fetching mechanism `getStaticProps` to get this data at **build** time.
 
 `src/pages/transparency.js`
+
 ```javascript
 import React from "react";
 import PropTypes from "prop-types";
@@ -159,18 +161,21 @@ So, every time we run `next build && next export` we are going to build the enti
 
 Now, we are using Next.js as a static site generator. The website data is not live but updates are made daily if not weekly at best. So how do we update the data on Airtable and trigger a site rebuild? If we make changes on the CMS, we trigger `git` commits to the repo and Netlify picks that up and rebuilds the site.
 
-However, Airtable does not have any sort of notification mechanism (like webhooks for example) to trigger Netlify builds (at the time of writing this blog post). The only option that's left is to schedule periodic builds.
+~~However, Airtable does not have any sort of notification mechanism (like webhooks for example) to trigger Netlify builds (at the time of writing this blog post). The only option that's left is to schedule periodic builds.~~
+
+**UPDATE:** It seems Airtable now supports running custom scripts on the Automation tab. So you can run a post to a Webhook whenever you create/update records on your tables! Only on the Airtable Pro and Enterprise plans though. I still usually recommend the periodic Netlify deploy, even as a fallback, to make sure the website keeps being updated, even if the integrations fail.
 
 We decided to settle on 1 periodic build per day, using Github Actions to deploy everything.
 
 To start building the website on Github Actions, just add the necessary environment variables to your Github project's `secrets` section. Also, set these secrets on your repository settings.
 
-- NETLIFY_SITE_ID - Go to *Site settings > General > Site details > Site information*, and copy the value for API ID.
-- NETLIFY_AUTH_TOKEN - Go to *User settings > Application > New Access Token*
-- AIRTABLE_API_KEY - you can use your local AIRTABLE API key
+* NETLIFY_SITE_ID - Go to *Site settings > General > Site details > Site information*, and copy the value for API ID.
+* NETLIFY_AUTH_TOKEN - Go to *User settings > Application > New Access Token*
+* AIRTABLE_API_KEY - you can use your local AIRTABLE API key
 
 Now, we need to define the workflow:
 `.github/workflows/deploy.yml`
+
 ```yml
 {% raw %}
 name: Daily Netlify Deploy
