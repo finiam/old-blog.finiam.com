@@ -14,7 +14,7 @@ metadata:
   description: Quantum computing in the financial world
   keywords: quantum computing, financial, monte carlo algorithm, circuit composer
   image: /images/pexels-pixabay-248280.jpg
-  image_alt: Lightning bolt
+  image_alt: Cat upside down
 ---
 ## Introduction to Quantum computing
 
