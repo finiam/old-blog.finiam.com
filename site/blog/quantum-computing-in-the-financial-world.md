@@ -20,7 +20,9 @@ metadata:
 
 When opening [IBM's Quantum Computing page](https://www.ibm.com/quantum-computing/) we see **"Tomorrow’s computing, today"**. For me, this is a great way to show newcomers what quantum computing really means today. I'm no expert in quantum mechanics, I don't even know enough to the extent of explaining how it works to someone. But one thing I know is that we are in a similar phase as Engineers and Computer Scientists were in the '40s or '50s, developing the first classical computers. I don't believe that quantum computers can fully replace our classical ones, but they surely will have a major role in our lives in the future, and we are just at the beginning.
 
-I won't explain how quantum computers work, but I recommend watching this [video](https://www.youtube.com/watch?v=JhHMJCUmq28) from **Kurzgesagt – In a Nutshell**. It's a 7-minute video and does a great job comparing quantum computers with classical ones, so if you are completely new to this matter, you should take the time to watch it, also.
+I won't explain how quantum computers work, but I recommend watching the video below, from **Kurzgesagt – In a Nutshell**. It's a 7-minute video and does a great job comparing quantum computers with classical ones, so if you are completely new to this matter, you should take the time to watch it, also.
+
+<iframe width="852" height="479" src="https://www.youtube.com/embed/JhHMJCUmq28" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 You might have heard about **NPC (NP-Complete)** problems, if not, the [Wikipedia page](https://en.wikipedia.org/wiki/NP-completeness) makes a good summary with some examples. Why am I talking about these problems? A **NP** problem is very hard to answer with our current technology and could take years if not centuries to reach an answer.
 
@@ -66,7 +68,7 @@ In this blog post, we will follow the IBM tutorial and develop a **Bell State** 
 
 A **Bell State** is defined as a maximally entangled quantum state of two qubits. This means that if Alice and Bob held an entangled qubit, and Alice measured her qubit the outcome would be perfectly random, with either possibility having a probability of 1/2. But if Bob then measured his qubit, the outcome would be the same as the one Alice got. So, to Bob, at first sight, he would also get a random outcome, but if Alice and Bob communicated they would find out that, although the outcomes seemed random, they were correlated.
 
-### Step 1. Add an **H** gate (Hadamard gate) to your circuit `q[0]`.
+### Step 1 - Add an **H** gate (Hadamard gate) to your circuit `q[0]`.
 
 The Hadamard gate acts on a single qubit. It maps the basis state of the qubit to have equal probabilities to become 1 or 0 (i.e. creates a superposition).
 
@@ -74,7 +76,7 @@ The Hadamard gate acts on a single qubit. It maps the basis state of the qubit t
 
 To add a gate to your circuit, drag and drop the operation from the palette of quantum operations to the top qubit, q[0].
 
-### Step 2. Add a **controlled-NOT** gate to your circuit.
+### Step 2 - Add a **controlled-NOT** gate to your circuit.
 
 ![Screenshot 2020-12-04 at 17.31.28 (2).png](https://draftin.com:443/images/77323?token=LOeBGjADh8cP6E_gn890FiHl1D1qp0v5Bx4ACx4v4-5--KeFP3jNxPNt3s9WF0r39s_sAv3BJ0x_DpT1vCfVXUw)
 
@@ -82,7 +84,7 @@ Controlled gates, such as **controlled-NOT** gate (or **CNOT** or **CX**) act on
 
 To add a **CX** gate to your circuit, drag and drop the operation from the palette of quantum operations to the right of the gate. This operation acts on two qubits.
 
-### Step 3. Add a measurement operation.
+### Step 3 - Add a measurement operation.
 
 ![Screenshot 2020-12-04 at 17.25.26 (2).png](https://draftin.com:443/images/77324?token=q4eyMxD6eDhGvUXVsy5jXcTrsp7A7THRw4dqsvT7zJLD7LZ2VAxtov3ZGOrYzjauVd2QUvcypf9uTDNaDB3l8TU)
 
