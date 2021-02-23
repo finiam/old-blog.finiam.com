@@ -62,7 +62,7 @@ IBM offers a **Circuit Composer**. It's a graphical quantum programming tool tha
 
 This **Circuit Composer** should look like the following screenshot.
 
-![Screenshot 2020-12-04 at 17.17.28 (2).png](https://draftin.com:443/images/77322?token=xdggs-5af3vy0IJU_YhTikSKfRglqoN3vJP9tpkK5zuuQIUhQlcIXVRQSKlHC7u-qPCZ1Hk8GDDlA9Ic2IuJGmU) 
+{% responsiveImage "/images/quantum-circuit-1.png" "Initial status of the circuit" %}
 
 In this blog post, we will follow the IBM tutorial and develop a **Bell State** as a "Hello World" circuit.
 
@@ -72,21 +72,20 @@ A **Bell State** is defined as a maximally entangled quantum state of two qubits
 
 The Hadamard gate acts on a single qubit. It maps the basis state of the qubit to have equal probabilities to become 1 or 0 (i.e. creates a superposition).
 
-![Screenshot 2020-12-04 at 17.17.39 (2).png](https://draftin.com:443/images/77321?token=nggCmv7l6e4HFU61pPvvNKNq7buliPIbxgLcyun8GuspKZr_WVbGIH85MXAW35psVmu2BZg6C9gP0TUyxM1usT8)
+{% responsiveImage "/images/quantum-circuit-2.png" "Adding an Hadamard gate" %}
 
 To add a gate to your circuit, drag and drop the operation from the palette of quantum operations to the top qubit, q[0].
 
 ### Step 2 - Add a **controlled-NOT** gate to your circuit.
 
-![Screenshot 2020-12-04 at 17.31.28 (2).png](https://draftin.com:443/images/77323?token=LOeBGjADh8cP6E_gn890FiHl1D1qp0v5Bx4ACx4v4-5--KeFP3jNxPNt3s9WF0r39s_sAv3BJ0x_DpT1vCfVXUw)
+{% responsiveImage "/images/quantum-circuit-4.png" "Adding a cnot gate" %}
 
 Controlled gates, such as **controlled-NOT** gate (or **CNOT** or **CX**) act on 2 or more qubits, where one or more qubits act as a control for some operation. For example, the **CX** acts on 2 qubits and performs the **NOT** operation on the second qubit only when the first qubit is |1⟩, otherwise leaves it unchanged.
 
 To add a **CX** gate to your circuit, drag and drop the operation from the palette of quantum operations to the right of the gate. This operation acts on two qubits.
 
 ### Step 3 - Add a measurement operation.
-
-![Screenshot 2020-12-04 at 17.25.26 (2).png](https://draftin.com:443/images/77324?token=q4eyMxD6eDhGvUXVsy5jXcTrsp7A7THRw4dqsvT7zJLD7LZ2VAxtov3ZGOrYzjauVd2QUvcypf9uTDNaDB3l8TU)
+{% responsiveImage "/images/quantum-circuit-3.png" "Adding a measurement operation" %}
 
 To add a measurement to your circuit, drag and drop the measurement operation from the palette of quantum operations to the right of the **CX** operation.
 
@@ -100,7 +99,7 @@ Therefore, most of the time is sufficient to just observe the simulation results
 
 However, looking at the real result, the probabilities are not 50%. This is caused by noise and all sorts of technology limitations at the moment.
 
-![Screenshot 2020-12-11 at 17.36.07 (2).png](https://draftin.com:443/images/77325?token=BQ4Up0oNG_piPBTbK6YO0ugEiw7ixsrvrlZLa7sRHduFE0pCCPoqaLjdu6EFYElwHM7RajcG2p20DgrfaAyjxC8) 
+{% responsiveImage "/images/quantum-results-2.png" "Results of running the job" %}
 
 It is also possible to check the code version of the circuit we created.
 
