@@ -13,7 +13,7 @@ long_description: With Quantum Computing we are in a similar phase as Engineers
 metadata:
   description: Quantum computing in the financial world
   keywords: quantum computing, financial, monte carlo algorithm, circuit composer
-  image: /images/pexels-luis-miguel-p-bonilla-3583877.jpg
+  image: /images/pexels-pixabay-248280.jpg
   image_alt: Lightning bolt
 ---
 ## Introduction to Quantum computing
