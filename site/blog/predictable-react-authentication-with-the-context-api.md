@@ -19,9 +19,9 @@ Despite there being many React and authentication tutorials out there, I feel li
 
 ## Praise be the Context
 
-Authentication used to be a little tricky to handle, way back in prehistoric pre-hooks time. When I started learning React in 2017, using a top-level component to handle authentication or delegating it to Redux was the usual way. Some projects I’ve worked with just didn’t deal with it at all, just having a server-rendered login page that would only get to the React app after you provide effectively logged in. To be honest, I don’t really remember the exact details, so I’m just gonna skip right ahead to what I know.
+Authentication used to be a little tricky to handle, way back in prehistoric pre-hooks time. When I started learning React in 2017, using a top-level component to handle authentication or delegating it to Redux was the usual way. Some projects I’ve worked with just didn’t deal with it at all, just having a server-rendered login page that would only get to the React app after you effectively logged in. To be honest, I don’t really remember the exact details, so I’m just gonna skip right ahead to what I know.
 
-`useContext` is our new best tool here. I use it a ton for both complex, app-wide state management, or even on smaller multi-component APIs, like making a re-usable dropdown component. https://kentcdodds.com/blog/application-state-management-with-react Kent’s blog post is a great way to learn a bit more about the context API and how to use it effectively.
+`useContext` is our new best tool here. I use it a ton for both complex, app-wide state management, or even on smaller multi-component APIs, like making a re-usable dropdown component. [Kent’s blog post](https://kentcdodds.com/blog/application-state-management-with-react) is a great way to learn a bit more about the context API and how to use it effectively.
 
 So, in order to manage authentication, we will use React’s context API to make it available for every component on the app, so you can easily implement classic login/logout/sign-up logic on your projects.
 
@@ -31,7 +31,9 @@ I am going to assume that you have some sort of backend already set up. The exam
 
 Also, this is probably not ideal for 3rd party OAuth providers. To integrate with providers like Auth0, Google, Facebook, and others you should use their own SDKs instead of using the patterns I am going to show you. It’s just easier and their tools usually handle all of this.
 
-On our work, at Finiam we either use the already existing client API, which rarely includes OAuth providers, or we just roll out our own.
+On our work, at Finiam, we either use the already existing client API, which rarely includes OAuth providers, or we just roll out our own.
+
+And all code examples are written on Typescript. Feel free to strip the typing stuff so you can use these on regular Javascript projects.
 
 ## The plan
 
@@ -47,8 +49,8 @@ Now the first step is to communicate with your authentication backend. We are go
 
 If your backend handles with something like JWT bearer tokens, you can use `localStorage` for that. You just need to modify your HTTP client to use the returned token on all of the following requests. You can also store it on local storage so users should not login every time. Be advised, that for web applications, server-side cookie authentication still offers the best security! Check [this blog post](https://www.rdegges.com/2018/please-stop-using-local-storage/) for an accurate explanation about that.
 
-We abstracted away our backend API the following way:
-```
+We abstracted our backend API the following way:
+```tsx
 import * as sessionsApi from "root/api/sessions";
 import * as usersApi from "root/api/users";
 
@@ -61,11 +63,12 @@ sessionsApi.logout();
 // Returns a promise with a `user`
 usersApi.signUp({ name, email, password });
 
-// Returns a promise with the `user`. This returns the currently logged user, if any
+// Returns a promise with the `user`.
+// This returns the currently logged user, if any
 usersApi.getCurrentUser();
 ```
 
-All the methods above throw an error if something happens. Validation errors, wrong passwords, users not logged in, etc. 
+All the methods above throw an error if something happens. Validation errors, wrong passwords, users not logged in, etc.
 
 Now, on to the context stuff.
 
@@ -94,7 +97,9 @@ interface AuthContextType {
   logout: () => void;
 }
 
-const AuthContext = createContext<AuthContextType>({} as AuthContextType);
+const AuthContext = createContext<AuthContextType>(
+  {} as AuthContextType
+);
 
 // Export the provider as we need to wrap the entire app with it
 export function AuthProvider({
@@ -102,16 +107,13 @@ export function AuthProvider({
 }: {
   children: ReactNode;
 }): JSX.Element {
-  // Keep track of the current user
   const [user, setUser] = useState<User>();
-  // Keep track of any error
   const [error, setError] = useState<any>();
-  // Should be true if network requests are in progress
   const [loading, setLoading] = useState<boolean>(false);
-  // To keep track of the current user verification on startup
   const [loadingInitial, setLoadingInitial] = useState<boolean>(true);
-  // We are using `react-router` for this example, but feel free to omit this
-  // or use the router of your choice.
+  // We are using `react-router` for this example,
+  // but feel free to omit this or use the
+  // router of your choice.
   const history = useHistory();
 
   // Check if there is a currently active session
@@ -208,7 +210,7 @@ export default function useAuth() {
 Now this `useAuth.tsx` file exports both the `AuthProvider` and the `useAuth`. In order to use the hook, we need to wrap the entire app (or the parts that need authentication), with the provider.
 
 `App.tsx`
-```
+```tsx
 import React from "react";
 import useAuth, { AuthProvider } from "./useAuth";
 
@@ -259,8 +261,11 @@ export default function SignUpPage() {
   return (
     <form className={styles.root} onSubmit={handleSubmit}>
       <h1>Sign up</h1>
-       
-      {/* On a real world scenario, you should investigate the error object to see what's happening */}
+
+      {/*
+          On a real world scenario, you should investigate
+          the error object to see what's happening
+      */}
       {error && <p className={styles.error}>Sign up error!</p>}
 
       <label>
@@ -278,7 +283,11 @@ export default function SignUpPage() {
         <input name="password" type="password" />
       </label>
 
-      {/* While the network request is in progress, we disable the button. You can always add more stuff, like loading spinners and whatnot. */}
+      {/*
+        While the network request is in progress,
+        we disable the button. You can always add
+        more stuff, like loading spinners and whatnot.
+      */}
       <button disabled={loading}>Submit</button>
 
       <Link to="/login">Login</Link>
@@ -289,7 +298,7 @@ export default function SignUpPage() {
 
 Now, the login page.
 `LoginPage/index.tsx`
-```
+```tsx
 import React, { FormEvent } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../useAuth";
@@ -305,7 +314,10 @@ export default function Login() {
 
     const formData = new FormData(event.currentTarget);
 
-    login(formData.get("email") as string, formData.get("password") as string);
+    login(
+      formData.get("email") as string,
+      formData.get("password") as string
+    );
   }
 
   return (
@@ -324,7 +336,11 @@ export default function Login() {
 
       <button disabled={loading}>Submit</button>
 
-      {/* As I said above, these errors can happen for more reasons, like network errors. Control these as you desire! */}
+      {/*
+        As I said above, these errors can happen for
+        more reasons, like network errors.
+        Control these as you desire!
+      */}
       {error && <p className={styles.error}>Bad login/password</p>}
 
       <Link to="/sign_up">Sign Up</Link>
@@ -335,7 +351,7 @@ export default function Login() {
 
 Finally, let's just add a very simple home page so users go somewhere after logging in:
 `HomePage/index.tsx`
-```
+```tsx
 import React from "react";
 import useAuth from "../useAuth";
 
@@ -361,13 +377,20 @@ Now, let's revisit the root of our app. We are going to use `react-router-dom` t
 `App.tsx`
 ```tsx
 import React from "react";
-import { BrowserRouter, Switch, Route, RouteProps, Redirect } from "react-router-dom";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  RouteProps,
+  Redirect
+} from "react-router-dom";
 import useAuth, { AuthProvider } from "./useAuth";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
 import SignUpPage from "./SignUpPage";
 
-// As the router is wrapped with the provider, we can use our hook to check for a logged in user.
+// As the router is wrapped with the provider,
+// we can use our hook to check for a logged in user.
 function AuthenticatedRoute({ roles, ...props }: RouteProps) {
   const { user } = useAuth();
 
