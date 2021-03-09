@@ -5,23 +5,22 @@ title: Predictable React authentication with the Context API
 author: francisco-sousa
 category: development
 date: 2021-03-08T10:13:46.904Z
-long_description: tbd
+long_description: Managing authentication in React might feel like a non-intuitive task for many, due to the difficulty of maintaining global state on React. In this blog post, I make a not-so-deep dive, but still deep enough to make an intro to React's Context API and ways of keeping the global auth state without 3rd party dependencies.
 metadata:
   image: /images/react-auth-featured.jpg
   image_alt: A security guard in front of a building
-  description: Managing authentication in React might feel like a non-intuitive
-    task for many, due to being difficulty of maintaining global state on React.
-    However, React's context API is a great way of solving that, and in this
-    blog post, I'm going to show you how.
+  description: Managing authentication in React might feel like a non-intuitive task for many, due to the difficulty of maintaining global state on React.
+    However, React's context API is a great way of solving that, and in this blog post, I'm going to show you how.
   keywords: react, context, authentication, state, tutorial, learning
 ---
-Despite there being many React and authentication tutorials out there, I feel like I showcased this to too many people I mentored, so, this is a good time to share it with a greater audience. Let’s get to it.
+
+Despite there being many React and authentication tutorials out there, I feel like I showcased this to too many people I mentored over the past few months, so, this is a good time to share it with a greater audience. Let’s get to it.
 
 ## Praise be the Context
 
 Authentication used to be a little tricky to handle, way back in prehistoric pre-hooks time. When I started learning React in 2017, using a top-level component to handle authentication or delegating it to Redux was the usual way. Some projects I’ve worked with just didn’t deal with it at all, just having a server-rendered login page that would only get to the React app after you effectively logged in. To be honest, I don’t really remember the exact details, so I’m just gonna skip right ahead to what I know.
 
-`useContext` is our new best tool here. I use it a ton for both complex, app-wide state management, or even on smaller multi-component APIs, like making a re-usable dropdown component. [Kent’s blog post](https://kentcdodds.com/blog/application-state-management-with-react) is a great way to learn a bit more about the context API and how to use it effectively.
+`useContext` is our best bet today. I use it a ton for both complex, app-wide state management, or even on smaller multi-component APIs, like making a re-usable dropdown component. [Kent’s blog post](https://kentcdodds.com/blog/application-state-management-with-react) is a great way to learn a bit more about the context API and how to use it effectively.
 
 So, in order to manage authentication, we will use React’s context API to make it available for every component on the app, so you can easily implement classic login/logout/sign-up logic on your projects.
 
@@ -33,8 +32,6 @@ Also, this is probably not ideal for 3rd party OAuth providers. To integrate wit
 
 On our work, at Finiam, we either use the already existing client API, which rarely includes OAuth providers, or we just roll out our own.
 
-And all code examples are written on Typescript. Feel free to strip the typing stuff so you can use these on regular Javascript projects.
-
 ## The plan
 
 So, for our authentication management component, we have some basic requirements:
@@ -45,32 +42,55 @@ So, for our authentication management component, we have some basic requirements
 
 The plan is to provide these operations for the entire app using React’s context API and make them available with a simple `useAuth` hook, that allows us to read and manipulate the authentication.
 
-Now the first step is to communicate with your authentication backend. We are going to make simple HTTP calls with [redaxios](https://github.com/developit/redaxios). We just communicate with a few endpoints that manipulate server-side cookies to manage auth. There is no need to send authorization headers or manage tokens because all of the authentication is handled on the server-side and the browser just picks it up.
+Now the first step is to communicate with your authentication backend. We are going to make simple HTTP calls with [redaxios](https://github.com/developit/redaxios). We just communicate with a few endpoints that manipulate server-side cookies to manage auth. There is no need to send authorization headers or manage tokens because all of the authentication is handled on the server-side and the browser just picks it up. We just make the HTTP calls and the server handles everything!
 
 If your backend handles with something like JWT bearer tokens, you can use `localStorage` for that. You just need to modify your HTTP client to use the returned token on all of the following requests. You can also store it on local storage so users should not login every time. Be advised, that for web applications, server-side cookie authentication still offers the best security! Check [this blog post](https://www.rdegges.com/2018/please-stop-using-local-storage/) for an accurate explanation about that.
 
-We abstracted our backend API the following way:
+The code to interact with the sessions API, which handles login and logout.
+`api/sessions.tsx`
 ```tsx
-import * as sessionsApi from "root/api/sessions";
-import * as usersApi from "root/api/users";
+import redaxios from "redaxios";
 
-// Returns a promise with a `user`
-sessionsApi.login({ email, password });
+export async function login(params: {
+  email: string;
+  password: string;
+}): Promise<User> {
+  const response = await redaxios.post("/api/sessions", { session: params });
 
-// Returns a void promise
-sessionsApi.logout();
+  return response.data.data;
+}
 
-// Returns a promise with a `user`
-usersApi.signUp({ name, email, password });
+export async function logout() {
+  const response = await redaxios.delete("/api/sessions");
 
-// Returns a promise with the `user`.
-// This returns the currently logged user, if any
-usersApi.getCurrentUser();
+  return response.data.data;
+}
+```
+And the code to interact with the users API, that signs up users or fetches the currently authenticated user in the session.
+`api/users.tsx`
+```tsx
+import redaxios from "redaxios";
+
+export async function getCurrentUser(): Promise<User> {
+  const response = await redaxios.get("/api/user");
+
+  return response.data.data;
+}
+
+export async function signUp(params: {
+  email: string;
+  name: string;
+  password: string;
+}): Promise<User> {
+  const response = await redaxios.post("/api/user", { user: params });
+
+  return response.data.data;
+}
 ```
 
-All the methods above throw an error if something happens. Validation errors, wrong passwords, users not logged in, etc.
+All the methods above throw an error if something happens. Validation errors, wrong passwords, users not logged in, and other things like network errors and such.
 
-Now, on to the context stuff.
+Now, on to the context API stuff.
 
 `useAuth.tsx`
 ```tsx
@@ -97,9 +117,7 @@ interface AuthContextType {
   logout: () => void;
 }
 
-const AuthContext = createContext<AuthContextType>(
-  {} as AuthContextType
-);
+const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 // Export the provider as we need to wrap the entire app with it
 export function AuthProvider({
@@ -432,10 +450,13 @@ export default function App() {
 }
 ```
 
-Now you have protected routes that redirect anonymous users to the login page! And there you go, authentication for your apps, and also a moderately advanced look into the Context API.
+Now you have protected routes that redirect anonymous users to the login page!
+
 
 ## Wrapping up
 
-Now, please check [our Phoenix/React starter project](https://github.com/finiam/phoenix_starter) if you want to see this in action. The code is not 100% what you see in this tutorial, and might change as time goes on and our requirements change, but it's always going to be a great starting point with authentication already handled.
+Hope this is useful for you! This is pretty close to the scenarios we have in production, but the bulk of the logic is all here. Add some robust error handling and you are all set!
+
+Please check [our Phoenix/React starter project](https://github.com/finiam/phoenix_starter) if you want to see this in action. The code is not 100% what you see in this tutorial, and might change as time goes on and our requirements change, but it's always going to be a great starting point with authentication already handled.
 
 Stay safe 👋
