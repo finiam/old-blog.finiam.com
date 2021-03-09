@@ -38,7 +38,7 @@ Also, this is probably not ideal for 3rd party OAuth providers. To integrate wit
 
 On our work, at Finiam, we either use the already existing client API, which rarely includes OAuth providers, or we just roll out our own.
 
-## The plan
+## Time to code
 
 So, for our authentication management component, we have some basic requirements:
 - Allow login info to be submitted
