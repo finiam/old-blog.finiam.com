@@ -5,12 +5,18 @@ title: Predictable React authentication with the Context API
 author: francisco-sousa
 category: development
 date: 2021-03-08T10:13:46.904Z
-long_description: Managing authentication in React might feel like a non-intuitive task for many, due to the difficulty of maintaining global state on React. In this blog post, I make a not-so-deep dive, but still deep enough to make an intro to React's Context API and ways of keeping the global auth state without 3rd party dependencies.
+long_description: Managing authentication in React might feel like a
+  non-intuitive task for many, due to the difficulty of maintaining global state
+  on React. In this blog post, I make a not-so-deep dive, but still deep enough
+  to make an intro to React's Context API and ways of keeping the global auth
+  state without 3rd party dependencies.
 metadata:
   image: /images/react-auth-featured.jpg
   image_alt: A security guard in front of a building
-  description: Managing authentication in React might feel like a non-intuitive task for many, due to the difficulty of maintaining global state on React.
-    However, React's context API is a great way of solving that, and in this blog post, I'm going to show you how.
+  description: Managing authentication in React might feel like a non-intuitive
+    task for many, due to the difficulty of maintaining global state on React.
+    However, React's context API is a great way of solving that, and in this
+    blog post, I'm going to show you how.
   keywords: react, context, authentication, state, tutorial, learning
 ---
 
