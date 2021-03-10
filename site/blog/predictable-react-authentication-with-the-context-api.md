@@ -22,11 +22,11 @@ metadata:
 
 Despite there being many React and authentication tutorials out there, I feel like I showcased this to too many people I mentored over the past few months, so, this is a good time to share it with a greater audience. Let’s get to it.
 
+Authentication in React used to be a little tricky to handle, way back in prehistoric pre-hooks time. When I started learning React in 2017, using high-order components to handle authentication or delegating it to Redux was the usual way. Some projects I’ve worked with just didn’t deal with it at all, just having a server-rendered login page that would only get to the React app after you effectively logged in. To be honest, I don’t really remember the exact details, so I’m just gonna skip right ahead to what I know.
+
 ## Praise be the Context
 
-Authentication used to be a little tricky to handle, way back in prehistoric pre-hooks time. When I started learning React in 2017, using a top-level component to handle authentication or delegating it to Redux was the usual way. Some projects I’ve worked with just didn’t deal with it at all, just having a server-rendered login page that would only get to the React app after you effectively logged in. To be honest, I don’t really remember the exact details, so I’m just gonna skip right ahead to what I know.
-
-`useContext` is our best bet today. I use it a ton for both complex, app-wide state management, or even on smaller multi-component APIs, like making a re-usable dropdown component. [Kent’s blog post](https://kentcdodds.com/blog/application-state-management-with-react) is a great way to learn a bit more about the context API and how to use it effectively.
+`useContext` is our best bet today. I use it a ton for both complex, app-wide state management, or even on smaller multi-component APIs, like making a re-usable dropdown component (it's how the [reach-ui](https://reach.tech/menu-button/) folks do it). [Kent’s blog post](https://kentcdodds.com/blog/application-state-management-with-react) is a great way to learn a bit more about the context API and how to use it effectively if you have never heard of it before.
 
 So, in order to manage authentication, we will use React’s context API to make it available for every component on the app, so you can easily implement classic login/logout/sign-up logic on your projects.
 
