@@ -123,7 +123,9 @@ interface AuthContextType {
   logout: () => void;
 }
 
-const AuthContext = createContext<AuthContextType>({} as AuthContextType);
+const AuthContext = createContext<AuthContextType>(
+  {} as AuthContextType
+);
 
 // Export the provider as we need to wrap the entire app with it
 export function AuthProvider({
