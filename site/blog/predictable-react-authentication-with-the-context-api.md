@@ -20,9 +20,7 @@ metadata:
   keywords: react, context, authentication, state, tutorial, learning
 ---
 
-Despite there being many React and authentication tutorials out there, I feel like I showcased this to too many people I mentored over the past few months, so, this is a good time to share it with a greater audience. Let’s get to it.
-
-Authentication in React used to be a little tricky to handle, way back in prehistoric pre-hooks time. When I started learning React in 2017, using high-order components to handle authentication or delegating it to Redux was the usual way. Some projects I’ve worked with just didn’t deal with it at all, just having a server-rendered login page that would only get to the React app after you effectively logged in. To be honest, I don’t really remember the exact details, so I’m just gonna skip right ahead to what I know.
+Despite there being many React and authentication tutorials out there, I feel like I showcased this to too many people I mentored over the past few months, so, this is a good time to share it with a greater audience. Authentication is an app-wide concern, and therefore a global state issue. For many, keeping global state in React is a tricky task, however, React has had a nice way of handling "sort of" global state, with the context API and hooks. Let's see how.
 
 ## Praise be the Context
 
