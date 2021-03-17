@@ -34,9 +34,9 @@ So, in order to manage authentication, we will use React’s context API to make
 
 I am going to assume that you have some sort of backend already set up. The examples I am going to show you are present on our [phoenix starter template](https://github.com/finiam/phoenix_starter). You can replace the API calls here with anything you have available. All of the code on this tutorial is there.
 
-Also, this is probably not ideal for 3rd party OAuth providers. To integrate with providers like Auth0, Google, Facebook, and others you should use their own SDKs instead of using the patterns I am going to show you. It’s just easier and their tools usually handle all of this.
+Also, this is probably not ideal for 3rd party OAuth providers. To integrate with providers like Auth0, Google, Facebook, and others, you should use their own SDKs instead of using the patterns I am going to show you. It’s just easier and their tools usually handle all of this.
 
-On our work, at Finiam, we either use the already existing client API, which rarely includes OAuth providers, or we just roll out our own.
+On our work, at Finiam, we usually roll out our own authentication APIs together with the backend or we use whatever the client is using, which rarely includes OAuth providers.
 
 ## Time to code
 
@@ -50,7 +50,7 @@ The plan is to provide these operations for the entire app using React’s conte
 
 Now the first step is to communicate with your authentication backend. We are going to make simple HTTP calls with [redaxios](https://github.com/developit/redaxios). We just communicate with a few endpoints that manipulate server-side cookies to manage auth. There is no need to send authorization headers or manage tokens because all of the authentication is handled on the server-side and the browser just picks it up. We just make the HTTP calls and the server handles everything!
 
-If your backend handles with something like JWT bearer tokens, you can use `localStorage` for that. You just need to modify your HTTP client to use the returned token on all of the following requests. You can also store it on local storage so users should not login every time. Be advised, that for web applications, server-side cookie authentication still offers the best security! Check [this blog post](https://www.rdegges.com/2018/please-stop-using-local-storage/) for an accurate explanation about that.
+If your backend handles with something like JWT bearer tokens, you can use `localStorage` for that. You just need to modify your HTTP client to use the returned token on all of the following requests. You can also store it on local storage so users should not login every time. Be advised, that for web applications, server-side cookie authentication still offers the best security! Check [this blog post](https://www.rdegges.com/2018/please-stop-using-local-storage/) for an accurate explanation about that. **Avoid using localStorage**.
 
 The code to interact with the sessions API, which handles login and logout.
 `api/sessions.tsx`
