@@ -106,7 +106,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import * as sessionsApi from "./api/sessions";
 import * as usersApi from "./api/users";
 
@@ -139,6 +139,12 @@ export function AuthProvider({
   // but feel free to omit this or use the
   // router of your choice.
   const history = useHistory();
+  const location = useLocation();
+
+  // Reset the error state if we change page
+  useEffect(() => {
+    if (error) setError(undefined);
+  }, [location.pathname]);
 
   // Check if there is a currently active session
   // when the provider is mounted for the first time.
