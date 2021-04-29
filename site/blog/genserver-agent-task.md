@@ -68,7 +68,8 @@ We're gonna talk about Supervisors, GenServers, Agents, and Tasks.
 ## Supervisor
 
 Supervises processes with configuration which determines if/when/how a process that it is supervising is restarted. These should be used, either via explicit or dynamic or task supervisors, to supervise almost all of your processes. You almost always want your worker processes supervised in some way.
-![inclappls.gif](https://draftin.com:443/images/78442?token=3TldHGerkaQwOVhPJhoudwcGQxi-6U4lY-ZS1ft6MCfNhbo_hpgYqoA5Od3fz4svPKc8toe7PToZOb78Nc0U2XE) 
+
+{% responsiveImage "/images/untitled-diagram.png" "supervisor tree" %}
 
 Taken from the elixir doc we can see how to set up a supervisor with a child process called stack where the init parameter is a list with the atom `:hello`:
 
@@ -129,7 +130,7 @@ defmodule Queue do
   def dequeue, do: GenServer.call(__MODULE__, :dequeue)
   def enqueue(value), do: GenServer.cast(__MODULE__, {:enqueue, value})
   
-  ### Private APIEles estão a falar muito de "carts"
+  ### Private API
 ￼
 
   def init(state), do: {:ok, state}
