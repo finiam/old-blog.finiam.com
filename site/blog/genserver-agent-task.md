@@ -23,7 +23,7 @@ However, I see a lot of newcomers that don't make use of these features and don'
 
 Elixir uses the Erlang virtual machine (BEAM), that uses actors to describe concurrency, in other words, a contained process that communicates with other processes through message passing
 
-![actors.png](https://draftin.com:443/images/78441?token=kVH8-QKVZ3QhkNqG9JuW0y_olgt-sgmPRsFcFwT7w8fgkr1oBWoj-w5cBLgQiHH5MDHfyVdUcnFGT2fCg5N1lhQ) 
+![Untitled Diagram(5).png](https://draftin.com:443/images/78569?token=nBJWPKsxfWHoSQRILYWnpB7j2A4wXSzn8Bw6QHw3spcr2KANDaqPpgOJH_g2fSxOs1cuFNxYthW1x1kfbOAUUq8) 
 
 ## Process send and receive
 
@@ -49,9 +49,7 @@ end
 iex> pid = spawn(Example, :listen, [])
 #PID<0.108.0>
 
-iex> send pid, {:ok, "hello"}Eles estão a falar muito de "carts"
-￼
-
+iex> send pid, {:ok, "hello"}
 World
 {:ok, "hello"}
 
