@@ -1,7 +1,7 @@
 ---
 layout: layouts/post.liquid
 tags: post
-title: Ruby vs Elixir
+title: Ruby and Elixir - A brief comparison
 author: davide-silva
 category: development
 date: 2021-05-17T12:23:42.571Z
