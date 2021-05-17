@@ -46,7 +46,7 @@ One of the things that made programmers very excited about Elixir is that buildi
 
 Pattern matching and the pipe operator are also two big factors why developers seem to like Elixir so much. This often leads to functional, prettier code that is also easier to reason and maintain. With the pipe operator, `|>`, we can treat a series of function calls or data transformations as a single chain of operations. Instead of wrapping function calls with another, we use the pipe operator to pass our data to the first argument of the next function. The following snippet shows two ways of writing the same logic, but one is easier to read than the other:
 
-elixir
+```elixir
 String.reverse(String.downcase(String.trim("Hello world! ")))
 
 "Hello world! "
@@ -63,8 +63,9 @@ Being a very recent language, the Elixir ecosystem is lacking in the resources a
 
 ```ruby
 "Hello world!".length
+```
 
-elixir
+```elixir
 String.length("Hello world!")
 ```
 
@@ -76,4 +77,4 @@ If this sparked your interest and you want to see a more concrete example of Eli
 
 In the end, the positives and negatives of a language/framework are something that should always be considered before picking one for building an MVP. We shouldn't blindly pick the new shiny thing simply because it might not be the best solution for the problem we are trying to solve. This doesn't mean that we should always pick the same tools to solve any problem we are faced with. If the restraints of the problem align with our tools of choice, then the decision is easy. But if the problem asks for another tool set, there are plenty more to choose from. The important bit is to do some research beforehand and carefully weigh the pros and cons before making a decision.
 
-Stay safe! 
+Stay safe!
