@@ -47,7 +47,7 @@ One of the things that made programmers very excited about Elixir is that buildi
 Pattern matching and the pipe operator are also two big factors why developers seem to like Elixir so much. This often leads to functional, prettier code that is also easier to reason and maintain. With the pipe operator, `|>`, we can treat a series of function calls or data transformations as a single chain of operations. Instead of wrapping function calls with another, we use the pipe operator to pass our data to the first argument of the next function. The following snippet shows two ways of writing the same logic, but one is easier to read than the other:
 
 ```
-# elixir
+elixir
 
 String.reverse(String.downcase(String.trim("Hello world! ")))
 
