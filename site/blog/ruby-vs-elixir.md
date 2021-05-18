@@ -27,18 +27,18 @@ A minimum viable product (MVP) is a great way of testing and learning new insigh
 Therefore, the time of development of an MVP would, ideally, be the shortest possible. In order to achieve that, a software development team must choose a framework that would allow the rapid prototyping of the MVP as well as allow a sudden need of pivoting or scaling.
 The constant evolution of software methodologies and web frameworks means that choosing one framework over another is not always a trivial choice.
 
-# Ruby on Rails
+## Ruby on Rails
 
 Since its release in 2004, Ruby on Rails attracted a lot of attention from the tech startup world as it caused a shift in the way web applications are developed. The sensible defaults provided by the framework, the active community providing the necessary tooling that helps speed up development even further, being an open-source framework and the ease of scalability of a Rails application make Ruby on Rails a prime candidate for the rapid prototyping of a web application. Developers spend most of their time implementing actual features instead of debating over design choices of little to no impact to the end-user.
 
 Many of the notorious and largest tech startups of today, Twitter, GitHub, Shopify, to name a few, did their first steps with Ruby on Rails. And while Ruby on Rails is an obvious choice for bootstrapping an application, there is also concrete proof that it performs well under heavy load and in scale. [Shopify reported](https://news.shopify.com/shopify-merchants-break-records-with-51-billion-in-worldwide-sales-over-black-fridaycyber-monday-weekend-354749) "sales of $5.1+ billion from the more than one million Shopify-powered brands around the world" during the Black Friday and Cyber Monday of 2020. At the peak of Black Friday, they were able to process $102+ million in sales during an hour. They achieved this using a monolithic Ruby on Rails application. Like Shopify, GitHub also runs Ruby on Rails in their production environment, having spent considerable time and effort into upgrading both Rails and Ruby to the latest stable versions available.
 
-# Ruby on Rails downsides
+## Ruby on Rails downsides
 
 Despite these and many other success cases, Rails interest has been declining over the last few years.
 One possible reason for the decline in popularity seen recently in Rails is directly related to the fact that it brings lot of opinionated tools and makes choices for the developer that will work perfectly as long as you use the framework as it is. Changing these tools for other alternatives requires extra work, that might not always be trivial. The Convention over Configuration doctrine is good for most use cases but when some custom configuration is needed, Rails makes it harder than it should to change its defaults. After a few years as the de facto web framework used by most tech startups, and despite still being a perfectly valid choice for a rapid prototype or as a web framework by itself, companies and developers are starting to move away from Rails in search of valid alternatives. Many tech startups started to look closely into Elixir, and its web framework Phoenix, as a possible substitute to Rails.
 
-# Elixir
+## Elixir
 
 Elixir started to make waves in the tech world by promising the fault-tolerance, highly scalable and easily distributed properties of the Erlang VM with a Rails- like syntax and an active community. The creator of Elixir, José Valim, is a former Ruby/Rails core contributor and brought many of the good practices and positives of Ruby/Rails to Elixir. The appearance of a new language that promises the better parts of Rails, without its most known downsides, and that is built upon a battle-tested language like Erlang has caused a buzz in the tech startup world. Despite the fairly recent release of Elixir, being first released in 2011, it builds on top of the Erlang VM that has been around since the 1980s and is used by some of the largest telecommunication companies in the world, like Ericsson, Cisco, Samsung, and WhatsApp.
 
@@ -57,7 +57,7 @@ String.reverse(String.downcase(String.trim("Hello world! ")))
 
 Unlike Ruby, Elixir is also a language that has everything figured out. It has an [official built-in linter](https://hexdocs.pm/mix/master/Mix.Tasks.Format.html) that is part of the core of the language. There is also an [official release manager](https://hexdocs.pm/mix/Mix.Tasks.Release.html) that is also built-in in the language. A [unit testing framework](https://hexdocs.pm/ex_unit/ExUnit.html) is also shipped with Elixir, meaning there is no need to install third-party dependencies just to get some basic quality of life tools.
 
-# Elixir downsides
+## Elixir downsides
 
 Being a very recent language, the Elixir ecosystem is lacking in the resources and libraries one would find in the Rails ecosystem, as well as the scale of the existing community. The number of Elixir developers pales in comparison to the number of Ruby/Rails developers but the existing community is very active and responsive, always striving to improve the ecosystem. Another factor that might cause some resistance in adopting Elixir is the fact that it is a functional programming language. Instead of calling a method on an object, in Elixir, we call a function of a module and you pass the data to that function. This is not a problem with the language itself, but this shift in thinking might deter some programmers who are more comfortable with imperative or object-oriented programming. Coming from one of those paradigms to Elixir without having a background or some experience in functional programming might take some time to get used to. As a very quick example, here's how to get the length of a string in both languages:
 
@@ -73,7 +73,7 @@ String.length("Hello world!")
 
 As you can see, in Ruby we call the `length` method on an instance of the `String` object that contains the phrase "Hello world!" while in Elixir we call the `length` function of the `String` module and we pass our "Hello World!" phrase as an argument to that function. It's similar but involves a shift in the way you think about a problem.
 
-# Wrapping Up
+## Wrapping Up
 
 If this sparked your interest and you want to see a more concrete example of Elixir being used, you can take a look at Diogo and his [Simulations with Elixir](https://blog.finiam.com/blog/simulations-with-elixir-and-the-actor-model/).
 
