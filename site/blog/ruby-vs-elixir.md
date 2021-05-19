@@ -18,7 +18,7 @@ metadata:
     a world in constant evolution, the need to quickly change gears and pivot a
     business idea into another opportunity is of great importance.
   image_alt: railway tracks
-  image: /images/ruby-vs-elixir-cover.jpg
+  image: /images/ruby-vs-elixir-cover.png
 ---
 In the world of tech startups, time is an essential factor in the success of a company. Who can deliver the best work in the shortest amount of time gains a competitive edge over the competition. Not only that but in a world in constant evolution, the need to quickly change gears and pivot a business idea into another opportunity is of great importance.
 
