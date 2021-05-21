@@ -2,7 +2,7 @@
 layout: layouts/post.liquid
 tags: post
 title: Simulations with Elixir and the Actor Model
-author: jose-diogo
+author: diogo-viana
 category: development
 date: 2021-01-12T10:56:02.236Z
 long_description: >-
@@ -19,7 +19,7 @@ metadata:
   image: /images/pexels-cleyder-duque-3637834.jpg
   image_alt: man working in a wood workshop
 ---
-Is there anyone else about to read this, as fascinated as I am by simulations? A simulation of a game, weather, aerodynamic behavior, or any other action, has intrinsically the same goal - take a peek into the future and see how things will perform in real life. 
+Is there anyone else about to read this, as fascinated as I am by simulations? A simulation of a game, weather, aerodynamic behavior, or any other action, has intrinsically the same goal - take a peek into the future and see how things will perform in real life.
 
 These simulations all require an extent of calculations and variables to take into account, but also a model that will elegantly run through them.
 
@@ -39,7 +39,7 @@ In this workshop, not all orders have the same processing. A chair may not need 
 
 {% responsiveImage "/images/elixir-simulations-2.jpg" "Representation of how we can look at a workstation as an Actor" %}
 
-If we were about to score a big deal with a major client, but we don't know if we can handle the request in time, given that we have already so many orders in the shop, how can we decide on that? Simulation Time! 
+If we were about to score a big deal with a major client, but we don't know if we can handle the request in time, given that we have already so many orders in the shop, how can we decide on that? Simulation Time!
 
 Assuming that we know how much time each process takes, and the types of processing each order needs, we can verify when all of our registered orders, together with the new one, will be completed. I know these calculations could be done by hand, (yeah yeah) but bear with me on this one.
 
@@ -51,7 +51,7 @@ Looking at workstations as if they were picking an order from the pile/queue, "d
 
 ## Quick intro to Elixir and Actors
 
-Continuing with the same thought, we identify some Actor Model programming characteristics. In response to a message it receives, an actor can: 
+Continuing with the same thought, we identify some Actor Model programming characteristics. In response to a message it receives, an actor can:
 
 * make local decisions;
 * create more actors;
@@ -74,16 +74,16 @@ In our carpentry workshop, events can be treated as discrete. So in our simulati
 
 ## Step by step
 
-Guess the boring talk is over and it's now time to put the ideas into work. 
+Guess the boring talk is over and it's now time to put the ideas into work.
 
-Here, I'll use [GenServers](https://hexdocs.pm/elixir/GenServer.html), as workstations. With the **Erlang** and **GenServer** characteristics, a process has a FIFO "mailbox", ensuring the ordering of the messages received by each workstation. If **process A** sends messages **x** and **y**, by this order, to **process B**, we know that it'll receive them by the same order. 
+Here, I'll use [GenServers](https://hexdocs.pm/elixir/GenServer.html), as workstations. With the **Erlang** and **GenServer** characteristics, a process has a FIFO "mailbox", ensuring the ordering of the messages received by each workstation. If **process A** sends messages **x** and **y**, by this order, to **process B**, we know that it'll receive them by the same order.
 
 ```elixir
 # Process A
 send(B, x)
 send(B, y)
 
-# Process B 
+# Process B
 receive() # => x
 receive() # => y
 ```
@@ -98,7 +98,7 @@ send(B, y)
 # Process C
 send(B, w)
 
-# Process B 
+# Process B
 receive() # => w || x
 receive() # => w || x || y
 receive() # => w || y
@@ -155,12 +155,12 @@ def start_link(place_id) do
       events: events,
     }
   )
-  
+
   next = hd(events)
     events
     |> hd
     |> finish_processing_timestamp
-  send(SimManager, {:next_event, next, place_id} 
+  send(SimManager, {:next_event, next, place_id}
 end
 
 def get_events_list do
@@ -170,7 +170,7 @@ def get_events_list do
    |> CarpentryWorkhop.
        Orders.sort_by_delivery_time(events)
 end
- 
+
 def finish_processing_timestamp do
     # Based on the type of order
     # Calculate end processing time
@@ -183,7 +183,7 @@ end
 def handle_info({:next_event, event, sender}, state) do
   ordered = insert_ordered(state.events, event, sender)
   awaiting = state.awaiting -- [sender]
-  {rest_events, next_step} = 
+  {rest_events, next_step} =
     send_next_event(ordered, awaiting)
   ...
 end
@@ -236,6 +236,6 @@ After gluing every missing part of this simulation, our workshop is now ready to
 
 ## Wrapping up
 
-We demonstrated some of the advantages of using **Elixir** for distributed algorithms/problems. However, use this kind of distributed approach with caution, as it can introduce all sorts of bugs. And believe me, you won't like debugging distributed stuff...  
+We demonstrated some of the advantages of using **Elixir** for distributed algorithms/problems. However, use this kind of distributed approach with caution, as it can introduce all sorts of bugs. And believe me, you won't like debugging distributed stuff...
 
 Hope I got you a little bit more interested in simulations in general and taking advantage of the actor model to solve exquisite problems.

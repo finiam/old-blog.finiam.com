@@ -13,6 +13,7 @@
   "dependencies": {
     "@11ty/eleventy-plugin-rss": "^1.1.0",
     "instant.page": "^5.1.0",
+    "prismic-javascript": "^3.0.2",
     "vanilla-lazyload": "^17.3.0"
   },
   "devDependencies": {

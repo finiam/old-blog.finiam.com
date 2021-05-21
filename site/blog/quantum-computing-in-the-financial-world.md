@@ -2,7 +2,7 @@
 layout: layouts/post.liquid
 tags: post
 title: Quantum computing in the financial world
-author: jose-diogo
+author: diogo-viana
 category: development
 date: 2021-02-23T13:54:34.088Z
 long_description: With Quantum Computing we are in a similar phase as Engineers
@@ -44,7 +44,7 @@ According to IBM, [here](https://www.ibm.com/quantum-computing/technology/quantu
 
 Quantum computers can run whole-market simulations better in finding patterns, performing classifications, and making predictions that are not possible today with classical computers.
 
-JPMorgan Chase wants to be ready for the quantum leap. The company has an unofficial leader, with the task to build a “quantum culture”, trying to discover how quantum computing can change the financial industry. 
+JPMorgan Chase wants to be ready for the quantum leap. The company has an unofficial leader, with the task to build a “quantum culture”, trying to discover how quantum computing can change the financial industry.
 
 Barclays first started to explore quantum computing in 2017 and concluded that quantum computing’s potential was so great that they should commit to an initial program of research and development.
 
@@ -95,7 +95,7 @@ The measurement result is recorded as a classical bit on the classical register.
 
 You have now built your first quantum circuit. The visualization panels below your circuit give a simulated result that updates automatically as you add and remove operations. But you can also run the job in one real quantum computer, by clicking the top right corner button. It is possible to configure some settings, like system, provider, or shots (the number of times to run the code). Running jobs can take some time, depending on the number of jobs in the queue, so be prepared for that.
 
-Therefore, most of the time is sufficient to just observe the simulation results. By looking at **Measurement Probabilities**, we can conclude that the final state of our little circuit has a 50% chance to be **|000>** or **|001>**. 
+Therefore, most of the time is sufficient to just observe the simulation results. By looking at **Measurement Probabilities**, we can conclude that the final state of our little circuit has a 50% chance to be **|000>** or **|001>**.
 
 However, looking at the real result, the probabilities are not 50%. This is caused by noise and all sorts of technology limitations at the moment.
 

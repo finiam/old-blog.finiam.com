@@ -1,7 +1,16 @@
+class NetlifyConfig {
+  data() {
+    return {
+      permalink: "/admin/config.yml",
+    };
+  }
+
+  render(data) {
+    return `
 backend:
   name: github
   repo: finiam/blog.finiam.com
-  squash_merges: true
+squash_merges: true
 publish_mode: editorial_workflow
 media_folder: "static/images"
 public_folder: "/images"
@@ -16,7 +25,10 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.liquid" }
       - { label: "Tags", name: "tags", widget: "hidden", default: "post" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Author", name: "author", widget: "relation", collection: "authors", search_fields: ["name"], value_field: "{{slug}}" }
+      - label: "Author"
+        name: "author"
+        widget: "select"
+        options: ${JSON.stringify(data["authors"])}
       - label: "Category"
         name: "category"
         widget: "select"
@@ -32,13 +44,8 @@ collections:
           - { label: "Description", name: "description", widget: "text" }
           - { label: "Keywords", name: "keywords", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
-  - name: "authors"
-    label: "Authors"
-    folder: "site/_data/authors"
-    extension: "json"
-    create: true
-    slug: "{{name}}"
-    fields:
-      - { label: "Name", name: "name", widget: string }
-      - { label: "Role", name: "role", widget: string }
-      - { label: "Avatar", name: "avatar", widget: image }
+    `;
+  }
+}
+
+module.exports = NetlifyConfig;

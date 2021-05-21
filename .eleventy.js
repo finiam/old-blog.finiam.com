@@ -8,9 +8,17 @@ const markdownItRenderer = new markdownIt({ html: true }).use(
   mdImplicitFigures,
 );
 const image = require("./utils/image");
+const { getAuthor } = require("./utils/prismic");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.setTemplateFormats(["html", "liquid", "njk", "md"]);
+  eleventyConfig.setTemplateFormats([
+    "html",
+    "liquid",
+    "njk",
+    "md",
+    "yml",
+    "11ty.js",
+  ]);
 
   eleventyConfig.setDataDeepMerge(true);
 
@@ -39,13 +47,15 @@ module.exports = function (eleventyConfig) {
   );
 
   eleventyConfig.addCollection("posts", (collectionApi) =>
-    collectionApi.getFilteredByGlob(["site/blog/*.md"]).map((post) => {
-      if (post.data.author) {
-        post.data.author = require(`./site/_data/authors/${post.data.author}.json`);
-      }
+    Promise.all(
+      collectionApi.getFilteredByGlob(["site/blog/*.md"]).map(async (post) => {
+        if (post.data.author) {
+          post.data.author = await getAuthor(post.data.author);
+        }
 
-      return post;
-    }),
+        return post;
+      }),
+    ),
   );
 
   eleventyConfig.addShortcode("image", async (src, alt, klass = "") =>
