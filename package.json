@@ -2,8 +2,8 @@
   "browserslist": ">2%, not dead",
   "scripts": {
     "predev": "npm run clean",
-    "dev": "NODE_ENV=development snowpack dev",
-    "build": "NODE_ENV=production snowpack build",
+    "dev": "snowpack dev",
+    "build": "eleventy && snowpack build",
     "postbuild": "yarn optimize-fonts",
     "clean": "rm -rf build _output _cache",
     "optimize-fonts": "subfont build --in-place --no-fallbacks --font-display block --recursive",

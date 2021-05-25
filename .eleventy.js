@@ -1,4 +1,3 @@
-if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const eleventyHelmetPlugin = require("eleventy-plugin-helmet");
