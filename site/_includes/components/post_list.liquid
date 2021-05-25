@@ -1,15 +1,12 @@
-{% assign sorted_posts = posts | sort: "title" | reverse %}
-
-{% if sorted_posts.length > 0 %}
+{% if posts.length > 0 %}
   <ul class="grid gap-x-gutter gap-y-96 grid-cols-2 px-56 md:px-0 md:gap-y-72">
-    {% assign first_post = sorted_posts | first %}
+    {% assign first_post = posts | first %}
+
 
     <li class="flex flex-col col-span-2">
       <div class="h-336 w-full bg-gray-light">
-        <a href="{{ first_post.url | url }}">
-          {% if first_post.data.metadata.image %}
-            {% responsiveImage first_post.data.metadata.image first_post.data.metadata.image_alt "h-336 w-full object-cover object-center" %}
-          {% endif %}
+        <a href="/blog/{{ first_post.slug.current | slug }}">
+          {% responsiveImage first_post.featured_image.asset.url first_post.featured_image_alt "h-336 w-full object-cover object-center" %}
         </a>
       </div>
 
@@ -17,57 +14,44 @@
         <div class="flex flex-col lg:mb-40">
           <a
             class="block text-xl md:text-xl mr-column-spacing md:mr-0 font-edgy font-bold"
-            href="{{ first_post.url | url }}"
+            href="/blog/{{ first_post.slug.current | slug }}"
           >
-            {{ first_post.data.title }}
+            {{ first_post.title }}
           </a>
 
           <div class="lg:hidden mt-40">
-            {% include components/author,
-              author: first_post.data.author,
-              category: first_post.category,
-              date: first_post.date %}
+            {% include components/author, post: first_post %}
           </div>
         </div>
 
-        <a class="md:mt-0 mt-8 prose text-lg font-serif" href="{{ first_post.url | url }}">
-          {{ first_post.data.long_description | markdownify }} →
+        <a class="md:mt-0 mt-8 prose text-lg font-serif" href="/blog/{{ first_post.slug.current | slug }}">
+          {{ first_post.long_description | markdownifyInline }} →
         </a>
 
         <div class="hidden lg:block lg:mt-40 md:mt-32">
-          {% include components/author,
-            author: first_post.data.author,
-            category: first_post.category,
-            date: first_post.date %}
+          {% include components/author, post: first_post %}
         </div>
       </div>
     </li>
 
-    {%- for post in sorted_posts offset: 1 -%}
+    {%- for post in posts offset: 1 -%}
     <li class="flex flex-col lg:col-span-2">
       <div class="h-336 w-full bg-gray-light">
-        <a href="{{ post.url | url }}">
-          {% if post.data.metadata.image %}
-            {% responsiveImage post.data.metadata.image post.data.metadata.image_alt "h-336 w-full object-cover" %}
-          {% endif %}
+        <a href="/blog/{{ post.slug.current | slug }}">
+          {% responsiveImage post.featured_image.asset.url post.featured_image_alt "h-336 w-full object-cover object-center" %}
         </a>
       </div>
 
       <div class="md:px-gutter">
-        <a class="block text-xl md:text-xl mt-32 font-edgy font-bold" href="{{ post.url | url }}">
-          {{ post.data.title }}
+        <a class="block text-xl md:text-xl mt-32 font-edgy font-bold" href="/blog/{{ post.slug.current | slug }}">
+          {{ post.title }}
         </a>
 
-        <a class="block my-40 md:my-32 font-serif prose text-lg" href="{{ post.url | url }}">
-          {{ post.data.long_description | markdownify }} →
+        <a class="block my-40 md:my-32 font-serif prose text-lg" href="/blog/{{ post.slug.current | slug }}">
+          {{ post.long_description | markdownifyInline }} →
         </a>
 
-        {%
-          include components/author,
-            author: post.data.author,
-            category: post.category,
-            date: post.date
-        %}
+        {% include components/author, post: post %}
       </div>
     </li>
     {%- endfor -%}

@@ -3,5 +3,5 @@ layout: layouts/base.liquid
 title: Development Blog - Finiam
 ---
 
-{% assign posts = collections.post | where: "data.category", "development" %}
+{% assign posts = blog_posts | where: "category", "development" %}
 {% include components/post_list, posts: posts %}
