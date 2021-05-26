@@ -1,12 +1,13 @@
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const eleventyHelmetPlugin = require("eleventy-plugin-helmet");
 const markdownIt = require("markdown-it");
 const mdImplicitFigures = require("markdown-it-implicit-figures");
+const mdPrism = require("markdown-it-prism");
 const htmlmin = require("html-minifier");
-const markdownItRenderer = new markdownIt({ html: true }).use(
-  mdImplicitFigures,
-);
+const markdownItRenderer = new markdownIt({ html: true })
+  .use(mdImplicitFigures)
+  .use(mdPrism);
 const image = require("./utils/image");
 
 module.exports = function (eleventyConfig) {
@@ -14,13 +15,15 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setDataDeepMerge(true);
 
-  eleventyConfig.addPlugin(syntaxHighlight);
-
   eleventyConfig.addPlugin(eleventyHelmetPlugin);
 
   eleventyConfig.addPlugin(pluginRss);
 
   eleventyConfig.addFilter("markdownify", (str) =>
+    markdownItRenderer.render(str),
+  );
+
+  eleventyConfig.addFilter("markdownifyInline", (str) =>
     markdownItRenderer.renderInline(str),
   );
 
@@ -36,16 +39,6 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("getAuthor", (authorKey) =>
     require(`./site/_data/authors/${authorKey}.json`),
-  );
-
-  eleventyConfig.addCollection("posts", (collectionApi) =>
-    collectionApi.getFilteredByGlob(["site/blog/*.md"]).map((post) => {
-      if (post.data.author) {
-        post.data.author = require(`./site/_data/authors/${post.data.author}.json`);
-      }
-
-      return post;
-    }),
   );
 
   eleventyConfig.addShortcode("image", async (src, alt, klass = "") =>

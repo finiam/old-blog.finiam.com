@@ -1,13 +1,13 @@
 <div class="flex flex-row items-center">
   <div class="w-32 h-32 mr-16">
-    {% include components/author_avatar, author: author %}
+    {% include components/author_avatar, author: post.author %}
   </div>
 
   <p class="text-gray">
-    {% if category %}
-      {{ author.name }} · {{ category | capitalize }} · {{ date | date: "%B %Y" }}
+    {% if post.category %}
+      {{ post.author.name }} · {{ post.category | capitalize }} · {{ post.published_at | date: "%B %Y" }}
     {% else %}
-      {{ author.name }} · {{ date | date: "%B %Y" }}
+      {{ post.author.name }} · {{ post.published_at | date: "%B %Y" }}
     {% endif %}
   </p>
 </div>

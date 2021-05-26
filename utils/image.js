@@ -1,12 +1,18 @@
 const sharp = require("sharp");
 const fs = require("fs");
 const path = require("path");
+const fetch = require("node-fetch");
 const hash = require("./hash");
 
 const CACHE = {};
 const IMAGES_ROOT = "./static/";
+const DOWNLOAD_PATH = "./_output/downloaded_images/";
 const OUTPUT_PATH = "./_output/optimized_images/";
 const URL_PATH = "/optimized_images/";
+
+if (!fs.existsSync(DOWNLOAD_PATH))
+  fs.mkdirSync(DOWNLOAD_PATH, { recursive: true });
+if (!fs.existsSync(OUTPUT_PATH)) fs.mkdirSync(OUTPUT_PATH, { recursive: true });
 
 // DO NOT IDENT THIS PLEASE OTHERWHISE IT WILL BREAK
 // A LIMTATION FROM MARKDOWN-IT
@@ -32,9 +38,6 @@ async function generateImage(sharpImage, fileName, width = null) {
   sharpImage.resize({
     width: width ? width : defaultImgWidth,
   });
-
-  if (!fs.existsSync(OUTPUT_PATH))
-    fs.mkdirSync(OUTPUT_PATH, { recursive: true });
 
   await Promise.all([
     saveSharpImage(sharpImage, path.join(OUTPUT_PATH, `${fileName}.avif`)),
@@ -95,10 +98,25 @@ module.exports = async (src, alt, klass, responsive = false) => {
 
     if (!src) return;
 
-    if (process.env.NODE_ENV !== "production")
+    if (process.env.NODE_ENV !== "production") {
       return skipOptimization(src, alt, klass);
+    }
 
-    const inputPath = path.join(IMAGES_ROOT, src);
+    let inputPath;
+
+    // Download image if it's remote
+    if (src.startsWith("https://") || src.startsWith("http://")) {
+      const url = new URL(src);
+      const response = await fetch(src);
+      const buffer = await response.buffer();
+      inputPath = path.join(DOWNLOAD_PATH, url.pathname.replace(/\//g, "-"));
+
+      // Skip if file is already downloaded
+      if (!fs.existsSync(inputPath)) fs.writeFileSync(inputPath, buffer);
+    }
+    // Set the input path to the static images folder if it's not remote
+    else inputPath = path.join(IMAGES_ROOT, src);
+
     const imageHash = (await hash(inputPath)).slice(0, 20);
     let imageStats = CACHE[imageHash];
 

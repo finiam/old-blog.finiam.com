@@ -5,3 +5,4 @@ node_modules/
 _output/
 _cache/
 .DS_Store
+.env
