@@ -2,8 +2,8 @@ const glob = require("glob");
 
 module.exports = {
   mount: {
-    _output: "/",
-    static: "/",
+    _output: { url: '/', static: true },
+    static: { url: '/', static: true },
     assets: "/assets",
   },
   plugins: [
