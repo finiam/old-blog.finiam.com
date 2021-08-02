@@ -3,7 +3,7 @@
   "scripts": {
     "predev": "npm run clean",
     "dev": "snowpack dev",
-    "build": "eleventy && snowpack build",
+    "build": "NODE_ENV=production eleventy && snowpack build",
     "postbuild": "yarn optimize-fonts",
     "clean": "rm -rf build _output _cache",
     "optimize-fonts": "subfont build --in-place --no-fallbacks --font-display block --recursive",
