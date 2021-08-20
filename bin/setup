@@ -27,7 +27,7 @@ fi
 
 
 pp_info "setup" "Setting up env"
-cp -n .env .env.sample
+cp -n .env.sample .env
 
 pp_info "setup" "Installing dependencies with yarn"
 yarn

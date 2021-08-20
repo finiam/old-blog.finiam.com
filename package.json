@@ -22,7 +22,7 @@
     "@snowpack/plugin-run-script": "^2.3.0",
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.3.1",
-    "cssnano": "^5.0.7",
+    "cssnano": "^5.0.8",
     "dotenv": "^10.0.0",
     "eleventy-plugin-helmet": "^0.2.2",
     "graphql": "^15.5.1",
@@ -37,7 +37,7 @@
     "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.2",
     "prettier": "^2.3.2",
-    "sharp": "^0.28.3",
+    "sharp": "^0.29.0",
     "snowpack": "^3.5.9",
     "subfont": "^6.1.0",
     "tailwindcss": "^2.2.7"
