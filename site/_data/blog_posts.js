@@ -35,5 +35,10 @@ const postsQuery = gql`
 module.exports = async () => {
   const { allPost } = await request(process.env.CMS_URL, postsQuery);
 
-  return allPost;
+  return {
+    all: allPost,
+    development: allPost.filter((post) => post.category === "development"),
+    design: allPost.filter((post) => post.category === "design"),
+    team: allPost.filter((post) => post.category === "team"),
+  };
 };

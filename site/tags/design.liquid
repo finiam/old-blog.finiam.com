@@ -3,5 +3,5 @@ layout: layouts/base.liquid
 title: Design Blog - Finiam
 ---
 
-{% assign posts = blog_posts | where: "category", "design" %}
+{% assign posts = blog_posts.design %}
 {% include components/post_list, posts: posts %}

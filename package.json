@@ -11,9 +11,10 @@
     "lint": "prettier --check \"assets/**/*.js\" *.js \"assets/**/*.css\""
   },
   "dependencies": {
+    "cross-fetch": "^3.1.4",
     "instant.page": "^5.1.0",
-    "markdown-it-attrs": "^4.0.0",
-    "vanilla-lazyload": "^17.4.0"
+    "markdown-it-attrs": "^4.1.0",
+    "vanilla-lazyload": "^17.5.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
@@ -21,25 +22,24 @@
     "@snowpack/plugin-postcss": "^1.4.3",
     "@snowpack/plugin-run-script": "^2.3.0",
     "@tailwindcss/typography": "^0.4.1",
-    "autoprefixer": "^10.3.1",
+    "autoprefixer": "^10.3.6",
     "cssnano": "^5.0.8",
     "dotenv": "^10.0.0",
     "eleventy-plugin-helmet": "^0.2.2",
-    "graphql": "^15.5.1",
+    "graphql": "^15.6.0",
     "graphql-request": "^3.5.0",
     "hasha": "^5.2.2",
     "html-minifier": "^4.0.0",
     "markdown-it-implicit-figures": "^0.10.0",
-    "markdown-it-prism": "^2.1.8",
+    "markdown-it-prism": "^2.2.1",
     "netlify-plugin-cache": "^1.0.3",
-    "node-fetch": "^2.6.1",
-    "postcss": "^8.3.6",
-    "postcss-cli": "^8.3.1",
+    "postcss": "^8.3.8",
+    "postcss-cli": "^9.0.1",
     "postcss-import": "^14.0.2",
-    "prettier": "^2.3.2",
-    "sharp": "^0.29.0",
-    "snowpack": "^3.5.9",
-    "subfont": "^6.1.0",
-    "tailwindcss": "^2.2.7"
+    "prettier": "^2.4.1",
+    "sharp": "^0.29.1",
+    "snowpack": "^3.8.8",
+    "subfont": "^6.3.0",
+    "tailwindcss": "^2.2.16"
   }
 }
