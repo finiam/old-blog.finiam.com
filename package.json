@@ -7,8 +7,8 @@
     "postbuild": "yarn optimize-fonts",
     "clean": "rm -rf build _output _cache",
     "optimize-fonts": "subfont build --in-place --no-fallbacks --font-display block --recursive",
-    "format": "prettier --write \"assets/**/*.js\" *.js \"assets/**/*.css\"",
-    "lint": "prettier --check \"assets/**/*.js\" *.js \"assets/**/*.css\""
+    "format": "prettier --write \"**/**/*.{js,html,css}\"",
+    "lint": "prettier --check \"**/**/*.{js,html,css}\""
   },
   "dependencies": {
     "cross-fetch": "^3.1.4",
