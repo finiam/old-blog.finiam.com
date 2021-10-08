@@ -6,7 +6,7 @@
     size: 1,
     alias: "post",
   },
-  permalink: "blog/{{ post.slug.current | slug }}/",
+  permalink: "blog/{{ post.slug.current | slugify }}/",
   tags: ["post", "{{ post.category }}"],
   eleventyComputed: {
     title: data => data.post.title,

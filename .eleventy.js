@@ -66,6 +66,11 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setLibrary("md", markdownItRenderer);
 
+  eleventyConfig.setLiquidOptions({
+    dynamicPartials: false,
+    strictFilters: false,
+  });
+
   return {
     dir: {
       input: "site/",

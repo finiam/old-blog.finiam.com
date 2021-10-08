@@ -5,7 +5,7 @@
 
     <li class="flex flex-col col-span-2">
       <div class="h-336 w-full bg-gray-light">
-        <a href="/blog/{{ first_post.slug.current | slug }}/">
+        <a href="/blog/{{ first_post.slug.current | slugify }}/">
           {% responsiveImage first_post.featured_image.asset.url first_post.featured_image_alt "h-336 w-full object-cover object-center" %}
         </a>
       </div>
@@ -14,7 +14,7 @@
         <div class="flex flex-col lg:mb-40">
           <a
             class="block text-xl md:text-xl mr-column-spacing md:mr-0 font-edgy font-bold"
-            href="/blog/{{ first_post.slug.current | slug }}/"
+            href="/blog/{{ first_post.slug.current | slugify }}/"
           >
             {{ first_post.title }}
           </a>
@@ -24,7 +24,7 @@
           </div>
         </div>
 
-        <a class="md:mt-0 mt-8 prose text-lg font-serif" href="/blog/{{ first_post.slug.current | slug }}/">
+        <a class="md:mt-0 mt-8 prose text-lg font-serif" href="/blog/{{ first_post.slug.current | slugify }}/">
           {{ first_post.long_description | markdownifyInline }} →
         </a>
 
@@ -37,17 +37,17 @@
     {%- for post in posts offset: 1 -%}
     <li class="flex flex-col lg:col-span-2">
       <div class="h-336 w-full bg-gray-light">
-        <a href="/blog/{{ post.slug.current | slug }}/">
+        <a href="/blog/{{ post.slug.current | slugify }}/">
           {% responsiveImage post.featured_image.asset.url post.featured_image_alt "h-336 w-full object-cover object-center" %}
         </a>
       </div>
 
       <div class="md:px-gutter">
-        <a class="block text-xl md:text-xl mt-32 font-edgy font-bold" href="/blog/{{ post.slug.current | slug }}/">
+        <a class="block text-xl md:text-xl mt-32 font-edgy font-bold" href="/blog/{{ post.slug.current | slugify }}/">
           {{ post.title }}
         </a>
 
-        <a class="block my-40 md:my-32 font-serif prose text-lg" href="/blog/{{ post.slug.current | slug }}/">
+        <a class="block my-40 md:my-32 font-serif prose text-lg" href="/blog/{{ post.slug.current | slugify }}/">
           {{ post.long_description | markdownifyInline }} →
         </a>
 
