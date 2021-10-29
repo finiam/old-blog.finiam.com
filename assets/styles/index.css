@@ -1,6 +1,0 @@
-@import "./tailwind.css";
-@import "./fonts.css";
-
-body.no-js .lazy {
-  display: none !important;
-}

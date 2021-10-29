@@ -1,43 +1,33 @@
 # Finiam Blog Website
 
-A basic Eleventy app powered by Snowpack.
-
-Just place `liquid` (templating language used by Shopify) or `md` files under `src` and they will get turn into HTML pages by Eleventy.
-
-Write Javascript and CSS under `src/assets`. Avoid CSS though and use Tailwind, compiles will be slow everytime you update the CSS.
+A `svelte-kit` repo to give us the best experience possible in crafting a wonderful reading experience for our blog. This repo will also be used to build our entire website in the future.
 
 ## Available Scripts
 
-### bin/setup
+### yarn dev
 
-Provided you have ASDF, this script will set everything up.
+Runs a hot reloading development server on `localhost:3000`
 
-### bin/server
+### yarn lint
 
-Runs the development server
+Lints all JS and CSS code with Prettier and ESLint.
 
-### bin/lint
+### yarn format
 
-Lints all JS and CSS code.
+Formats all JS and CSS code with Prettier and ESLint.
 
-### bin/build
+### yarn build
 
-Builds the static site and outputs it on `build`
+Produces a production ready build using Netlify adapter.
+
+### yarn preview
+
+Previews the production build using Node.js (not Netlify).
 
 ## Project structure
 
-### `assets`
+We follow a unmodified `svelte-kit` repo. Please check [their docs](https://kit.svelte.dev/docs) for more info.
 
-This is where you place custom JS and CSS to run alongside the website. This is processed by `snowpack` which during production bundles everything with `esbuild`, except the `css` which is built by `postcss`. Remember, this is a `tailwind` project so custom CSS should be used sparingly.
+Only difference we have to a regular `svelte-kit` repo is the presence of Tailwind, which maps to our Figma design guidelines.
 
-### `site`
-
-The website. This directory is processed by `eleventy`. Under this directory you can place your data under `_data` and your re-usable templates under `_includes`. The rest of the files are just processed into HTML using `eleventy`.
-
-### `static`
-
-Everything under `static` just gets copied to the final build output as is. Except the images that are imported with our custom shortcode. Those go under `optimized_images`.
-
-### `utils`
-
-Stuff for the `eleventy` config.
+We also use the `@sveltejs/adapter-netlify`. During the `build` phase, we produce a `Netlify` compatible build that uses `Netlify Functions` to render the page. We use agressive `s-maxage` caching to reduce function execution. If a `Netlify Function` returns a `s-maxage` their CDN caches the result during the mentioned time.

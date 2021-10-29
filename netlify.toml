@@ -1,18 +1,8 @@
 [build]
-  command = "yarn build"
+  command = "npm run build"
   publish = "build"
+  environment = { NODE_VERSION = "14" }
 
-[[headers]]
-  for = "/subfont/*"
-  [headers.values]
-    Cache-Control = "max-age=31536000"
-
-[[headers]]
-  for = "/optimized_images/*"
-  [headers.values]
-    Cache-Control = "max-age=31536000"
-
-[[plugins]]
-  package = "netlify-plugin-cache"
-  [plugins.inputs]
-    paths = ["_output"]
+[functions]
+  environment = { NODE_VERSION = "14" }
+  node_bundler = "esbuild"

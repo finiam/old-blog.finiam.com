@@ -1,7 +1,0 @@
-{% if author.image %}
-  {% assign alt = author.name | append: " avatar" %}
-  {% assign src = author.image.asset.url | append: "?w=52" %}
-  {% image src alt "rounded-full bg-gray-light" %}
-{% else %}
-  <div class="rounded-full bg-gray-light w-full h-full" aria-label="No photo present for this author"></div>
-{% endif %}

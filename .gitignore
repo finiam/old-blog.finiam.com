@@ -1,8 +1,9 @@
-.build/
-build/
-web_modules/
-node_modules/
-_output/
-_cache/
 .DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.netlify
 .env
+.env.*
+!.env.sample
