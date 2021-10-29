@@ -13,7 +13,7 @@
 
 {#if firstPost}
 	<ul class="grid gap-x-gutter gap-y-96 grid-cols-2 px-56 md:px-0 md:gap-y-72">
-		<li class="flex flex-col col-span-2">
+	  <li class="flex flex-col col-span-2">
 			<div class="h-456 w-full bg-gray-light">
 				<a sveltekit:prefetch href="/blog/{firstPost.slug.current}/">
 					<img
