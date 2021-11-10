@@ -1,5 +1,7 @@
 import Lazyload from "vanilla-lazyload";
 
-window.addEventListener("DOMContentLoaded", () => {
-  new Lazyload();
+const lazyLoadInstance = new Lazyload();
+
+window.addEventListener("turbo:load", () => {
+  lazyLoadInstance.update();
 });
