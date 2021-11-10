@@ -1,5 +1,5 @@
 {
-  "browserslist": ">2%, not dead",
+  "browserslist": ">2%, not dead, not IE 11",
   "scripts": {
     "predev": "npm run clean",
     "dev": "snowpack dev",
@@ -11,35 +11,36 @@
     "lint": "prettier --check \"**/**/*.{js,html,css}\""
   },
   "dependencies": {
-    "cross-fetch": "^3.1.4",
+    "@hotwired/turbo": "^7.0.1",
     "instant.page": "^5.1.0",
     "markdown-it-attrs": "^4.1.0",
     "vanilla-lazyload": "^17.5.0"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.0-beta.2",
+    "@11ty/eleventy": "^1.0.0-beta.4",
     "@11ty/eleventy-plugin-rss": "^1.1.2",
     "@snowpack/plugin-postcss": "^1.4.3",
     "@snowpack/plugin-run-script": "^2.3.0",
     "@tailwindcss/typography": "^0.4.1",
-    "autoprefixer": "^10.3.7",
-    "cssnano": "^5.0.8",
+    "autoprefixer": "^10.4.0",
+    "cross-fetch": "^3.1.4",
+    "cssnano": "^5.0.10",
     "dotenv": "^10.0.0",
     "eleventy-plugin-helmet": "^0.2.2",
-    "graphql": "^15.6.1",
-    "graphql-request": "^3.5.0",
+    "graphql": "^16.0.1",
+    "graphql-request": "^3.6.1",
     "hasha": "^5.2.2",
     "html-minifier": "^4.0.0",
     "markdown-it-implicit-figures": "^0.10.0",
     "markdown-it-prism": "^2.2.1",
     "netlify-plugin-cache": "^1.0.3",
-    "postcss": "^8.3.9",
-    "postcss-cli": "^9.0.1",
+    "postcss": "^8.3.11",
+    "postcss-cli": "^9.0.2",
     "postcss-import": "^14.0.2",
     "prettier": "^2.4.1",
-    "sharp": "^0.29.1",
+    "sharp": "^0.29.2",
     "snowpack": "^3.8.8",
-    "subfont": "^6.3.0",
-    "tailwindcss": "^2.2.16"
+    "subfont": "^6.4.0",
+    "tailwindcss": "^2.2.19"
   }
 }
