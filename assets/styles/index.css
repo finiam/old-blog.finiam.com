@@ -4,3 +4,9 @@
 body.no-js .lazy {
   display: none !important;
 }
+
+.prose figcaption {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
