@@ -2,13 +2,15 @@ require("dotenv").config();
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const eleventyHelmetPlugin = require("eleventy-plugin-helmet");
 const markdownIt = require("markdown-it");
-const mdImplicitFigures = require("markdown-it-implicit-figures");
+const mdFigures = require("markdown-it-image-figures");
 const mdPrism = require("markdown-it-prism");
 const htmlmin = require("html-minifier");
 const markdownItAttrs = require("markdown-it-attrs");
 const markdownItRenderer = new markdownIt({ html: true })
   .use(markdownItAttrs)
-  .use(mdImplicitFigures)
+  .use(mdFigures, {
+    figcaption: true,
+  })
   .use(mdPrism);
 const image = require("./utils/image");
 

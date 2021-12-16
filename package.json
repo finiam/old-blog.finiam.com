@@ -14,6 +14,7 @@
     "@hotwired/turbo": "^7.0.1",
     "instant.page": "^5.1.0",
     "markdown-it-attrs": "^4.1.0",
+    "markdown-it-image-figures": "^2.0.0",
     "vanilla-lazyload": "^17.5.0"
   },
   "devDependencies": {
@@ -31,7 +32,6 @@
     "graphql-request": "^3.6.1",
     "hasha": "^5.2.2",
     "html-minifier": "^4.0.0",
-    "markdown-it-implicit-figures": "^0.10.0",
     "markdown-it-prism": "^2.2.1",
     "netlify-plugin-cache": "^1.0.3",
     "postcss": "^8.3.11",
