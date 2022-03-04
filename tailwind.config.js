@@ -117,15 +117,17 @@ module.exports = {
             },
             img: {
               maxWidth: columns["12-col"],
-              width: columns["12-col"],
               marginTop: baseSpacing["64"],
               marginBottom: baseSpacing["64"],
             },
             figure: {
               maxWidth: columns["12-col"],
-              width: columns["12-col"],
               marginTop: baseSpacing["64"],
               marginBottom: baseSpacing["64"],
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
             },
             iframe: {
               maxWidth: columns["12-col"],
