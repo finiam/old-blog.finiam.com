@@ -1,4 +1,4 @@
-# Finiam Blog Website
+# Finiam Blog Website 
 
 A basic Eleventy app powered by Snowpack.
 
